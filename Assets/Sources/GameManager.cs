@@ -7,7 +7,8 @@ namespace game
 {
     public class GameManager : AbstractSingleton<GameManager>
     {
-        //This enum matches the scene index in the build settings. Modifying the build setting will reqiure to updat this enum
+        //This enum matches the scene index in the build settings. 
+        //Modifying the build setting will reqiure to update this enum
         public enum State : UInt32
         {
             MainMenu = 0,
@@ -32,7 +33,7 @@ namespace game
                 case State.MainMenu:
                     {
                         m_CurrentState = State.MainMenu;
-                        SceneManager.LoadScene(m_CurrentState.ToString());
+                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
 
                         break;
                     }
@@ -40,14 +41,14 @@ namespace game
                 case State.Gameplay:
                     {
                         m_CurrentState = State.Gameplay;
-                        SceneManager.LoadScene(m_CurrentState.ToString());
+                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
 
                         break;
                     }
 
                 case State.InGameMenu:
                     {
-                        //load scene in game menu
+                        //handle in game menu when time has come
                         break;
                     }
                 default:
@@ -62,5 +63,22 @@ namespace game
         {
             return m_CurrentState;
         }
+
+#if DEBUG
+        void OnGUI()
+        {
+            GUI.Box(new Rect(10, 10, 100, 90), m_CurrentState.ToString());
+
+            if (GUI.Button(new Rect(20, 40, 80, 20), "MainMenu"))
+            {
+                ChangeState(State.MainMenu);
+            }
+
+            if (GUI.Button(new Rect(20, 70, 80, 20), "Gameplay"))
+            {
+                ChangeState(State.Gameplay);
+            }
+        }
     }
+#endif // DEBUG
 }
