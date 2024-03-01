@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace game
 {
-    public class GameManager : AbstractSingleton<GameManager>
+    public class GameManager : Singleton<GameManager>
     {
         //This enum matches the scene index in the build settings. 
         //Modifying the build setting will reqiure to update this enum
@@ -81,4 +81,4 @@ namespace game
         }
     }
 #endif // DEBUG
-}
+    }
