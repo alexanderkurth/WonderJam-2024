@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public enum SINGLETON_DUPLICATE_HANDLING { WARNING, ERROR, DESTROY_COMPONENT, DESTROY_GAMEOBJECT }
-public abstract class AbstractSingleton<T> : MonoBehaviour where T : AbstractSingleton<T>
+public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     [Header("Duplicate Handling")]
     [Tooltip("What to do when a second instance appears ?")]
@@ -22,21 +22,20 @@ public abstract class AbstractSingleton<T> : MonoBehaviour where T : AbstractSin
 
     protected virtual void Awake()
     {
-        Debug.Assert(typeof(T) == this.GetType(), "Please ensure that type T is equal to the daughter class : MySingleton : AbstractSingleton<MySingleton>");
+        ++nbInstances;
         if (_instance == null)
         {
             _instance = (T)this;
-            ++nbInstances;
         }
         else
         {
             switch (duplicationHandling)
             {
                 case SINGLETON_DUPLICATE_HANDLING.WARNING:
-                    Debug.LogWarning(message_dupplicate + " " + (++nbInstances) + " now present.");
+                    Debug.LogWarning(message_dupplicate + " " + (nbInstances) + " now present.");
                     break;
                 case SINGLETON_DUPLICATE_HANDLING.ERROR:
-                    Debug.LogError(message_dupplicate + " " + (++nbInstances) + " now present.");
+                    Debug.LogError(message_dupplicate + " " + (nbInstances) + " now present.");
                     break;
                 case SINGLETON_DUPLICATE_HANDLING.DESTROY_COMPONENT:
                     Debug.LogWarning(message_dupplicate + " Destroying component " + typeof(T) + " from gameObject " + gameObject.name);
@@ -54,8 +53,10 @@ public abstract class AbstractSingleton<T> : MonoBehaviour where T : AbstractSin
 
     protected virtual void OnDestroy()
     {
-        //TODO : work around --nbInstances;
         if (_instance == this)
+        {
             _instance = null;
+        }
+        nbInstances--;
     }
 }
