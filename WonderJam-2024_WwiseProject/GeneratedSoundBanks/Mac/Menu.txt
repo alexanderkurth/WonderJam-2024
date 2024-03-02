@@ -1,0 +1,8 @@
+Event	ID	Name			Wwise Object Path	Notes
+	45201699	Generic_Button			\Default Work Unit\Menu\Generic_Button	
+	2099555730	Play_Button			\Default Work Unit\Menu\Play_Button	
+	3287051291	Quit_Button			\Default Work Unit\Menu\Quit_Button	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	624157100	TEMPORARY SOUND	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\TEMPORARY SOUND_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMPORARY SOUND		181296
+

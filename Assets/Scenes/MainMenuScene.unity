@@ -849,6 +849,10 @@ MonoBehaviour:
   m_CurrentState: 0
   m_AnimalDatas: {fileID: 0}
   m_LoadingScreen: {fileID: 0}
+  myEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 810466e47800a7f418cc14a4d881fde4, type: 2}
 --- !u!4 &493798748
 Transform:
   m_ObjectHideFlags: 0

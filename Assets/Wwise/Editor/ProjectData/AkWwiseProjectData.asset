@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2527c7b704760c478d5f017f298822f0
     GuidInternal: 
-    m_lastTime: -8584922131485405363
+    m_lastTime: -8584922094105333552
     List:
     - name: Main
       guid: d91d0e8bce9c1a4f812d636e05b2219d
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
     GuidInternal: 
-    m_lastTime: -8584922131486394933
+    m_lastTime: -8584922082171242617
     List:
     - name: Animals
       guid: b63c0926ff0fda4faa48f854db012cec
@@ -145,8 +145,8 @@ MonoBehaviour:
         guid: 1d28b5ee03461b43857d6f2de8b2270d
       Path: Events\Default Work Unit\Animals\Frog_Croa
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Frog_Leg
       guid: 6c7f19cbe24ef245a50afa7bf0a8b93d
       id: 2684604754
@@ -165,8 +165,8 @@ MonoBehaviour:
         guid: 6c7f19cbe24ef245a50afa7bf0a8b93d
       Path: Events\Default Work Unit\Animals\Frog_Leg
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Generic_Button
       guid: d7be2cdb979c194689af550f27d0219e
       id: 45201699
@@ -185,8 +185,8 @@ MonoBehaviour:
         guid: d7be2cdb979c194689af550f27d0219e
       Path: Events\Default Work Unit\Menu\Generic_Button
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Horse_Brrrr
       guid: 48c6fb2ce735b143a8ef6881ba0dbd07
       id: 3579122959
@@ -205,8 +205,8 @@ MonoBehaviour:
         guid: 48c6fb2ce735b143a8ef6881ba0dbd07
       Path: Events\Default Work Unit\Animals\Horse_Brrrr
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Horse_HUUUUU
       guid: d12a9910e379a34893f332bb3bbdedee
       id: 1503779022
@@ -225,8 +225,8 @@ MonoBehaviour:
         guid: d12a9910e379a34893f332bb3bbdedee
       Path: Events\Default Work Unit\Animals\Horse_HUUUUU
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Horse_Leg
       guid: 5ed3ec76e949384a82ef6535107dcdaf
       id: 3143914661
@@ -245,8 +245,8 @@ MonoBehaviour:
         guid: 5ed3ec76e949384a82ef6535107dcdaf
       Path: Events\Default Work Unit\Animals\Horse_Leg
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Menu
       guid: 1c9984b277b903459591796eabb2c23e
       id: 2607556080
@@ -282,8 +282,8 @@ MonoBehaviour:
         guid: 8d7ac8c98a793d4c8ce59ba8718564e7
       Path: Events\Default Work Unit\Animals\Pig_HUIIIIII
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Pig_Leg
       guid: 40abc57469ff89418e0b540c82221832
       id: 1663394018
@@ -302,8 +302,8 @@ MonoBehaviour:
         guid: 40abc57469ff89418e0b540c82221832
       Path: Events\Default Work Unit\Animals\Pig_Leg
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Pig_Ron
       guid: 0b0ed4b1c570b74680fe4a9d58e6b510
       id: 2298677883
@@ -322,8 +322,8 @@ MonoBehaviour:
         guid: 0b0ed4b1c570b74680fe4a9d58e6b510
       Path: Events\Default Work Unit\Animals\Pig_Ron
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Button
       guid: ecbb290536100b43b636748590785819
       id: 2099555730
@@ -342,8 +342,8 @@ MonoBehaviour:
         guid: ecbb290536100b43b636748590785819
       Path: Events\Default Work Unit\Menu\Play_Button
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.8875
+      minDuration: 1.8875
     - name: Play_Ourge
       guid: 25cd0cad38f8f140b70288b424fb4b00
       id: 245474584
@@ -379,8 +379,8 @@ MonoBehaviour:
         guid: 8c91edf00ce3e14b9ca8bad1398315da
       Path: Events\Default Work Unit\Menu\Quit_Button
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -437,7 +437,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584922638785928186
     List: []
-  ExpandedFileSystemItemIds: 
+  ExpandedFileSystemItemIds: 0200000003000000070000001600000017000000
   ExpandedWaapiItemIds: 060000000700000016000000170000005700000058000000a9000000aa000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1

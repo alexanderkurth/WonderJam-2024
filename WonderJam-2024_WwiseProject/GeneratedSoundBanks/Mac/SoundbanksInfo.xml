@@ -22,20 +22,87 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2607556080" Type="User" Language="SFX" Hash="{9B0A6AB2-159A-9AE8-539E-8885E447FDA8}">
+		<SoundBank Id="2607556080" Type="User" Language="SFX" Hash="{B5499C87-C1D3-7AFF-E44B-F6277C5EAF20}">
 			<ShortName>Menu</ShortName>
 			<Path>Menu.bnk</Path>
+			<Media>
+				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TEMPORARY SOUND.wav</ShortName>
+					<CachePath>SFX/TEMPORARY SOUND_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="45201699" Name="Generic_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2099555730" Name="Play_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{643A24B9-0B5B-A3F4-94B6-5B46854AB9FE}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{5C6E2330-4EBA-C778-0C84-EBB81580FFB1}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TEMPORARY SOUND.wav</ShortName>
+					<CachePath>SFX/TEMPORARY SOUND_818F3B66.wem</CachePath>
+				</File>
 				<File Id="738180484" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ourge.wav</ShortName>
 					<CachePath>SFX/Ourge_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
+				<Event Id="2282389245" Name="Frog_Croa" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2684604754" Name="Frog_Leg" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3579122959" Name="Horse_Brrrr" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1503779022" Name="Horse_HUUUUU" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3143914661" Name="Horse_Leg" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1889053413" Name="Pig_HUIIIIII" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1663394018" Name="Pig_Leg" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2298677883" Name="Pig_Ron" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="245474584" Name="Play_Ourge" DurationType="OneShot" DurationMin="0.7163333" DurationMax="0.7163333">
 					<MediaRefs>
 						<MediaRef Id="738180484"/>
@@ -44,5 +111,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{608EDCC0-7F0C-DDC8-5ABC-B3ABD34A7836}</FileHash>
+	<FileHash>{252A2980-D242-E86D-1CF0-1A4B41138591}</FileHash>
 </SoundBanksInfo>
