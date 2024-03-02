@@ -97,4 +97,11 @@ public class CameraManager : Singleton<CameraManager>
         SetHorseCameraForTeam(1, GetTeamCameras(1)[1].enabled);
     }
     #endif
+    public void UnpairPlayerToTeam(int teamId, PlayerInput value)
+    {
+        if (mTeamCameras.ContainsKey(teamId))
+        {
+            mTeamCameras[teamId].Remove(value.camera);
+        }
+    }
 }

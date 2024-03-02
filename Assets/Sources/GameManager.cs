@@ -77,7 +77,8 @@ namespace game
             int playerIndex = 0;
             foreach (Gamepad gamepad in Gamepad.all)
             {
-                PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, playerIndex, "Gamepad",playerIndex, Gamepad.all[playerIndex].device);
+                PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, playerIndex, "Gamepad",playerIndex, gamepad);
+                
                 playerIndex++;
                 mPlayersInputs.Add(playerIndex, playerInput);
             }
@@ -85,10 +86,40 @@ namespace game
             foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
             {
                 int teamId = Mathf.CeilToInt((float)keyValuePair.Key / PLAYER_PER_TEAM);
-                Debug.Log(teamId);
                 mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
             }
 
+            UnityBadSystemOverride();
+        }
+
+        private void UnityBadSystemOverride()
+        {
+            bool found = false;
+            KeyValuePair<int, PlayerInput> selectedKey = default;
+            foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
+            {
+                if (keyValuePair.Value.devices.Count > 1)
+                {
+                    found = true;
+                    selectedKey = keyValuePair;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                return;
+            }
+            
+            Gamepad gamepad = Gamepad.all[selectedKey.Key - 1];
+            PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, selectedKey.Key, "Gamepad",selectedKey.Key, gamepad);
+
+            int teamId = Mathf.CeilToInt((float)selectedKey.Key / PLAYER_PER_TEAM);
+            mCameraManager.UnpairPlayerToTeam(teamId, selectedKey.Value);
+            Destroy(mPlayersInputs[selectedKey.Key].gameObject);
+            mPlayersInputs[selectedKey.Key] = playerInput;
+                    
+            mCameraManager.PairPlayerToTeam(teamId, playerInput);
             mCameraManager.Initialize();
         }
 
