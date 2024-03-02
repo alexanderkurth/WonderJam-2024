@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1312017395594081435}
   - component: {fileID: 2500753700895975507}
-  - component: {fileID: 7516880291466196532}
-  - component: {fileID: 6298086552853187416}
   - component: {fileID: 2435735994891732568}
   - component: {fileID: 5829024169173057630}
-  m_Layer: 0
+  - component: {fileID: 3145750394905762905}
+  - component: {fileID: 5373812538216984757}
+  m_Layer: 6
   m_Name: Pig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3569918637535146180}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55,54 +55,6 @@ MonoBehaviour:
   _obstacleDistance: 3
   _wanderAngleModifier: 8
   _wanderTarget: {fileID: 2845126132506130098}
---- !u!65 &7516880291466196532
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569918637535146180}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6298086552853187416
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569918637535146180}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 1
 --- !u!114 &2435735994891732568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +69,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractSprite: {fileID: 0}
   m_TargetTag: Player
-  m_Target: {fileID: 0}
   OnEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -153,7 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractSprite: {fileID: 0}
   m_TargetTag: Saddle
-  m_Target: {fileID: 0}
   OnEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -175,6 +125,68 @@ MonoBehaviour:
   OnStayEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!50 &3145750394905762905
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569918637535146180}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &5373812538216984757
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569918637535146180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &7087723611427482851
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2845126132506130098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WanderTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PigHead
       objectReference: {fileID: 0}
+    - target: {fileID: 1529815919031782854, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -228,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8615924
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -287,6 +303,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -312,6 +332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PigBody
       objectReference: {fileID: 0}
+    - target: {fileID: 1529815919031782854, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -322,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6748948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -379,6 +403,10 @@ PrefabInstance:
     - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_WasSpriteAssigned

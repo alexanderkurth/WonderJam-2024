@@ -20,6 +20,7 @@ public class AnimalSpawner : MonoBehaviour
     private void Start()
     {
         _animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(_animalType);
+        TrySpawnNewAnimal();
     }
 
     // Update is called once per frame

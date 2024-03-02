@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,8 +7,7 @@ public class InteractionComponent : MonoBehaviour
     [Header("Custom Events")]
     public Sprite m_InteractSprite;
     public string m_TargetTag;
-
-    public InteractionComponent m_Target;
+    public Dictionary<string, GameObject> m_Map = new Dictionary<string, GameObject>();
 
     [Header("Custom Events")]
     public UnityEvent OnEnterEvent;
@@ -20,12 +20,16 @@ public class InteractionComponent : MonoBehaviour
         {
             return;
         }
-        m_Target = collision.GetComponent<InteractionComponent>();
-        if(m_Target && m_Target.OnEnterEvent != null)
+        
+        if(!m_Map.TryGetValue(m_TargetTag, out _ ))
         {
-            m_Target.OnEnterEvent.Invoke();
+            m_Map.Add(m_TargetTag, collision.gameObject);
         }
-
+        else
+        {
+            return;
+        }
+        OnEnterEvent.Invoke();
         Debug.Log("OnTriggerEnter2D" + collision.name);
     }
 
@@ -36,10 +40,8 @@ public class InteractionComponent : MonoBehaviour
             return;
         }
 
-        if (m_Target && m_Target.OnStayEvent != null)
-        {
-            m_Target.OnStayEvent.Invoke();
-        }
+            OnStayEvent.Invoke();
+        
         Debug.Log("OnTriggerExit2D" + collision.name);
     }
 
@@ -50,12 +52,8 @@ public class InteractionComponent : MonoBehaviour
             return;
         }
 
-        if (m_Target && m_Target.OnExitEvent != null)
-        {
-            m_Target.OnExitEvent.Invoke();
-        }
-        m_Target = null;
-
+            OnExitEvent.Invoke();
+        
         Debug.Log("OnTriggerStay2D" + collision.name);
     }
 }

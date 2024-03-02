@@ -34,8 +34,8 @@ MonoBehaviour:
       Template: {fileID: 7203580668848216527, guid: 29ce501bd64267b4b8377873a4ce683b, type: 3}
   - AnimalType: 1
     Visual: {fileID: 3578521730984683872, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
-    MinSpeed: 3
-    MaxSpeed: 5
+    MinSpeed: 2
+    MaxSpeed: 3
     IdleTimeRandomRange: {x: 3, y: 8}
     TimeBetweenIdle: {x: 2, y: 4}
     BodyPartsInfo:
@@ -53,8 +53,8 @@ MonoBehaviour:
       Template: {fileID: 7203580668848216527, guid: a91080d0cb83f2444acde842f3496bf5, type: 3}
   - AnimalType: 2
     Visual: {fileID: 2500753700895975507, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
-    MinSpeed: 2
-    MaxSpeed: 8
+    MinSpeed: 3
+    MaxSpeed: 4
     IdleTimeRandomRange: {x: 2, y: 10}
     TimeBetweenIdle: {x: 1, y: 6}
     BodyPartsInfo:

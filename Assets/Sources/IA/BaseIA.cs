@@ -1,8 +1,8 @@
 using game;
-using UnityEngine;
-using Random = UnityEngine.Random;
 using System.Collections;
-using System.Diagnostics;
+using UnityEngine;
+using static HumanController;
+using Random = UnityEngine.Random;
 
 public class BaseIA : MonoBehaviour
 {
@@ -21,7 +21,9 @@ public class BaseIA : MonoBehaviour
     private Vector2 _idleRangeTime;
     private Vector2 _timeBetweenIdle;
     private AnimalSpawner _animalSpawner = null;
-    private AnimalDataInfo _animalDataInfo = null; 
+    private AnimalDataInfo _animalDataInfo = null;
+
+    private HumanController m_HumanController;
 
     public void Initialize(AnimalSpawner animalSpawner)
     {
@@ -29,13 +31,13 @@ public class BaseIA : MonoBehaviour
         transform.rotation = animalSpawner.transform.rotation;
         transform.position = animalSpawner.transform.position;
     }
-    
+
     private void Start()
     {
         _animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(_animalType);
         _speed = Random.Range(_animalDataInfo.MinSpeed, _animalDataInfo.MaxSpeed);
         _idleRangeTime = _animalDataInfo.IdleTimeRandomRange;
-        _timeBetweenIdle = _animalDataInfo.TimeBetweenIdle; 
+        _timeBetweenIdle = _animalDataInfo.TimeBetweenIdle;
         StartCoroutine(TryIdle());
     }
 
@@ -43,7 +45,7 @@ public class BaseIA : MonoBehaviour
     {
         if (_isGrab || _isMerge)
         {
-            return; 
+            return;
         }
 
         if (_isIdle)
@@ -62,9 +64,9 @@ public class BaseIA : MonoBehaviour
     }
 
     private void ChoseNewDirection()
-    {     
+    {
         _nextAngle += Random.Range(90, 270);
-        
+
         transform.RotateAround(transform.position, Vector3.forward, _nextAngle);
     }
 
@@ -81,26 +83,56 @@ public class BaseIA : MonoBehaviour
 
         TryGetForwardCollision();
     }
-    
+
 
     private IEnumerator TryIdle()
     {
-        yield return new WaitForSeconds(Random.Range(_timeBetweenIdle.x, _timeBetweenIdle.y)); 
+        yield return new WaitForSeconds(Random.Range(_timeBetweenIdle.x, _timeBetweenIdle.y));
         Idle();
     }
 
     public void OnGrab()
     {
-        _isGrab = true; 
-        //TODO 
+        InteractionComponent inte = GetComponent<InteractionComponent>();
+        GameObject target = inte.m_Map[inte.m_TargetTag];
+
+        if (target.tag == "Player")
+        {
+            m_HumanController = target.GetComponent<HumanController>();
+            if (m_HumanController.m_Sate == InteractionState.Grab)
+            {
+                return;
+            }
+            else
+            {
+                m_HumanController.m_Sate = InteractionState.Grab;
+            }
+        }
+
+        _isGrab = true;
+        transform.parent = target.transform;
+        transform.localScale *= 0.75f;
     }
 
     public void OnMerge()
     {
         _isGrab = false;
-        _isMerge = true; 
+        _isMerge = true;
         _animalSpawner.OnSpawnAnimalRemove();
-       MontureController.Instance.AttachBodyPart(_animalDataInfo.AnimalType);
+
+        InteractionComponent[] components = GetComponents<InteractionComponent>();
+
+        foreach (InteractionComponent component in components)
+        {
+            MontureController montureController = component.m_Map[component.m_TargetTag].GetComponent<MontureController>();
+            if (montureController)
+            {
+                montureController.AttachBodyPart(_animalDataInfo.AnimalType);
+                component.m_Map.Remove(component.m_TargetTag);
+                m_HumanController.m_Sate = InteractionState.Idle;
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void TryGetForwardCollision()

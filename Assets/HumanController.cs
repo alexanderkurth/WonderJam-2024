@@ -7,6 +7,15 @@ using UnityEngine;
 
 public class HumanController : MonoBehaviour
 {
+    public enum InteractionState : Int32
+    {
+        Idle = 0,
+        Grab = 1,
+
+        Count = 2,
+        Invalid = 3
+    }
+
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
@@ -18,6 +27,8 @@ public class HumanController : MonoBehaviour
         _cameraRoot.name = "PlayerCamera";
         _cameraRoot.SetActive(true);
     }
+
+    public InteractionState m_Sate = InteractionState.Invalid;
 
     // Update is called once per frame
     void Update()

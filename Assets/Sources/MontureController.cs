@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 
-public class MontureController : Singleton<MontureController>
-{
+public class MontureController : MonoBehaviour
+{ 
     public List<BodyPartSlot> slots;
     private int NbSlotsEquipped = 0;
 
