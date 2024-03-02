@@ -33,4 +33,19 @@ public class HumanController : MonoBehaviour
 
          }
     }
+
+    public void OnInteraction()
+    {
+        Debug.Log("Player Interacted !");
+    }
+
+    public void OnAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnHorseRidingInteraction()
+    {
+        throw new System.NotImplementedException();
+    }
 }
