@@ -13,7 +13,7 @@ public enum AnimalType
 public class AnimalDataInfo 
 {
     public AnimalType AnimalType;
-    public GameObject Visual;
+    public BaseIA Visual;
     public float MinSpeed;
     public float MaxSpeed;
 }

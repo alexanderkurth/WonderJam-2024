@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDatas
   AnimalDataInfos:
   - AnimalType: 0
-    Visual: {fileID: 3569918637535146180, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
+    Visual: {fileID: 3569918637535146180, guid: 07517f5f77cd7e54b94ceb311945f1b8, type: 3}
     MinSpeed: 2
     MaxSpeed: 6
   - AnimalType: 1
