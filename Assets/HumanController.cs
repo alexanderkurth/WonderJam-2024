@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using StarterAssets;
 using UnityEditor;
 using UnityEngine;
@@ -21,12 +20,13 @@ public class HumanController : MonoBehaviour
 
             if(direction != Vector3.zero)
             {
-                float angle = Vector3.SignedAngle(transform.up, direction, transform.forward);
+                // The game axis are X and Y
+                // Make HumanController move depending of inputs
+                transform.position += direction * MovementSpeed * Time.deltaTime;
 
-                transform.RotateAround(transform.position, Vector3.forward, angle * Time.deltaTime *RotationSpeed);
-                transform.Translate(-transform.up * MovementSpeed * Time.deltaTime);
+                Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
             }
-
          }
     }
 }
