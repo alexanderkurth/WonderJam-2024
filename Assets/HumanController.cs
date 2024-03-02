@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -9,6 +10,14 @@ public class HumanController : MonoBehaviour
 {
     public float MovementSpeed = 0.0f;
     public StarterAssetsInputs inputs;
+    [SerializeField] private GameObject _cameraRoot;
+    
+    private void Start()
+    {
+        _cameraRoot.transform.SetParent(null);
+        _cameraRoot.name = "PlayerCamera";
+        _cameraRoot.SetActive(true);
+    }
 
     // Update is called once per frame
     void Update()
