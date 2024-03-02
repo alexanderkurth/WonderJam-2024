@@ -44,6 +44,9 @@ namespace game
 
         [SerializeField]
         private Dictionary<State, string> m_StateToScene;
+        
+        [SerializeField]
+        private AnimalDatas m_AnimalDatas;
 
         [SerializeField]
         private GameObject m_LoadingScreen;
@@ -89,6 +92,11 @@ namespace game
         public State GetCurrentState()
         {
             return m_CurrentState;
+        }
+        
+        public AnimalDatas GetAnimalDatas()
+        {
+            return m_AnimalDatas;
         }
 
         public void Update()
