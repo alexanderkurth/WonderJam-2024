@@ -21,17 +21,17 @@ MonoBehaviour:
     TimeBetweenIdle: {x: 5, y: 10}
     BodyPartsInfo:
     - Type: 0
-      Template: {fileID: 1529815919031782854, guid: 945cd908649cfef4fbf8a49ef8a67642, type: 3}
+      Template: {fileID: 5641676777159765709, guid: 16c8e0eef9927b34f8862465f3118c5e, type: 3}
     - Type: 1
-      Template: {fileID: 1529815919031782854, guid: d2f29a279f7b7cf41b262be4ab88d649, type: 3}
+      Template: {fileID: 690279999949095499, guid: 9f84f4e2553cba848a96f9f32f2f254f, type: 3}
     - Type: 2
-      Template: {fileID: 1529815919031782854, guid: 9d4a295d8e5d64f49860841463a80f2c, type: 3}
+      Template: {fileID: 1077280355591702292, guid: 1c6b253552f02a146846b63529e65694, type: 3}
     - Type: 3
-      Template: {fileID: 1529815919031782854, guid: b96d9453c55870f4689891d2702efccc, type: 3}
+      Template: {fileID: 3498139123450283428, guid: 9c53dbfbc978cb847802e69de9290930, type: 3}
     - Type: 4
-      Template: {fileID: 1529815919031782854, guid: 21c30dbb29672e346b4467444e8bc5a4, type: 3}
+      Template: {fileID: 2299211969472979081, guid: 395eb55e5c813e7458be6b967b0fd041, type: 3}
     - Type: 5
-      Template: {fileID: 1529815919031782854, guid: 965a00f6ab4e5c34880bf368b934eae1, type: 3}
+      Template: {fileID: 7203580668848216527, guid: 29ce501bd64267b4b8377873a4ce683b, type: 3}
   - AnimalType: 1
     Visual: {fileID: 3578521730984683872, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
     MinSpeed: 3
@@ -40,17 +40,17 @@ MonoBehaviour:
     TimeBetweenIdle: {x: 2, y: 4}
     BodyPartsInfo:
     - Type: 0
-      Template: {fileID: 1529815919031782854, guid: d1211aa6b479c534c9e8fa63a5654d1d, type: 3}
+      Template: {fileID: 5641676777159765709, guid: 2f653916284ec5b44b6154757b7b7474, type: 3}
     - Type: 1
-      Template: {fileID: 1529815919031782854, guid: f0287a40a45dfd3478e0d241af31f7a8, type: 3}
+      Template: {fileID: 690279999949095499, guid: 85828c428ef99bb48b14dfc7e871fae6, type: 3}
     - Type: 2
-      Template: {fileID: 1529815919031782854, guid: 35f726dd2dd20554f9d5a49881ab0334, type: 3}
+      Template: {fileID: 1077280355591702292, guid: 23737540f510e2041a2af4aa5f228661, type: 3}
     - Type: 3
-      Template: {fileID: 1529815919031782854, guid: 934701d51e7e9ad44b1e42d357acf030, type: 3}
+      Template: {fileID: 3498139123450283428, guid: 7436b6510c8470545a35264b49e7cb08, type: 3}
     - Type: 4
-      Template: {fileID: 1529815919031782854, guid: 26c37c80e5f292440bbe029077bdacc3, type: 3}
+      Template: {fileID: 2299211969472979081, guid: 2e155e01a6814fe46bd91eb0ebd4c36d, type: 3}
     - Type: 5
-      Template: {fileID: 1529815919031782854, guid: 3624c006b0f4fde4ca607a4c59aa961f, type: 3}
+      Template: {fileID: 7203580668848216527, guid: a91080d0cb83f2444acde842f3496bf5, type: 3}
   - AnimalType: 2
     Visual: {fileID: 2500753700895975507, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
     MinSpeed: 2
@@ -59,14 +59,14 @@ MonoBehaviour:
     TimeBetweenIdle: {x: 1, y: 6}
     BodyPartsInfo:
     - Type: 0
-      Template: {fileID: 1529815919031782854, guid: 5cd01573cb33ab2428b5cdc8281f43cf, type: 3}
+      Template: {fileID: 5641676777159765709, guid: 754993fdd96c42c4ab8943ab24e2e1cc, type: 3}
     - Type: 1
-      Template: {fileID: 1529815919031782854, guid: 91163f905a818b6499fc0ee0ea8e62b8, type: 3}
+      Template: {fileID: 690279999949095499, guid: 56ae70db203310c42925d66bbb35cdf5, type: 3}
     - Type: 2
-      Template: {fileID: 1529815919031782854, guid: d55bc9a8a3d4c674eb29037098e7e92e, type: 3}
+      Template: {fileID: 1077280355591702292, guid: 6fc9e44e6a79c8649a7d97758f3378fa, type: 3}
     - Type: 3
-      Template: {fileID: 1529815919031782854, guid: 6ae04beede93cef4180c26d50b4c1913, type: 3}
+      Template: {fileID: 3498139123450283428, guid: 5472493d22ad96f4dbc28d73cd805770, type: 3}
     - Type: 4
-      Template: {fileID: 1529815919031782854, guid: 12849137acd141148a6bcede052f2b1c, type: 3}
+      Template: {fileID: 2299211969472979081, guid: 1a0e69b6491cf484188b42200ea61fb2, type: 3}
     - Type: 5
-      Template: {fileID: 1529815919031782854, guid: dc1ae1645f946eb4aac21618745a4bb0, type: 3}
+      Template: {fileID: 7203580668848216527, guid: 30735a4c445cacf4ebb45ac23534a123, type: 3}
