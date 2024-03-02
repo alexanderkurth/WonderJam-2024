@@ -737,6 +737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 302793736}
   - component: {fileID: 302793735}
+  - component: {fileID: 302793737}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -784,6 +785,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &302793737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302793734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26958d01246ad1d4c84fb241775a60a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: ae8d9d44
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 500a9a2ceb59ad545b02d38a45c081cf, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!224 &485233133 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8351215395950115561, guid: 0f3efcab26d566f46a80bea656247d78, type: 3}
@@ -821,6 +847,7 @@ MonoBehaviour:
   duplicationHandling: 1
   DoNotDestroyOnLoad: 1
   m_CurrentState: 0
+  m_AnimalDatas: {fileID: 0}
   m_LoadingScreen: {fileID: 0}
 --- !u!4 &493798748
 Transform:

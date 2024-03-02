@@ -53,7 +53,8 @@ namespace game
 
         AsyncOperation m_LoadingOperation;
 
-
+        [SerializeField]
+        private AK.Wwise.Event myEvent = null;
         public void ChangeState(State state)
         {
             m_CurrentState = state;
@@ -115,6 +116,7 @@ namespace game
         public void ChangeToGameplay()
         {
             ChangeState(State.Gameplay);
+            myEvent.Post(gameObject);
         }
 
         public void ChangeToMainMenu()
