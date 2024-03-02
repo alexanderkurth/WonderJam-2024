@@ -11,8 +11,8 @@ public class CameraManager : Singleton<CameraManager>
     
     public void Initialize()
     {
-        SetHorseCameraForTeam(0, false, true);
-        SetHorseCameraForTeam(1, false, true);
+        SetHorseCameraForTeam((int)game.TeamID.Team1, false, true);
+        SetHorseCameraForTeam((int)game.TeamID.Team2, false, true);
     }
 
     public void SetHorseCameraForTeam(int teamID, bool isEnabled, bool isInstant = false)

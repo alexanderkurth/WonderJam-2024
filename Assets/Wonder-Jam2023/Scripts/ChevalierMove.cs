@@ -23,7 +23,7 @@ public class ChevalierMove : MonoBehaviour
     [SerializeField]
     private Animator m_Animator;
 
-    private float m_TimeBeforeStart = 3.0f;
+    private float m_TimeBeforeStart = 0.0f;
 
     // Start is called before the first frame update
     void Start()

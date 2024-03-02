@@ -1,0 +1,15 @@
+Event	ID	Name			Wwise Object Path	Notes
+	245474584	Play_Ourge			\Default Work Unit\Play_Ourge	
+	1503779022	Horse_HUUUUU			\Default Work Unit\Animals\Horse_HUUUUU	
+	1663394018	Pig_Leg			\Default Work Unit\Animals\Pig_Leg	
+	1889053413	Pig_HUIIIIII			\Default Work Unit\Animals\Pig_HUIIIIII	
+	2282389245	Frog_Croa			\Default Work Unit\Animals\Frog_Croa	
+	2298677883	Pig_Ron			\Default Work Unit\Animals\Pig_Ron	
+	2684604754	Frog_Leg			\Default Work Unit\Animals\Frog_Leg	
+	3143914661	Horse_Leg			\Default Work Unit\Animals\Horse_Leg	
+	3579122959	Horse_Brrrr			\Default Work Unit\Animals\Horse_Brrrr	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	624157100	TEMPORARY SOUND	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Linux\SFX\TEMPORARY SOUND_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMPORARY SOUND		181296
+	738180484	Ourge	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Linux\SFX\Ourge_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ourge		68864
+

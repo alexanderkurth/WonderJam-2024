@@ -1,11 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace game
 {
+    public enum TeamID : UInt32
+    {
+        Team1 = 0,
+        Team2 = 1,
+
+        Count = 2,
+        Invalid = 3,
+    };
+
+    public enum PlayerID : UInt32
+    {
+        Player1 = 0,
+        Player2 = 1,
+        Player3 = 2,
+        Player4 = 3,
+
+        Count = 4,
+        Invalid = 5,
+    };
+
     public class GameManager : Singleton<GameManager>
     {
         private const int PLAYER_PER_TEAM = 2;
@@ -27,9 +48,25 @@ namespace game
 
         [SerializeField] private GameObject mPlayerPrefab;
         [SerializeField] private CameraManager mCameraManager;
+        
+        [SerializeField]
+        private AnimalDatas m_AnimalDatas;
+
+        [SerializeField]
+        private GameObject m_LoadingScreen;
+
+        UnityEngine.AsyncOperation m_LoadingOperation;
+
+        [Header("Sounds")]
+        [SerializeField]
+        private AK.Wwise.Event PlayButtonEvent = null;
+        [SerializeField]
+        private AK.Wwise.Event GenericButtonEvent = null;
+        [SerializeField]
+        private AK.Wwise.Event QuitButtonEvent = null;
 
         private Dictionary<int, PlayerInput> mPlayersInputs = new Dictionary<int, PlayerInput>();
-
+            
         private void Start()
         {
             CreateControllersAndCharacters();
@@ -54,7 +91,7 @@ namespace game
 
             mCameraManager.Initialize();
         }
-        
+
         public void ChangeState(State state)
         {
             m_CurrentState = state;
@@ -63,7 +100,8 @@ namespace game
                 case State.MainMenu:
                 {
                     m_CurrentState = State.MainMenu;
-                    SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+
+                    m_LoadingOperation = SceneManager.LoadSceneAsync((Int32)m_CurrentState, LoadSceneMode.Single);
 
                     break;
                 }
@@ -72,7 +110,6 @@ namespace game
                 {
                     m_CurrentState = State.Gameplay;
                     SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
-
                     break;
                 }
 
@@ -92,6 +129,47 @@ namespace game
         public State GetCurrentState()
         {
             return m_CurrentState;
+        }
+        
+        public AnimalDatas GetAnimalDatas()
+        {
+            return m_AnimalDatas;
+        }
+
+        public void Update()
+        {
+            if(m_LoadingOperation != null)
+            {
+                float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
+                Debug.Log(value);
+                if(m_LoadingOperation.isDone)
+                {
+                    m_LoadingOperation = null;
+                }
+            }
+        }
+
+        public void ChangeToGameplay()
+        {
+            ChangeState(State.Gameplay);
+            PlayButtonEvent.Post(gameObject);
+        }
+
+        public void ChangeToMainMenu()
+        {
+            GenericButtonEvent.Post(gameObject);
+            ChangeState(State.MainMenu);
+        }
+
+        public void QuitGame()
+        {
+            QuitButtonEvent.Post(gameObject);
+            Application.Quit();
+        }
+
+        public void PlayGenericSound()
+        {
+            GenericButtonEvent.Post(gameObject);
         }
 
 #if DEBUG

@@ -120,6 +120,7 @@ public class LegController : MonoBehaviour
         yield return new WaitUntil(IsLeftLeg ? IsAngleNearBottomLimit : IsAngleNearTopLimit);
         StopMotor();
     }
+    
     IEnumerator LegTravelDown()
     {
         AnchorLeg();

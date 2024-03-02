@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f719000cb06a1034d91d811e0f77298c, type: 3}
+  m_Name: AD0CCD25-F838-40F1-B702-88B424FB4B00
+  m_EditorClassIdentifier: 
+  objectName: Play_Ourge
+  id: 245474584
+  guid: AD0CCD25-F838-40F1-B702-88B424FB4B00
