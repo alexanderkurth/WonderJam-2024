@@ -22,6 +22,23 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{643A24B9-0B5B-A3F4-94B6-5B46854AB9FE}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="738180484" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ourge.wav</ShortName>
+					<CachePath>SFX/Ourge_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="245474584" Name="Play_Ourge" DurationType="OneShot" DurationMin="0.7163333" DurationMax="0.7163333">
+					<MediaRefs>
+						<MediaRef Id="738180484"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{65ACD701-C344-9E7E-4B1A-A247DBAA44A3}</FileHash>
+	<FileHash>{DCAB770E-C41C-F082-AD94-EB39D90EE4D3}</FileHash>
 </SoundBanksInfo>

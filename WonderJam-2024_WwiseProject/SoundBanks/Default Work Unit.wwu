@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B7C72725-7604-470C-8D5F-017F298822F0}" SchemaVersion="119">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{B7C72725-7604-470C-8D5F-017F298822F0}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B7C72725-7604-470C-8D5F-017F298822F0}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{8B0E1DD9-9CCE-4F1A-812D-636E05B2219D}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Ourge" ID="{AD0CCD25-F838-40F1-B702-88B424FB4B00}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Menu" ID="{D5138140-FEBF-4380-8D52-9D6259B7A127}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
