@@ -5,8 +5,8 @@ using UnityEngine;
 public enum AnimalType
 {
     Horse, 
-    Cow, 
-    Sheep,
+    Frog, 
+    Pig,
 }
 
 public enum BodyPartType
