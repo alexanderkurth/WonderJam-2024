@@ -91,8 +91,15 @@ public class BaseIA : MonoBehaviour
 
     public void OnGrab()
     {
-        _isGrab = true; 
-        //TODO 
+        _isGrab = true;
+        UnityEngine.Debug.Log("TETTET");
+        InteractionComponent inte = GetComponent<InteractionComponent>();
+        transform.parent = inte.m_Map[inte.m_TargetTag].transform;
+
+        RectTransform rectTransform = (RectTransform)transform;
+        float height = rectTransform.rect.height * 0.75f;
+        float width = rectTransform.rect.width * 0.75f;
+        rectTransform.sizeDelta = new Vector2(width, height);
     }
 
     public void OnMerge()
@@ -100,7 +107,18 @@ public class BaseIA : MonoBehaviour
         _isGrab = false;
         _isMerge = true; 
         _animalSpawner.OnSpawnAnimalRemove();
-       MontureController.Instance.AttachBodyPart(_animalDataInfo.AnimalType);
+
+        InteractionComponent[] inte = GetComponents<InteractionComponent>();
+
+        foreach(InteractionComponent component in inte)
+        {
+            MontureController mont = component.m_Map[component.m_TargetTag].GetComponent<MontureController>();
+            if(mont)
+            {
+                mont.AttachBodyPart(_animalDataInfo.AnimalType);
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void TryGetForwardCollision()
