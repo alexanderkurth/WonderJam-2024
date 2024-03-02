@@ -19,6 +19,14 @@ public class HumanController : MonoBehaviour
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
+    [SerializeField] private GameObject _cameraRoot;
+    
+    private void Start()
+    {
+        _cameraRoot.transform.SetParent(null);
+        _cameraRoot.name = "PlayerCamera";
+        _cameraRoot.SetActive(true);
+    }
 
     public InteractionState m_Sate = InteractionState.Invalid;
 
@@ -40,5 +48,20 @@ public class HumanController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
             }
          }
+    }
+
+    public void OnInteraction()
+    {
+        Debug.Log("Player Interacted !");
+    }
+
+    public void OnAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnHorseRidingInteraction()
+    {
+        throw new System.NotImplementedException();
     }
 }

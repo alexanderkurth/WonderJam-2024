@@ -6,7 +6,7 @@ public class SimpleCameraFollow : MonoBehaviour
 {
     public GameObject m_CameraParent;
     public Transform m_Target;
-    public float m_VerticalOffset = 10.0f;
+    public Vector3 _offset = default;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class SimpleCameraFollow : MonoBehaviour
         }
 
         Vector3 targetPos = m_Target.position;
-        targetPos.y += m_VerticalOffset;
+        targetPos += _offset;
         m_CameraParent.transform.position = targetPos;
     }
 
@@ -28,7 +28,7 @@ public class SimpleCameraFollow : MonoBehaviour
     void Update()
     {
         Vector3 targetPos = m_Target.position;
-        targetPos.y += m_VerticalOffset;
+        targetPos += _offset;
         m_CameraParent.transform.position = targetPos;
     }
 }
