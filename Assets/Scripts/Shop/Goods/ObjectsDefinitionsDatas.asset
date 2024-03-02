@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b4f645a1b2d8745815d1f031d30925, type: 3}
+  m_Name: ObjectsDefinitionsDatas
+  m_EditorClassIdentifier: 
+  ObjectsDatas:
+  - ObjectName: 0
+    ObjectType: 0
+    ObjectPrices: af000000
+    ObjectSprite: {fileID: 21300000, guid: a62b835b5a624384495b9d4ae155140d, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: f17c6dbffdebec141b84a9f6720dcacb, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 1
+    ObjectType: 0
+    ObjectPrices: af000000
+    ObjectSprite: {fileID: 21300000, guid: f3e09e7784ed35c4dbb608fab7f3a43c, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 81e72e1ef1aa7be4d86b0e78ae5fe005, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 2
+    ObjectType: 0
+    ObjectPrices: af000000
+    ObjectSprite: {fileID: 21300000, guid: 27ba8c2b5aecc1c43bcee182ec20713e, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: cdb756a81bc2b6f458e7ef2d0c44e229, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 3
+    ObjectType: 0
+    ObjectPrices: af000000
+    ObjectSprite: {fileID: 21300000, guid: 37b19b7a833bf5a49bee2b01f642eb41, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 77eeceb033564054da8d2a1c460342ee, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 50
+    ObjectType: 1
+    ObjectPrices: 3200000064000000
+    ObjectSprite: {fileID: 21300000, guid: ed41b986ac1bf9b41bd9434a4d0182ac, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: a75a442f63e449142beda2df78c78a6c, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 51
+    ObjectType: 1
+    ObjectPrices: 3200000064000000
+    ObjectSprite: {fileID: 21300000, guid: ed41b986ac1bf9b41bd9434a4d0182ac, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 47ffdf61315d3744793f1c94862c08f8, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 52
+    ObjectType: 1
+    ObjectPrices: 3200000064000000
+    ObjectSprite: {fileID: 21300000, guid: ed41b986ac1bf9b41bd9434a4d0182ac, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 4e60e6cd163130444b88bf37be0d9d4c, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 53
+    ObjectType: 1
+    ObjectPrices: 3200000064000000
+    ObjectSprite: {fileID: 21300000, guid: 6cda5a3ef73dff0448de4e7e311e1709, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 71a26f01dec96f64e81593d10cc2a372, type: 3}
+    CanBeBoughtMultipleTime: 0
+  - ObjectName: 100
+    ObjectType: 2
+    ObjectPrices: 0a00000032000000
+    ObjectSprite: {fileID: 21300000, guid: 6cda5a3ef73dff0448de4e7e311e1709, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 0c9d247dc0bb4cd46b98c4b049b1ca42, type: 3}
+    CanBeBoughtMultipleTime: 1
+  - ObjectName: 101
+    ObjectType: 2
+    ObjectPrices: 0a00000032000000
+    ObjectSprite: {fileID: 21300000, guid: 6cda5a3ef73dff0448de4e7e311e1709, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: ee19392348ce4d343a7ea850526e4d75, type: 3}
+    CanBeBoughtMultipleTime: 1
+  - ObjectName: 102
+    ObjectType: 2
+    ObjectPrices: 0a00000032000000
+    ObjectSprite: {fileID: 21300000, guid: 6cda5a3ef73dff0448de4e7e311e1709, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: f2eb55250069344498b07a194796d954, type: 3}
+    CanBeBoughtMultipleTime: 1
+  - ObjectName: 103
+    ObjectType: 2
+    ObjectPrices: 0a00000032000000
+    ObjectSprite: {fileID: 21300000, guid: 6cda5a3ef73dff0448de4e7e311e1709, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 6cf8eea601582c842a9e6681c32a333c, type: 3}
+    CanBeBoughtMultipleTime: 1
+  - ObjectName: 104
+    ObjectType: 2
+    ObjectPrices: 0a00000032000000
+    ObjectSprite: {fileID: 21300000, guid: 6cda5a3ef73dff0448de4e7e311e1709, type: 3}
+    ObjectSpriteShop: {fileID: 21300000, guid: 13066e7af7f27b94a928a88d4c876d92, type: 3}
+    CanBeBoughtMultipleTime: 1
