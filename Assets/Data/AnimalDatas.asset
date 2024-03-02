@@ -17,11 +17,17 @@ MonoBehaviour:
     Visual: {fileID: 3578521730984683872, guid: 07517f5f77cd7e54b94ceb311945f1b8, type: 3}
     MinSpeed: 2
     MaxSpeed: 6
+    IdleTimeRandomRange: {x: 1, y: 3}
+    TimeBetweenIdle: {x: 5, y: 10}
   - AnimalType: 1
     Visual: {fileID: 3578521730984683872, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
     MinSpeed: 3
     MaxSpeed: 5
+    IdleTimeRandomRange: {x: 3, y: 8}
+    TimeBetweenIdle: {x: 5, y: 10}
   - AnimalType: 2
     Visual: {fileID: 2500753700895975507, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
     MinSpeed: 2
     MaxSpeed: 8
+    IdleTimeRandomRange: {x: 2, y: 10}
+    TimeBetweenIdle: {x: 5, y: 10}

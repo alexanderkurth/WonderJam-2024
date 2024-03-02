@@ -39,7 +39,7 @@ public class AnimalSpawner : MonoBehaviour
             BaseIA baseIA = Instantiate(_animalDataInfo.Visual, transform.position, Quaternion.identity);
             baseIA.Initialize(this);
             _timeSinceLastSpawn = Time.timeSinceLevelLoad;
-            _animalSpawned++; 
+            _animalSpawned++;
         }
     }
 

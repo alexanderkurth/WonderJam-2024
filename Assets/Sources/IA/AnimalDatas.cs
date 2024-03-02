@@ -16,6 +16,8 @@ public class AnimalDataInfo
     public BaseIA Visual;
     public float MinSpeed;
     public float MaxSpeed;
+    public Vector2 IdleTimeRandomRange;
+    public Vector2 TimeBetweenIdle;
 }
 
 [CreateAssetMenu(fileName = "AnimalDatas", menuName = "ScriptableObjects/AnimalDatas", order = 1)]
