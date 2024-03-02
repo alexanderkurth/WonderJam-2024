@@ -43,6 +43,7 @@ public class MontureController : MonoBehaviour
             {
                 slot.SetBodyPart(type);
                 NbSlotsEquipped++;
+                break; 
             }
         }
     }
