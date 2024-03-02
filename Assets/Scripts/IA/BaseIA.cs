@@ -1,3 +1,4 @@
+using System;
 using game;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,10 +12,15 @@ public class BaseIA : MonoBehaviour
     private float _nextAngle = 0;
     private float _speed;
 
-    private void Awake()
+    private void Start()
     {
         AnimalDataInfo animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(AnimalType);
         _speed = Random.Range(animalDataInfo.MinSpeed, animalDataInfo.MaxSpeed);
+    }
+
+    private void Update()
+    {
+        Wander();
     }
 
     private void Wander()

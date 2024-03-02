@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum AnimalType
 {
-    Cheval, 
-    Vache, 
-    Kangourou,
+    Horse, 
+    Cow, 
+    Sheep,
 }
 
 [Serializable]

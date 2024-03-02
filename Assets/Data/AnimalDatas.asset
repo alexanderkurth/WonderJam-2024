@@ -9,7 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 39f03106974199d40ac6b15368b3b4c7, type: 3}
   m_Name: AnimalDatas
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDatas
-  AnimalDataInfos: []
+  AnimalDataInfos:
+  - AnimalType: 0
+    Visual: {fileID: 3569918637535146180, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
+    MinSpeed: 2
+    MaxSpeed: 6
+  - AnimalType: 1
+    Visual: {fileID: 3569918637535146180, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
+    MinSpeed: 3
+    MaxSpeed: 5
+  - AnimalType: 2
+    Visual: {fileID: 3569918637535146180, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
+    MinSpeed: 2
+    MaxSpeed: 8
