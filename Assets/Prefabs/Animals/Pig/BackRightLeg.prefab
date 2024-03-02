@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2003552877823441926}
   - component: {fileID: 7212569427058660835}
   m_Layer: 0
-  m_Name: LeftLeg
+  m_Name: BackRightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

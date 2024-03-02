@@ -12,8 +12,10 @@ public enum AnimalType
 public enum BodyPartType
 {
     Head,
-    LeftLeg,
-    RightLeg,
+    FrontLeftLeg,
+    FrontRightLeg,
+    BackLeftLeg,
+    BackRightLeg,
     Body
 }
 

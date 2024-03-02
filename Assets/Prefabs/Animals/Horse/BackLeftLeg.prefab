@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2003552877823441926}
   - component: {fileID: 7212569427058660835}
   m_Layer: 0
-  m_Name: Body
+  m_Name: BackLeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8da2b587b0996749a9e5897dcc14db3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5aa1b0d63358bbf4194b7796c6c76646, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.13, y: 4.01}
+  m_Size: {x: 4.22, y: 8.85}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
