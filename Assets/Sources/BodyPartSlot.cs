@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
+using System;
 using game;
 using UnityEngine;
 
@@ -8,24 +6,30 @@ public class BodyPartSlot : MonoBehaviour
 {
     public BodyPartType BodyPartType = BodyPartType.Head;
 
-    private GameObject gameObject = null;
+    private GameObject _instantiatedPart = null;
 
     public bool IsSet()
     {
-        return gameObject != null;
+        return _instantiatedPart != null;
     }
 
     public void SetBodyPart(AnimalType type)
     {
         AnimalDataInfo info = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(type);
 
-         if(gameObject != null)
+         if(_instantiatedPart != null)
          {
-            Destroy(gameObject);
+            Destroy(_instantiatedPart);
          }
 
 
-         gameObject = Instantiate(info.GetBodyPartTemplate(BodyPartType), transform);
-         gameObject.transform.localPosition = new UnityEngine.Vector3(0,0,0);
+         _instantiatedPart = Instantiate(info.GetBodyPartTemplate(BodyPartType), transform);
+         _instantiatedPart.transform.localPosition = Vector3.zero;
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 0.1f); 
     }
 }
