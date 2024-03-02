@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 2500753700895975507}
   - component: {fileID: 7516880291466196532}
   - component: {fileID: 6298086552853187416}
+  - component: {fileID: 2435735994891732568}
+  - component: {fileID: 5829024169173057630}
   m_Layer: 0
-  m_Name: Sheep
+  m_Name: Pig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +102,78 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 1
+--- !u!114 &2435735994891732568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569918637535146180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16465ddca29ca6e4488f74c94bb44bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractSprite: {fileID: 0}
+  m_TargetTag: Player
+  m_Target: {fileID: 0}
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2500753700895975507}
+        m_TargetAssemblyTypeName: BaseIA, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5829024169173057630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569918637535146180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16465ddca29ca6e4488f74c94bb44bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractSprite: {fileID: 0}
+  m_TargetTag: Saddle
+  m_Target: {fileID: 0}
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2500753700895975507}
+        m_TargetAssemblyTypeName: BaseIA, Assembly-CSharp
+        m_MethodName: OnMerge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7087723611427482851
 GameObject:
   m_ObjectHideFlags: 0

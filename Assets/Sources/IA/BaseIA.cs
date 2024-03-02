@@ -21,6 +21,7 @@ public class BaseIA : MonoBehaviour
     private Vector2 _idleRangeTime;
     private Vector2 _timeBetweenIdle;
     private AnimalSpawner _animalSpawner = null;
+    private AnimalDataInfo _animalDataInfo = null; 
 
     public void Initialize(AnimalSpawner animalSpawner)
     {
@@ -31,10 +32,10 @@ public class BaseIA : MonoBehaviour
     
     private void Start()
     {
-        AnimalDataInfo animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(_animalType);
-        _speed = Random.Range(animalDataInfo.MinSpeed, animalDataInfo.MaxSpeed);
-        _idleRangeTime = animalDataInfo.IdleTimeRandomRange;
-        _timeBetweenIdle = animalDataInfo.TimeBetweenIdle; 
+        _animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(_animalType);
+        _speed = Random.Range(_animalDataInfo.MinSpeed, _animalDataInfo.MaxSpeed);
+        _idleRangeTime = _animalDataInfo.IdleTimeRandomRange;
+        _timeBetweenIdle = _animalDataInfo.TimeBetweenIdle; 
         StartCoroutine(TryIdle());
     }
 
@@ -91,14 +92,15 @@ public class BaseIA : MonoBehaviour
     public void OnGrab()
     {
         _isGrab = true; 
+        //TODO 
     }
 
     public void OnMerge()
     {
         _isGrab = false;
         _isMerge = true; 
-        _animalSpawner.OnSpawnAnimalRemove(); 
-        //TODO : Apply Effect on animal + Destroy gameobject 
+        _animalSpawner.OnSpawnAnimalRemove();
+       MontureController.Instance.AttachBodyPart(_animalDataInfo.AnimalType);
     }
 
     private void TryGetForwardCollision()
