@@ -45,6 +45,12 @@ namespace game
         [SerializeField]
         private Dictionary<State, string> m_StateToScene;
 
+        [SerializeField]
+        private GameObject m_LoadingScreen;
+
+        AsyncOperation m_LoadingOperation;
+
+
         public void ChangeState(State state)
         {
             m_CurrentState = state;
@@ -53,7 +59,8 @@ namespace game
                 case State.MainMenu:
                     {
                         m_CurrentState = State.MainMenu;
-                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+
+                        m_LoadingOperation = SceneManager.LoadSceneAsync((Int32)m_CurrentState, LoadSceneMode.Single);
 
                         break;
                     }
@@ -61,7 +68,7 @@ namespace game
                 case State.Gameplay:
                     {
                         m_CurrentState = State.Gameplay;
-                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                        m_LoadingOperation = SceneManager.LoadSceneAsync((Int32)m_CurrentState, LoadSceneMode.Single);
 
                         break;
                     }
@@ -82,6 +89,22 @@ namespace game
         public State GetCurrentState()
         {
             return m_CurrentState;
+        }
+
+        public void Update()
+        {
+            float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
+            Debug.Log(value);
+        }
+
+        public void ChangeToGameplay()
+        {
+            ChangeState(State.Gameplay);
+        }
+
+        public void ChangeToMainMenu()
+        {
+            ChangeState(State.MainMenu);
         }
 
 #if DEBUG
