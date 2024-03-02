@@ -30,7 +30,7 @@ public class ChevalierMove : MonoBehaviour
     {
         if(m_Direction == Vector3.zero)
         {
-            m_Direction = Vector3.forward;
+            m_Direction = new Vector3(0,1,0);
         }
 
         StartCoroutine(StartMovement());
@@ -69,9 +69,11 @@ public class ChevalierMove : MonoBehaviour
             m_LearpMax = -m_LearpMax;
         }
 
-        m_Direction = new Vector3(m_TargetPivot.transform.localPosition.x + lerpValue, m_TargetPivot.transform.localPosition.y, m_TargetPivot.transform.localPosition.z).normalized;
-        transform.Translate(m_Direction * Time.fixedDeltaTime * m_Speed);
-        m_VisualizeRoot.transform.forward = m_Direction;
+        //m_Direction = new Vector3(m_TargetPivot.transform.localPosition.x + lerpValue, m_TargetPivot.transform.localPosition.y, m_TargetPivot.transform.localPosition.z).normalized;
+        //m_Direction = new Vector3(m_TargetPivot.transform.localPosition.x, m_TargetPivot.transform.localPosition.y  + lerpValue, m_TargetPivot.transform.localPosition.z).normalized;
+
+        transform.Translate(Vector3.up * Time.fixedDeltaTime * m_Speed);
+        //m_VisualizeRoot.transform.forward = m_Direction;
     }
 
     void OnTriggerEnter(Collider other)
