@@ -1,8 +1,30 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AnimalInfoData", menuName = "ScriptableObjects/AnimalInfoData", order = 1)]
-public class AnimalDataInfo : ScriptableObject
+public enum AnimalType
 {
-    public float minSpeed;
-    public float maxSpeed;
+    Cheval, 
+    Vache, 
+    Kangourou,
+}
+
+[Serializable]
+public class AnimalDataInfo 
+{
+    public AnimalType AnimalType;
+    public GameObject Visual;
+    public float MinSpeed;
+    public float MaxSpeed;
+}
+
+[CreateAssetMenu(fileName = "AnimalDatas", menuName = "ScriptableObjects/AnimalDatas", order = 1)]
+public class AnimalDatas: ScriptableObject
+{
+    public List<AnimalDataInfo> AnimalDataInfos = new List<AnimalDataInfo>();
+
+    public AnimalDataInfo GetAnimalInfoByType(AnimalType animalType)
+    {
+        return AnimalDataInfos.Find((animal) => animal.AnimalType == animalType);
+    }
 }

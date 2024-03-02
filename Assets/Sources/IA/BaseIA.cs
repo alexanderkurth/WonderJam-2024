@@ -1,29 +1,31 @@
+using game;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class BaseIA : MonoBehaviour
 {
-    public AnimalDataInfo animalInfo;
-    public float wanderAngleModifier = 8.0f;
-    public Transform wanderTarget;
+    public AnimalType AnimalType;
+    public float WanderAngleModifier = 8.0f;
+    public Transform WanderTarget;
     
-    private float nextAngle = 0;
-    private float speed;
+    private float _nextAngle = 0;
+    private float _speed;
 
     private void Awake()
     {
-        speed = Random.Range(animalInfo.minSpeed, animalInfo.maxSpeed);
+        AnimalDataInfo animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(AnimalType);
+        _speed = Random.Range(animalDataInfo.MinSpeed, animalDataInfo.MaxSpeed);
     }
 
     private void Wander()
     {
-        nextAngle += Random.Range(-wanderAngleModifier, wanderAngleModifier);
-        if (Mathf.Abs(nextAngle) > 90)
+        _nextAngle += Random.Range(-WanderAngleModifier, WanderAngleModifier);
+        if (Mathf.Abs(_nextAngle) > 90)
         {
-            nextAngle /= 10;
+            _nextAngle /= 10;
         }
 
-        transform.RotateAround(transform.position, Vector3.up, nextAngle * Time.deltaTime);
-        transform.position = Vector3.MoveTowards(transform.position, wanderTarget.position, Time.deltaTime * speed);
+        transform.RotateAround(transform.position, Vector3.up, _nextAngle * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, WanderTarget.position, Time.deltaTime * _speed);
     }
 }
