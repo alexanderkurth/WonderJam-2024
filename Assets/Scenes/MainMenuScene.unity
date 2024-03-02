@@ -541,6 +541,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 1299
       objectReference: {fileID: 0}
+    - target: {fileID: 8701666779856342141, guid: 0f3efcab26d566f46a80bea656247d78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 493798747}
+    - target: {fileID: 8701666779856342141, guid: 0f3efcab26d566f46a80bea656247d78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701666779856342141, guid: 0f3efcab26d566f46a80bea656247d78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: game.GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8714403878790508730, guid: 0f3efcab26d566f46a80bea656247d78, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -806,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565bdf7ddf8b7744c92529d4396b2350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duplicationHandling: 2
+  duplicationHandling: 1
   DoNotDestroyOnLoad: 1
   m_CurrentState: 0
   m_LoadingScreen: {fileID: 0}

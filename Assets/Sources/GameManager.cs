@@ -97,6 +97,10 @@ namespace game
             {
                 float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
                 Debug.Log(value);
+                if(m_LoadingOperation.isDone)
+                {
+                    m_LoadingOperation = null;
+                }
             }
         }
 
