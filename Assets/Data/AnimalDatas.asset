@@ -17,18 +17,56 @@ MonoBehaviour:
     Visual: {fileID: 3578521730984683872, guid: 07517f5f77cd7e54b94ceb311945f1b8, type: 3}
     MinSpeed: 2
     MaxSpeed: 6
+    IdleTimeRandomRange: {x: 1, y: 3}
+    TimeBetweenIdle: {x: 5, y: 10}
     BodyPartsInfo:
+    - Type: 0
+      Template: {fileID: 5641676777159765709, guid: 16c8e0eef9927b34f8862465f3118c5e, type: 3}
+    - Type: 1
+      Template: {fileID: 690279999949095499, guid: 9f84f4e2553cba848a96f9f32f2f254f, type: 3}
+    - Type: 2
+      Template: {fileID: 1077280355591702292, guid: 1c6b253552f02a146846b63529e65694, type: 3}
     - Type: 3
-      Template: {fileID: 7086448406308210806, guid: 080783b7d1774e94a886917ac69e0c4a, type: 3}
+      Template: {fileID: 3498139123450283428, guid: 9c53dbfbc978cb847802e69de9290930, type: 3}
+    - Type: 4
+      Template: {fileID: 2299211969472979081, guid: 395eb55e5c813e7458be6b967b0fd041, type: 3}
+    - Type: 5
+      Template: {fileID: 7203580668848216527, guid: 29ce501bd64267b4b8377873a4ce683b, type: 3}
   - AnimalType: 1
     Visual: {fileID: 3578521730984683872, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
     MinSpeed: 3
     MaxSpeed: 5
+    IdleTimeRandomRange: {x: 3, y: 8}
+    TimeBetweenIdle: {x: 2, y: 4}
     BodyPartsInfo:
     - Type: 0
-      Template: {fileID: 0}
+      Template: {fileID: 5641676777159765709, guid: 2f653916284ec5b44b6154757b7b7474, type: 3}
+    - Type: 1
+      Template: {fileID: 690279999949095499, guid: 85828c428ef99bb48b14dfc7e871fae6, type: 3}
+    - Type: 2
+      Template: {fileID: 1077280355591702292, guid: 23737540f510e2041a2af4aa5f228661, type: 3}
+    - Type: 3
+      Template: {fileID: 3498139123450283428, guid: 7436b6510c8470545a35264b49e7cb08, type: 3}
+    - Type: 4
+      Template: {fileID: 2299211969472979081, guid: 2e155e01a6814fe46bd91eb0ebd4c36d, type: 3}
+    - Type: 5
+      Template: {fileID: 7203580668848216527, guid: a91080d0cb83f2444acde842f3496bf5, type: 3}
   - AnimalType: 2
     Visual: {fileID: 2500753700895975507, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
     MinSpeed: 2
     MaxSpeed: 8
-    BodyPartsInfo: []
+    IdleTimeRandomRange: {x: 2, y: 10}
+    TimeBetweenIdle: {x: 1, y: 6}
+    BodyPartsInfo:
+    - Type: 0
+      Template: {fileID: 5641676777159765709, guid: 754993fdd96c42c4ab8943ab24e2e1cc, type: 3}
+    - Type: 1
+      Template: {fileID: 690279999949095499, guid: 56ae70db203310c42925d66bbb35cdf5, type: 3}
+    - Type: 2
+      Template: {fileID: 1077280355591702292, guid: 6fc9e44e6a79c8649a7d97758f3378fa, type: 3}
+    - Type: 3
+      Template: {fileID: 3498139123450283428, guid: 5472493d22ad96f4dbc28d73cd805770, type: 3}
+    - Type: 4
+      Template: {fileID: 2299211969472979081, guid: 1a0e69b6491cf484188b42200ea61fb2, type: 3}
+    - Type: 5
+      Template: {fileID: 7203580668848216527, guid: 30735a4c445cacf4ebb45ac23534a123, type: 3}

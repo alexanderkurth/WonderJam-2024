@@ -16,21 +16,131 @@
 				</Event>
 				<Folder Name="Menu" ID="{B284991C-B977-4503-9591-796EABB2C23E}" ShortID="704510512">
 					<ChildrenList>
-						<Event Name="Play_Button" ID="{0529BBEC-1036-430B-B636-748590785819}"/>
-						<Event Name="Generic_Button" ID="{DB2CBED7-9C97-4619-89AF-550F27D0219E}"/>
-						<Event Name="Quit_Button" ID="{F0ED918C-E30C-4BE1-9CA8-BAD1398315DA}"/>
+						<Event Name="Play_Button" ID="{0529BBEC-1036-430B-B636-748590785819}">
+							<ChildrenList>
+								<Action Name="" ID="{234F0DF8-53A7-428F-8D2F-1436EC9AA877}" ShortID="816936211">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Generic_Button" ID="{DB2CBED7-9C97-4619-89AF-550F27D0219E}">
+							<ChildrenList>
+								<Action Name="" ID="{117FD6A2-2964-45AE-9A88-6A4211B035A4}" ShortID="726192365">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Quit_Button" ID="{F0ED918C-E30C-4BE1-9CA8-BAD1398315DA}">
+							<ChildrenList>
+								<Action Name="" ID="{13F88EF8-A097-49F6-A030-4F8F26BB4C0A}" ShortID="586025130">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Animals" ID="{26093CB6-0FFF-4FDA-AA48-F854DB012CEC}" ShortID="477131452">
 					<ChildrenList>
-						<Event Name="Frog_Croa" ID="{EEB5281D-4603-431B-857D-6F2DE8B2270D}"/>
-						<Event Name="Frog_Leg" ID="{CB197F6C-4EE2-45F2-A50A-FA7BF0A8B93D}"/>
-						<Event Name="Horse_Leg" ID="{76ECD35E-49E9-4A38-82EF-6535107DCDAF}"/>
-						<Event Name="Horse_Brrrr" ID="{2CFBC648-35E7-43B1-A8EF-6881BA0DBD07}"/>
-						<Event Name="Horse_HUUUUU" ID="{10992AD1-79E3-48A3-93F3-32BB3BBDEDEE}"/>
-						<Event Name="Pig_HUIIIIII" ID="{C9C87A8D-798A-4C3D-8CE5-9BA8718564E7}"/>
-						<Event Name="Pig_Leg" ID="{74C5AB40-FF69-4189-8E0B-540C82221832}"/>
-						<Event Name="Pig_Ron" ID="{B1D40E0B-70C5-46B7-80FE-4A9D58E6B510}"/>
+						<Event Name="Frog_Croa" ID="{EEB5281D-4603-431B-857D-6F2DE8B2270D}">
+							<ChildrenList>
+								<Action Name="" ID="{01ECCF1A-F857-48D4-A4F6-9FDBD8F67434}" ShortID="959956570">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Frog_Leg" ID="{CB197F6C-4EE2-45F2-A50A-FA7BF0A8B93D}">
+							<ChildrenList>
+								<Action Name="" ID="{A0912ED3-48B1-4D3D-B5B0-C739ABEDFC9B}" ShortID="269317415">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Horse_Leg" ID="{76ECD35E-49E9-4A38-82EF-6535107DCDAF}">
+							<ChildrenList>
+								<Action Name="" ID="{285CBA35-8598-4C6D-A33E-B440CD4357D0}" ShortID="284998816">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Horse_Brrrr" ID="{2CFBC648-35E7-43B1-A8EF-6881BA0DBD07}">
+							<ChildrenList>
+								<Action Name="" ID="{042846AA-C98B-468A-93FC-39995B1FB265}" ShortID="113569428">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Horse_HUUUUU" ID="{10992AD1-79E3-48A3-93F3-32BB3BBDEDEE}">
+							<ChildrenList>
+								<Action Name="" ID="{213989D3-3902-45A1-9DAC-82C04F31921B}" ShortID="845240458">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pig_HUIIIIII" ID="{C9C87A8D-798A-4C3D-8CE5-9BA8718564E7}">
+							<ChildrenList>
+								<Action Name="" ID="{F319E12E-1C1E-41C9-83FC-55B3C0379FE6}" ShortID="701583914">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pig_Leg" ID="{74C5AB40-FF69-4189-8E0B-540C82221832}">
+							<ChildrenList>
+								<Action Name="" ID="{9D3138F9-7070-4BCC-8D41-2B1E1ABC4C23}" ShortID="29100290">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pig_Ron" ID="{B1D40E0B-70C5-46B7-80FE-4A9D58E6B510}">
+							<ChildrenList>
+								<Action Name="" ID="{228E547A-46A1-4129-91B7-770EA8F4189F}" ShortID="724660235">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

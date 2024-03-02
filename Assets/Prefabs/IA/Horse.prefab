@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3578521730984683872}
   - component: {fileID: 8001474954669152520}
   - component: {fileID: 7456267640004382312}
+  - component: {fileID: 7846337537408934524}
+  - component: {fileID: 6046540360091325009}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -50,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animalType: 0
+  _obstacleDistance: 3
   _wanderAngleModifier: 8
   _wanderTarget: {fileID: 2709893473894680981}
 --- !u!65 &8001474954669152520
@@ -99,7 +102,79 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &7846337537408934524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569918637535146180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16465ddca29ca6e4488f74c94bb44bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractSprite: {fileID: 0}
+  m_TargetTag: Player
+  m_Target: {fileID: 0}
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3578521730984683872}
+        m_TargetAssemblyTypeName: BaseIA, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6046540360091325009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569918637535146180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16465ddca29ca6e4488f74c94bb44bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractSprite: {fileID: 0}
+  m_TargetTag: Saddle
+  m_Target: {fileID: 0}
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3578521730984683872}
+        m_TargetAssemblyTypeName: BaseIA, Assembly-CSharp
+        m_MethodName: OnMerge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6801429020799405954
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,39 +1,44 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
-[Serializable]
-public struct TeamCameras
-{
-    public int TeamID;
-    public List<Camera> Cameras;
-}
+using UnityEngine.InputSystem;
 
 public class CameraManager : Singleton<CameraManager>
 {
-    [SerializeField] private List<TeamCameras> mTeamCameras = new List<TeamCameras>();
+    private Dictionary<int, List<Camera>> mTeamCameras = new Dictionary<int, List<Camera>>();
 
     private const float LERP_TIME = 0.5f;
     
-    private void Start()
+    public void Initialize()
     {
-        SetHorseCameraForTeam(0, false, true);
-        SetHorseCameraForTeam(1, false, true);
+        SetHorseCameraForTeam((int)game.TeamID.Team1, false, true);
+        SetHorseCameraForTeam((int)game.TeamID.Team2, false, true);
     }
 
     public void SetHorseCameraForTeam(int teamID, bool isEnabled, bool isInstant = false)
     {
         List<Camera> cameras = GetTeamCameras(teamID);
-        cameras[0].enabled = true;
-        cameras[1].enabled = !isEnabled;
+        bool isFirst = true;
+        foreach (Camera camera in cameras)
+        {
+            float timing = isInstant ? 0f : LERP_TIME;
+            float x = 0.5f * (teamID - 1);
+            Rect cameraRect = default;
+            if (isFirst)
+            {
+                isFirst = false;
+                camera.enabled = true;
+                cameraRect = isEnabled ? new Rect(x, 0, 0.5f, 1) : new Rect(x,0.5f,0.5f,0.5f);
+            }
+            else
+            {
+                camera.enabled = !isEnabled;
+                cameraRect = new Rect(x, 0, 0.5f, 0.5f);
 
-        float timing = isInstant ? 0f : LERP_TIME;
-        float x = 0.5f * teamID;
-        Rect camera1Rect = isEnabled ? new Rect(x, 0, 0.5f, 1) : new Rect(x,0.5f,0.5f,0.5f);
-        StartCoroutine(LerpCameraInScreen(cameras[0], camera1Rect, timing));
-        StartCoroutine(LerpCameraInScreen(cameras[1], new Rect(x,0,0.5f,0.5f), timing));
+            }
+
+            StartCoroutine(LerpCameraInScreen(camera, cameraRect, timing));
+        }
     }
 
     private IEnumerator LerpCameraInScreen(Camera camera, Rect newRect, float timing)
@@ -57,15 +62,26 @@ public class CameraManager : Singleton<CameraManager>
 
     private List<Camera> GetTeamCameras(int teamID)
     {
-        foreach (TeamCameras teamCameras in mTeamCameras)
+        if (mTeamCameras.ContainsKey(teamID))
         {
-            if (teamID == teamCameras.TeamID)
-            {
-                return teamCameras.Cameras;
-            }
+            return mTeamCameras[teamID];
         }
 
         return new List<Camera>();
+    }
+
+    public void PairPlayerToTeam(int teamId, PlayerInput value)
+    {
+        if (mTeamCameras.ContainsKey(teamId))
+        {
+            mTeamCameras[teamId].Add(value.camera);
+        }
+        else
+        {
+            List<Camera> linkedPlayer = new List<Camera>();
+            linkedPlayer.Add(value.camera);
+            mTeamCameras.Add(teamId, linkedPlayer);
+        }
     }
     
     #if UNITY_EDITOR

@@ -5,15 +5,17 @@ using UnityEngine;
 public enum AnimalType
 {
     Horse, 
-    Cow, 
-    Sheep,
+    Frog, 
+    Pig,
 }
 
 public enum BodyPartType
 {
     Head,
-    LeftLeg,
-    RightLeg,
+    FrontLeftLeg,
+    FrontRightLeg,
+    BackLeftLeg,
+    BackRightLeg,
     Body
 }
 
@@ -31,7 +33,8 @@ public class AnimalDataInfo
     public BaseIA Visual;
     public float MinSpeed;
     public float MaxSpeed;
-
+    public Vector2 IdleTimeRandomRange;
+    public Vector2 TimeBetweenIdle;
     public List<BodyPartGO> BodyPartsInfo;
 
     public GameObject GetBodyPartTemplate(BodyPartType type)
