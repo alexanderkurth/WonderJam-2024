@@ -93,8 +93,11 @@ namespace game
 
         public void Update()
         {
-            float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
-            Debug.Log(value);
+            if(m_LoadingOperation != null)
+            {
+                float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
+                Debug.Log(value);
+            }
         }
 
         public void ChangeToGameplay()
@@ -105,6 +108,11 @@ namespace game
         public void ChangeToMainMenu()
         {
             ChangeState(State.MainMenu);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
 
 #if DEBUG
