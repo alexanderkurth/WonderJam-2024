@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animalType: 2
+  _obstacleDistance: 3
   _wanderAngleModifier: 8
   _wanderTarget: {fileID: 2845126132506130098}
 --- !u!65 &7516880291466196532
@@ -98,7 +99,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &7087723611427482851
 GameObject:
   m_ObjectHideFlags: 0

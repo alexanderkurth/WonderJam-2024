@@ -1,28 +1,41 @@
 using game;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Collections;
+using System.Diagnostics;
 
 public class BaseIA : MonoBehaviour
 {
     [SerializeField] private AnimalType _animalType;
+    [SerializeField] private float _obstacleDistance = 2f;
     [SerializeField] private float _wanderAngleModifier = 8.0f;
     [SerializeField] private Transform _wanderTarget;
-    
+
+    private bool _isIdle = false;
     private bool _isGrab = false;
     private bool _isMerge = false;
+    private float _idleTime = 0f;
+    private float _timeSinceLastIdle = 0f;
     private float _nextAngle = 0;
     private float _speed;
+    private Vector2 _idleRangeTime;
+    private Vector2 _timeBetweenIdle;
     private AnimalSpawner _animalSpawner = null;
 
     public void Initialize(AnimalSpawner animalSpawner)
     {
-        _animalSpawner = animalSpawner; 
+        _animalSpawner = animalSpawner;
+        transform.rotation = animalSpawner.transform.rotation;
+        transform.position = animalSpawner.transform.position;
     }
     
     private void Start()
     {
         AnimalDataInfo animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(_animalType);
         _speed = Random.Range(animalDataInfo.MinSpeed, animalDataInfo.MaxSpeed);
+        _idleRangeTime = animalDataInfo.IdleTimeRandomRange;
+        _timeBetweenIdle = animalDataInfo.TimeBetweenIdle; 
+        StartCoroutine(TryIdle());
     }
 
     private void Update()
@@ -31,8 +44,27 @@ public class BaseIA : MonoBehaviour
         {
             return; 
         }
-        
+
+        if (_isIdle)
+        {
+            if (_timeSinceLastIdle + _idleTime < Time.timeSinceLevelLoad)
+            {
+                ChoseNewDirection();
+                _isIdle = false;
+                StartCoroutine(TryIdle());
+            }
+
+            return;
+        }
+
         Wander();
+    }
+
+    private void ChoseNewDirection()
+    {     
+        _nextAngle += Random.Range(90, 270);
+        
+        transform.RotateAround(transform.position, Vector3.forward, _nextAngle);
     }
 
     private void Wander()
@@ -43,8 +75,17 @@ public class BaseIA : MonoBehaviour
             _nextAngle /= 10;
         }
 
-        transform.RotateAround(transform.position, Vector3.up, _nextAngle * Time.deltaTime);
+        transform.RotateAround(transform.position, Vector3.forward, _nextAngle * Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position, _wanderTarget.position, Time.deltaTime * _speed);
+
+        TryGetForwardCollision();
+    }
+    
+
+    private IEnumerator TryIdle()
+    {
+        yield return new WaitForSeconds(Random.Range(_timeBetweenIdle.x, _timeBetweenIdle.y)); 
+        Idle();
     }
 
     public void OnGrab()
@@ -58,5 +99,23 @@ public class BaseIA : MonoBehaviour
         _isMerge = true; 
         _animalSpawner.OnSpawnAnimalRemove(); 
         //TODO : Apply Effect on animal + Destroy gameobject 
+    }
+
+    private void TryGetForwardCollision()
+    {
+        Vector3 dir = _wanderTarget.position - transform.position;
+        dir.Normalize();
+        if (Physics.Raycast(transform.position, dir, _obstacleDistance))
+        {
+            Idle();
+        }
+    }
+
+    private void Idle()
+    {
+        _isIdle = true;
+        _idleTime = Random.Range(_idleRangeTime.x, _idleRangeTime.y);
+        _timeSinceLastIdle = Time.timeSinceLevelLoad;
+        StopAllCoroutines();
     }
 }
