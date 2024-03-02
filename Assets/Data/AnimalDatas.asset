@@ -25,12 +25,12 @@ MonoBehaviour:
     MinSpeed: 3
     MaxSpeed: 5
     IdleTimeRandomRange: {x: 3, y: 8}
-    TimeBetweenIdle: {x: 5, y: 10}
+    TimeBetweenIdle: {x: 2, y: 4}
     BodyPartsInfo: []
   - AnimalType: 2
     Visual: {fileID: 2500753700895975507, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
     MinSpeed: 2
     MaxSpeed: 8
     IdleTimeRandomRange: {x: 2, y: 10}
-    TimeBetweenIdle: {x: 5, y: 10}
+    TimeBetweenIdle: {x: 1, y: 6}
     BodyPartsInfo: []
