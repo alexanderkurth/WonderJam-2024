@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Ourge" ID="{0042E18F-AF5C-42D2-816A-C4100BF98890}" ShortID="369156329">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{149847D9-9B83-48D9-9EDE-1FBB1198EBF5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{39D55AFA-03CC-4522-A601-285C512B51F6}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Ourge" ID="{49C9D169-2101-4452-AF70-8FDACEF55CC9}">
+							<Language>SFX</Language>
+							<AudioFile>Ourge.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="738180484"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Ourge" ID="{49C9D169-2101-4452-AF70-8FDACEF55CC9}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
