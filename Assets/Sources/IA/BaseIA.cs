@@ -92,7 +92,7 @@ public class BaseIA : MonoBehaviour
     public void OnGrab()
     {
         _isGrab = true;
-        UnityEngine.Debug.Log("TETTET");
+
         InteractionComponent inte = GetComponent<InteractionComponent>();
         transform.parent = inte.m_Map[inte.m_TargetTag].transform;
 
@@ -108,14 +108,14 @@ public class BaseIA : MonoBehaviour
         _isMerge = true; 
         _animalSpawner.OnSpawnAnimalRemove();
 
-        InteractionComponent[] inte = GetComponents<InteractionComponent>();
+        InteractionComponent[] components = GetComponents<InteractionComponent>();
 
-        foreach(InteractionComponent component in inte)
+        foreach(InteractionComponent component in components)
         {
-            MontureController mont = component.m_Map[component.m_TargetTag].GetComponent<MontureController>();
-            if(mont)
+            MontureController montureController = component.m_Map[component.m_TargetTag].GetComponent<MontureController>();
+            if(montureController)
             {
-                mont.AttachBodyPart(_animalDataInfo.AnimalType);
+                montureController.AttachBodyPart(_animalDataInfo.AnimalType);
                 Destroy(gameObject);
             }
         }
