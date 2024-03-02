@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,17 +45,23 @@ namespace game
 
         [SerializeField]
         private Dictionary<State, string> m_StateToScene;
-        
+
         [SerializeField]
         private AnimalDatas m_AnimalDatas;
 
         [SerializeField]
         private GameObject m_LoadingScreen;
 
-        AsyncOperation m_LoadingOperation;
+        UnityEngine.AsyncOperation m_LoadingOperation;
 
+        [Header("Sounds")]
         [SerializeField]
-        private AK.Wwise.Event myEvent = null;
+        private AK.Wwise.Event PlayButtonEvent = null;
+        [SerializeField]
+        private AK.Wwise.Event GenericButtonEvent = null;
+        [SerializeField]
+        private AK.Wwise.Event QuitButtonEvent = null;
+
         public void ChangeState(State state)
         {
             m_CurrentState = state;
@@ -116,17 +123,24 @@ namespace game
         public void ChangeToGameplay()
         {
             ChangeState(State.Gameplay);
-            myEvent.Post(gameObject);
+            PlayButtonEvent.Post(gameObject);
         }
 
         public void ChangeToMainMenu()
         {
+            GenericButtonEvent.Post(gameObject);
             ChangeState(State.MainMenu);
         }
 
         public void QuitGame()
         {
+            QuitButtonEvent.Post(gameObject);
             Application.Quit();
+        }
+
+        public void PlayGenericSound()
+        {
+            GenericButtonEvent.Post(gameObject);
         }
 
 #if DEBUG
