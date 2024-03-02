@@ -6,25 +6,41 @@ public class BodyPartSlot : MonoBehaviour
 {
     public BodyPartType BodyPartType = BodyPartType.Head;
 
-    private GameObject _instantiatedPart = null;
+    private GameObject m_InstantiatedPart = null;
 
-    public bool IsSet()
+    public bool HasBodyPart()
     {
-        return _instantiatedPart != null;
+        return m_InstantiatedPart != null;
     }
 
-    public void SetBodyPart(AnimalType type)
+    public void SetBodyPart(AnimalDatas data, AnimalType type)
     {
-        AnimalDataInfo info = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(type);
+        // Prevent eventual editor attachments
+        foreach (Transform child in transform)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+        if (m_InstantiatedPart != null)
+        {
+            Destroy(m_InstantiatedPart);
+        }
 
-         if(_instantiatedPart != null)
-         {
-            Destroy(_instantiatedPart);
-         }
+        AnimalDataInfo info = data.GetAnimalInfoByType(type);
 
+        m_InstantiatedPart = Instantiate(info.GetBodyPartTemplate(BodyPartType), transform);
+        m_InstantiatedPart.transform.localPosition = Vector3.zero;
+    }
 
-         _instantiatedPart = Instantiate(info.GetBodyPartTemplate(BodyPartType), transform);
-         _instantiatedPart.transform.localPosition = Vector3.zero;
+    public void AttachToBody(BodyScript body)
+    {
+        Debug.Assert(m_InstantiatedPart != null, "No body part instantiated in " + gameObject.name);
+        LegController legController;
+        if (m_InstantiatedPart.TryGetComponent(out legController)) // Leg can be null if the body part is not a leg
+        {
+            m_InstantiatedPart.transform.localPosition = legController.GetPivotLocation() * (legController.IsLeft ? 1 : -1);
+
+            legController.SetBody(body);
+        }
     }
 
     public void OnDrawGizmos()
