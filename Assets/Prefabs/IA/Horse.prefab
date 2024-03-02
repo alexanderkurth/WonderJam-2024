@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6046540360091325009}
   - component: {fileID: 2308329268550704596}
   - component: {fileID: 8144179648433225624}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Horse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3569918637535146180}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2709893473894680981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WanderTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saddle
       objectReference: {fileID: 0}
+    - target: {fileID: 1529815919031782854, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -240,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.136
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -287,6 +291,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8928622b03f8a2d4ab029f9c32fa3768, type: 3}
     - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -312,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horse
       objectReference: {fileID: 0}
+    - target: {fileID: 1529815919031782854, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -322,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2003552877823441926, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -379,6 +391,10 @@ PrefabInstance:
     - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_Color.r
       value: 0.6509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7212569427058660835, guid: d5ff78af36f6288429883009221abdc2, type: 3}
       propertyPath: m_WasSpriteAssigned
