@@ -25,8 +25,11 @@ public class InteractionComponent : MonoBehaviour
         {
             m_Map.Add(m_TargetTag, collision.gameObject);
         }
+        else
+        {
+            return;
+        }
         OnEnterEvent.Invoke();
-
         Debug.Log("OnTriggerEnter2D" + collision.name);
     }
 
