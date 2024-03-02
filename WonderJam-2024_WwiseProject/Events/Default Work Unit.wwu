@@ -14,6 +14,25 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Folder Name="Menu" ID="{B284991C-B977-4503-9591-796EABB2C23E}" ShortID="704510512">
+					<ChildrenList>
+						<Event Name="Play_Button" ID="{0529BBEC-1036-430B-B636-748590785819}"/>
+						<Event Name="Generic_Button" ID="{DB2CBED7-9C97-4619-89AF-550F27D0219E}"/>
+						<Event Name="Quit_Button" ID="{F0ED918C-E30C-4BE1-9CA8-BAD1398315DA}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Animals" ID="{26093CB6-0FFF-4FDA-AA48-F854DB012CEC}" ShortID="477131452">
+					<ChildrenList>
+						<Event Name="Frog_Croa" ID="{EEB5281D-4603-431B-857D-6F2DE8B2270D}"/>
+						<Event Name="Frog_Leg" ID="{CB197F6C-4EE2-45F2-A50A-FA7BF0A8B93D}"/>
+						<Event Name="Horse_Leg" ID="{76ECD35E-49E9-4A38-82EF-6535107DCDAF}"/>
+						<Event Name="Horse_Brrrr" ID="{2CFBC648-35E7-43B1-A8EF-6881BA0DBD07}"/>
+						<Event Name="Horse_HUUUUU" ID="{10992AD1-79E3-48A3-93F3-32BB3BBDEDEE}"/>
+						<Event Name="Pig_HUIIIIII" ID="{C9C87A8D-798A-4C3D-8CE5-9BA8718564E7}"/>
+						<Event Name="Pig_Leg" ID="{74C5AB40-FF69-4189-8E0B-540C82221832}"/>
+						<Event Name="Pig_Ron" ID="{B1D40E0B-70C5-46B7-80FE-4A9D58E6B510}"/>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
