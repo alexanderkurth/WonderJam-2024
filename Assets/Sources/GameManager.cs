@@ -5,6 +5,26 @@ using UnityEngine.SceneManagement;
 
 namespace game
 {
+    public enum TeamID : UInt32
+    {
+        Team1 = 0,
+        Team2 = 1,
+
+        Count = 2,
+        Invalid = 3,
+    };
+
+    public enum PlayerID : UInt32
+    {
+        Player1 = 0,
+        Player2 = 1,
+        Player3 = 2,
+        Player4 = 3,
+
+        Count = 4,
+        Invalid = 5,
+    };
+
     public class GameManager : Singleton<GameManager>
     {
         //This enum matches the scene index in the build settings. 
