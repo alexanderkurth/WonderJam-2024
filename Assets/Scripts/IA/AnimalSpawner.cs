@@ -9,6 +9,7 @@ public class AnimalSpawner : MonoBehaviour
 
     private float _timeSinceLastSpawn = 0f;
     private AnimalDataInfo _animalDataInfo = null; 
+    private int _animalSpawned = 0;
     
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +25,7 @@ public class AnimalSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > _timeSinceLastSpawn + _timeBetweenSpawn)
+        if (Time.timeSinceLevelLoad > _timeSinceLastSpawn + _timeBetweenSpawn && _animalSpawned < _maxAnimalSpawned)
         {
             TrySpawnNewAnimal(); 
         }
@@ -38,12 +39,12 @@ public class AnimalSpawner : MonoBehaviour
             BaseIA baseIA = Instantiate(_animalDataInfo.Visual, transform.position, Quaternion.identity);
             baseIA.Initialize(this);
             _timeSinceLastSpawn = Time.timeSinceLevelLoad;
-            _maxAnimalSpawned++; 
+            _animalSpawned++; 
         }
     }
 
     public void OnSpawnAnimalRemove()
     {
-        _maxAnimalSpawned--; 
+        _animalSpawned--; 
     }
 }

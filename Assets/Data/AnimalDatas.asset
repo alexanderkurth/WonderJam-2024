@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDatas
   AnimalDataInfos:
   - AnimalType: 0
-    Visual: {fileID: 3569918637535146180, guid: 07517f5f77cd7e54b94ceb311945f1b8, type: 3}
+    Visual: {fileID: 3578521730984683872, guid: 07517f5f77cd7e54b94ceb311945f1b8, type: 3}
     MinSpeed: 2
     MaxSpeed: 6
   - AnimalType: 1
-    Visual: {fileID: 3569918637535146180, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
+    Visual: {fileID: 3578521730984683872, guid: 99a0ca4c32b9303438702111017ef59e, type: 3}
     MinSpeed: 3
     MaxSpeed: 5
   - AnimalType: 2
-    Visual: {fileID: 3569918637535146180, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
+    Visual: {fileID: 2500753700895975507, guid: 3f1982990a0fce44e9e9f4ac3784c90a, type: 3}
     MinSpeed: 2
     MaxSpeed: 8

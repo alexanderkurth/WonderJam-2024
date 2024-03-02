@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animalType: 0
   _timeBetweenSpawn: 5
-  _maxAnimalSpawned: 10
+  _maxAnimalSpawned: 5
