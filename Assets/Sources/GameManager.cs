@@ -211,6 +211,7 @@ namespace game
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadedSceneMode)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             if (scene.name == "GameplayScene")
             {
                 CreateControllersAndCharacters();
