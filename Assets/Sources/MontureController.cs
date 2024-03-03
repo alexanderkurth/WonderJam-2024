@@ -56,6 +56,7 @@ public class MontureController : MonoBehaviour
 
         m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
 
+        slots.Clear();
         // Fill slots list
         slots.Add(headSlot);
         slots.Add(bodySlot);
@@ -232,13 +233,29 @@ public class MontureController : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        // Editor only (not in game) - fill a local list of slots
+        if (slots.Count == 0 && Application.isEditor)
+        {
+            slots.Add(headSlot);
+            slots.Add(bodySlot);
+            slots.Add(FrontLeftLegSlot);
+            slots.Add(FrontRightLegSlot);
+            slots.Add(BackLeftLegSlot);
+            slots.Add(BackRightLegSlot);
+        }
+
         foreach (var item in slots)
         {
             Vector3 pos = item.transform.localPosition;
             if (m_BodyScript != null)
             {
+                Gizmos.color = Color.green;
                 pos = m_BodyScript.transform.TransformPoint(pos);
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+                pos = transform.TransformPoint(pos);
             }
             Gizmos.DrawSphere(pos, 0.1f);
         }
