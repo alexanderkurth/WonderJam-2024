@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using AK.Wwise;
+using game;
 using UnityEngine;
 
 public class GameModeManager : MonoBehaviour
@@ -7,6 +9,11 @@ public class GameModeManager : MonoBehaviour
     public List<Checkpoint> Checkpoints;
 
     public ScreenUIController ScreenUIController = null;
+
+    public float EndGameDuration = 5.0f;
+
+    private float EndGameTimestamp = 0.0f;
+    private bool IsGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +36,9 @@ public class GameModeManager : MonoBehaviour
             {
                 Debug.Log("Won");
                 ScreenUIController.OnGameOver(teamID);
+                IsGameOver = true;
+                EndGameTimestamp = Time.timeSinceLevelLoad;
             }
-
-            // ChangeState(State.GameOver);
         }
     }
 
@@ -44,4 +51,14 @@ public class GameModeManager : MonoBehaviour
         return false;
     }
 
+    private void Update()
+    {
+        if(IsGameOver)
+        {
+            if(Time.timeSinceLevelLoad - EndGameTimestamp > EndGameDuration)
+            {
+                GameManager.Instance.ChangeState(GameManager.State.MainMenu);
+            }
+        }
+    }
 }
