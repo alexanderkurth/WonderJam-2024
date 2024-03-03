@@ -22,13 +22,53 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2607556080" Type="User" Language="SFX" Hash="{B5499C87-C1D3-7AFF-E44B-F6277C5EAF20}">
+		<SoundBank Id="2607556080" Type="User" Language="English(US)" Hash="{3B05E58F-CAFB-175B-6ED2-FED52E567696}">
 			<ShortName>Menu</ShortName>
-			<Path>Menu.bnk</Path>
+			<Path>English(US)/Menu.bnk</Path>
 			<Media>
+				<File Id="72377241" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_02.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="247242420" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_04.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="438280460" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_03.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="478256974" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_01.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="499568951" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_06.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="582458207" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_01.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TEMPORARY SOUND.wav</ShortName>
 					<CachePath>SFX/TEMPORARY SOUND_818F3B66.wem</CachePath>
+				</File>
+				<File Id="634188148" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_05.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="774652217" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_02.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="778846064" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_04.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1011393351" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_03.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_03_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -37,14 +77,22 @@
 						<MediaRef Id="624157100"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2099555730" Name="Play_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="2099555730" Name="Play_Button" DurationType="OneShot" DurationMin="3.7964625" DurationMax="12.281066">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="478256974"/>
+						<MediaRef Id="499568951"/>
+						<MediaRef Id="634188148"/>
+						<MediaRef Id="774652217"/>
+						<MediaRef Id="778846064"/>
+						<MediaRef Id="1011393351"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="4.086712" DurationMax="6.4203176">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="72377241"/>
+						<MediaRef Id="247242420"/>
+						<MediaRef Id="438280460"/>
+						<MediaRef Id="582458207"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -139,5 +187,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C52D41B5-F270-5C23-C5B8-193A4472195D}</FileHash>
+	<FileHash>{15859D05-90A4-D226-A0D1-DF8A20184487}</FileHash>
 </SoundBanksInfo>

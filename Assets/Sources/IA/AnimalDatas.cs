@@ -32,6 +32,7 @@ public class TeamColors
 {
     public TeamID TeamID = TeamID.Team1;
     public Color Color = Color.red;
+    public string ColorName = "";
 }
 
 [Serializable]
@@ -77,5 +78,16 @@ public class AnimalDatas: ScriptableObject
         }
 
         return Color.white;
+    }
+
+    public string GetColorStringTeam(TeamID id)
+    {
+        TeamColors tc = TeamColors.Find(element => element.TeamID == id);
+        if(tc != null)
+        {
+            return tc.ColorName;
+        }
+
+        return "MISSING DATA, LOL";
     }
 }

@@ -70,3 +70,10 @@ MonoBehaviour:
       Template: {fileID: 2299211969472979081, guid: 1a0e69b6491cf484188b42200ea61fb2, type: 3}
     - Type: 5
       Template: {fileID: 7203580668848216527, guid: 30735a4c445cacf4ebb45ac23534a123, type: 3}
+  TeamColors:
+  - TeamID: 0
+    Color: {r: 1, g: 0, b: 0, a: 1}
+    ColorName: Rot
+  - TeamID: 1
+    Color: {r: 0, g: 0.23263979, b: 1, a: 1}
+    ColorName: Blau

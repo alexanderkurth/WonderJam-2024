@@ -21,7 +21,7 @@
 								<Action Name="" ID="{234F0DF8-53A7-428F-8D2F-1436EC9AA877}" ShortID="816936211">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+											<ObjectRef Name="StartRandomContainer" ID="{73CB6DEE-F79D-4F05-8A41-60F6B3D989F5}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -43,7 +43,7 @@
 								<Action Name="" ID="{13F88EF8-A097-49F6-A030-4F8F26BB4C0A}" ShortID="586025130">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+											<ObjectRef Name="ExitRandomContainer" ID="{5F60FEC3-22BD-4C7E-989E-8E8B6F7AD247}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
