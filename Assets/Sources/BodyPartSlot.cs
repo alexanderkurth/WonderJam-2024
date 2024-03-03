@@ -38,8 +38,16 @@ public class BodyPartSlot : MonoBehaviour
         if (m_InstantiatedPart.TryGetComponent(out legController)) // Leg can be null if the body part is not a leg
         {
             m_InstantiatedPart.transform.localPosition = legController.GetPivotLocation() * (legController.IsLeft ? 1 : -1);
-
             legController.SetBody(body);
+        }
+        else
+        {
+            HeadController headController;
+            if (m_InstantiatedPart.TryGetComponent(out headController)) // Head can be null if the body part is not a head
+            {
+                m_InstantiatedPart.transform.localPosition = - headController.GetPivotLocation();
+                headController.SetBody(body);
+            }
         }
     }
 
