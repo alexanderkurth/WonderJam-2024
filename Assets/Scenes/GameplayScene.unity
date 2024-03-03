@@ -4362,9 +4362,9 @@ PrefabInstance:
       value: PlayerArmature
       objectReference: {fileID: 0}
     - target: {fileID: 4726852103038870418, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-      propertyPath: _playerInput
+      propertyPath: _text
       value: 
-      objectReference: {fileID: 1952633447}
+      objectReference: {fileID: 134946203}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

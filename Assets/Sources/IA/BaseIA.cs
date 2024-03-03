@@ -9,6 +9,7 @@ public class BaseIA : MonoBehaviour
     [SerializeField] private float _obstacleDistance = 2f;
     [SerializeField] private float _wanderAngleModifier = 8.0f;
     [SerializeField] private Transform _wanderTarget;
+    [SerializeField] private GameObject _outline;
 
     private bool _isIdle = false;
     private bool _isGrab = false;
@@ -28,6 +29,11 @@ public class BaseIA : MonoBehaviour
     public void SetGrab(bool b)
     {
         _isGrab = b;
+    }
+
+    public void SetOulineVisibility(bool b)
+    {
+        _outline.SetActive(b);
     }
 
     public void Initialize(AnimalSpawner animalSpawner)
@@ -137,14 +143,14 @@ public class BaseIA : MonoBehaviour
 
     void Awake()
     {
-        InteractionManager2.Instance.m_Animals.Add(gameObject);
+        InteractionManager2.Instance.m_Animals.Add(this);
     }
 
     void OnDestroy()
     {
         if (InteractionManager2.Instance != null)
         {
-            InteractionManager2.Instance.m_Animals.Remove(gameObject);
+            InteractionManager2.Instance.m_Animals.Remove(this);
         }
     }
 }

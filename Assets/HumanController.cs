@@ -116,6 +116,7 @@ public class HumanController : MonoBehaviour
             _text.gameObject.transform.position = pos;
         }
         _text.gameObject.SetActive(isDistanceValid);
+        ia.SetOulineVisibility(isDistanceValid);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
         if (isDistanceSaddlevalid) 
@@ -123,7 +124,6 @@ public class HumanController : MonoBehaviour
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
             _text.gameObject.transform.position = pos;
         }
-        _text.gameObject.SetActive(isDistanceSaddlevalid);
     }
 
     public void Dash(int dashDistance)
