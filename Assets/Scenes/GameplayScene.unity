@@ -961,6 +961,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &108902280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1688555668498114965, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+  m_PrefabInstance: {fileID: 2111766243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &125580883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1143,7 +1148,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7802ab3ac3c6e4040bb42b17c511508e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1207,7 +1212,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &134946206
@@ -4456,7 +4461,7 @@ PrefabInstance:
     - target: {fileID: 4726852103038870418, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: _saddleText
       value: 
-      objectReference: {fileID: 2069883028}
+      objectReference: {fileID: 2069883030}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15001,7 +15006,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7802ab3ac3c6e4040bb42b17c511508e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15065,7 +15070,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2069883031
@@ -15313,6 +15318,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.8900001
       objectReference: {fileID: 0}
+    - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+      propertyPath: _outline
+      value: 
+      objectReference: {fileID: 108902280}
     - target: {fileID: 8282861259179360070, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -20.12
