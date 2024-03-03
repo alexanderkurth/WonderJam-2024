@@ -26,7 +26,7 @@ public class MontureController : MonoBehaviour
     public AnimalType animalType;
 
     public void SetOutlineVisibility(bool b)
-     {
+    {
         _outline.SetActive(b);
     }
 

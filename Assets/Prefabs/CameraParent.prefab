@@ -177,7 +177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 5755605500604357421}
   _simpleCameraFollow: {fileID: 1454999090107075418}
-  ConnectControllerGO: {fileID: 1550764944053707596}
+  _text: {fileID: 7024073119800457159}
+  _saddleText: {fileID: 1732760388734753660}
+  ConnectControllerGO: {fileID: 3122728681407480848}
 --- !u!114 &1454999090107075418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,9 +296,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea4414877d6c714f83e22707d761769, type: 3}
---- !u!1 &1550764944053707596 stripped
+--- !u!114 &1732760388734753660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5998357511583631117, guid: cea4414877d6c714f83e22707d761769, type: 3}
+  m_PrefabInstance: {fileID: 5418518666723073137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3122728681407480848 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6824957315920772925, guid: cea4414877d6c714f83e22707d761769, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6945776804408694881, guid: cea4414877d6c714f83e22707d761769, type: 3}
   m_PrefabInstance: {fileID: 5418518666723073137}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &5119221773808744277 stripped
@@ -304,3 +317,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 880826531529272100, guid: cea4414877d6c714f83e22707d761769, type: 3}
   m_PrefabInstance: {fileID: 5418518666723073137}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7024073119800457159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3046957059557387190, guid: cea4414877d6c714f83e22707d761769, type: 3}
+  m_PrefabInstance: {fileID: 5418518666723073137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
