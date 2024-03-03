@@ -46,6 +46,12 @@ namespace StarterAssets
 		{
 			_humanController.TriggerHorseRidingInteraction(value);
 		}
+
+		public void HorseRidingSingleDriver(InputValue value)
+		{
+			_humanController.TriggerHorseRidingInteraction(value, false);
+		}
+		
 #endif
 
 
