@@ -30,6 +30,11 @@ public class InteractionComponent2 : MonoBehaviour
                     distance = tempDistance;
                     if (humanController != null)
                     {
+                        if (humanController._text == null)
+                        {
+                            Debug.Log("ERRRRREEERRR");
+                            return;
+                        }
                         humanController._text.gameObject.SetActive(false);
                         if (distance < humanController.radius && !animal.IsGrab)
                         {

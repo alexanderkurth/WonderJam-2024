@@ -101,40 +101,6 @@ public class HumanController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
             }
         }
-
-        /*BaseIA ia = _interactionComponent.bestTarget;
-        MontureController mc = _interactionComponent.bestSaddle;
-        if (ia == null || _text == null || mc == null)
-        {
-            return;
-        }
-
-        float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
-        float distance = Vector3.Distance(ia.transform.position, transform.position);
-
-        bool isDistanceValid = distance < radius;
-        if (isDistanceValid)
-        {
-            Vector3 pos = ia.transform.position;// _playerInput.camera.WorldToScreenPoint(ia.transform.position);
-
-            _text.gameObject.transform.position = pos;
-        }
-        bool canInterac = isDistanceValid;
-        _text.gameObject.SetActive(canInterac);
-
-        bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
-        if (isDistanceSaddlevalid)
-        {
-            Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
-            _saddleText.gameObject.transform.position = pos;
-            if (mc.IsReadyToMount())
-            {
-                _saddleText.text = "MOUNT";
-            }
-        }
-        bool condition = _currentMount == null && mc.IsReadyToMount() || ia.IsGrab && isDistanceSaddlevalid;
-        _saddleText.gameObject.SetActive(condition);
-        mc.SetOutlineVisibility(condition);*/
     }
 
     public void Dash(int dashDistance)
@@ -168,7 +134,7 @@ public class HumanController : MonoBehaviour
 
         SlapSoundEvent.Post(gameObject);
 
-        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        BaseIA ia = _interactionComponent.bestTarget;
         if (ia != null && ia.IsGrab)
         {
             DropItem(ia);
