@@ -13,6 +13,14 @@ PrefabInstance:
       value: Body_Frog
       objectReference: {fileID: 0}
     - target: {fileID: 2000200951874623330, guid: 8f34891d96ba2a24f9fd6576afaed52a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000200951874623330, guid: 8f34891d96ba2a24f9fd6576afaed52a, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000200951874623330, guid: 8f34891d96ba2a24f9fd6576afaed52a, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.61333334
       objectReference: {fileID: 0}

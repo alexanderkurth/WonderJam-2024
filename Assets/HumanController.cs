@@ -1,28 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using game;
 using StarterAssets;
-using UnityEditor;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class HumanController : MonoBehaviour
 {
     [SerializeField] private float radius = 10.0f;
     [SerializeField] private float radiusSaddle = 10.0f;
+    [SerializeField] private GameObject _anchor;
+    [SerializeField] private GameObject _cameraRoot;
+    [SerializeField] private InteractionComponent2 _interactionComponent;
 
     private int _playerID = 0;
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
-    [SerializeField] private GameObject _cameraRoot;
-    [SerializeField] private InteractionComponent2 _interactionComponent;
-    private TeamID _teamID;
     public int DashDistance = 1;
-    
+    private TeamID _teamID;
     private MontureController _currentMount = null;
+
+    public GameObject EcuyerGameObject = null;
+    public GameObject ChevalierGameObject = null;
+
+    public List<SpriteRenderer> EcuyerSpritesToModify;
+    public List<SpriteRenderer> ChevalierSpritesToModify;
+
+    public Color Team1Color = Color.red;
+    public Color Team2Color = Color.blue;
     
     private void Start()
     {
@@ -31,10 +37,40 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
+    #if UNITY_EDITOR
+    [ContextMenu("TestINIT")]
+    void TestInit()
+    {
+        Initialize(TeamID.Team2, 1);
+    }
+    #endif
+
     public void Initialize(TeamID teamID, int playerID)
     {
         _teamID = teamID;
         _playerID = playerID;
+
+        
+
+        if(EcuyerGameObject != null && ChevalierGameObject != null)
+        {
+            List<SpriteRenderer> sprites = EcuyerSpritesToModify;
+
+            if(playerID != 0)
+            {
+                EcuyerGameObject.active = false;
+                ChevalierGameObject.active = true;
+
+                sprites = ChevalierSpritesToModify;
+            }
+
+            Color color = (teamID == TeamID.Team1) ? Team1Color : Team2Color;
+
+            foreach(SpriteRenderer spriteRenderer in sprites)
+            {
+                spriteRenderer.color = color;
+            }
+        }
     }
 
     public bool isDashing = false;
@@ -84,9 +120,11 @@ public class HumanController : MonoBehaviour
         .OnComplete(() => isPushed = false);
     }
 
-    public void OnInteraction()
+    public void OnBillyInteraction()
     {
-        if(_interactionComponent.bestTarget == null)
+        Debug.Log("OnInteraction()");
+
+        if (_interactionComponent.bestTarget == null)
         {
             return;
         }
@@ -98,36 +136,51 @@ public class HumanController : MonoBehaviour
 
         if (distanceSaddle <= radiusSaddle)
         {
-            ia.OnMerge(mc);
-            ia = null;
+            if(ia.IsGrab)
+            {
+                ia.transform.parent = null;
+                ia.OnMerge(mc);
+                ia = null;
+            }
             return;
         }
 
-        float distance = Vector3.Distance(ia.transform.position, transform.position);
-        if (distance <= radius)
+        if (ia != null)
         {
-            if (ia != null && !ia.IsGrab)
+            if (ia.IsGrab)
             {
-                ia.OnGrab();
-                ia.transform.parent = transform;
-                ia.transform.localScale *= 0.75f;
+                ia.transform.parent = null;
+                ia.transform.localScale = Vector3.one;
+                ia.SetGrab(false);
+                ia = null;
                 return;
+            }
+            else
+            {
+                float distance = Vector3.Distance(ia.transform.position, transform.position);
+                if (distance <= radius && _anchor.transform.childCount == 0)
+                {
+                    ia.OnGrab();
+                    ia.transform.parent = _anchor.transform;
+                    ia.transform.localPosition = Vector3.zero;
+                    ia.transform.localScale = _anchor.transform.localScale;
+                    ia.transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,-90f));
+                    return;
+                }
             }
         }
     }
-
     public void OnAttack()
     {
-        //Debug.Log("Player Attacked !");
         Dash(DashDistance);
     }
 
-    public void TriggerHorseRidingInteraction(InputValue value)
+    public void TriggerHorseRidingInteraction(InputValue value, bool is4PlayerBehavior = true)
     {
         if (_currentMount != null)
         {
             bool isFirstPlayer = _playerID == 1;
-            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed);
+            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed, is4PlayerBehavior);
         }
     }
 }

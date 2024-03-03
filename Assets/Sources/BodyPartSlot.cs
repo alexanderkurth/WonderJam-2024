@@ -6,11 +6,16 @@ public class BodyPartSlot : MonoBehaviour
 {
     public BodyPartType BodyPartType = BodyPartType.Head;
 
-    public LegController m_InstantiatedPart = null;
+    public GameObject m_InstantiatedPart = null;
 
     public bool HasBodyPart()
     {
         return m_InstantiatedPart != null;
+    }
+
+    public GameObject GetBodyPart()
+    {
+        return m_InstantiatedPart;
     }
 
     public void SetBodyPart(AnimalDatas data, AnimalType type)
@@ -27,7 +32,7 @@ public class BodyPartSlot : MonoBehaviour
 
         AnimalDataInfo info = data.GetAnimalInfoByType(type);
 
-        m_InstantiatedPart = Instantiate(info.GetBodyPartTemplate(BodyPartType), transform).GetComponent<LegController>();;
+        m_InstantiatedPart = Instantiate(info.GetBodyPartTemplate(BodyPartType), transform);
         m_InstantiatedPart.transform.localPosition = Vector3.zero;
     }
 

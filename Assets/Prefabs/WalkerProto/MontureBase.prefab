@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c0a30e4d7d41d4a8dbfb733f11ffd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 858528111952528142}
-  - {fileID: 876082466281646193}
-  - {fileID: 511974279575881149}
-  - {fileID: 2783252345333916168}
-  - {fileID: 4175924051195709640}
-  - {fileID: 5287863399375480961}
+  headSlot: {fileID: 876082466281646193}
+  bodySlot: {fileID: 858528111952528142}
+  FrontLeftLegSlot: {fileID: 4175924051195709640}
+  FrontRightLegSlot: {fileID: 5287863399375480961}
+  BackLeftLegSlot: {fileID: 511974279575881149}
+  BackRightLegSlot: {fileID: 2783252345333916168}
+  animalType: 0
 --- !u!1 &4423580142959188843
 GameObject:
   m_ObjectHideFlags: 0
