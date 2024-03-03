@@ -15,6 +15,8 @@ public class PlayerCamera : MonoBehaviour
     private TeamID TeamID = TeamID.Invalid; 
     public HumanController Target { get; private set; }
 
+    public GameObject ConnectControllerGO = null;
+
     public void SetTeamID(TeamID teamID, int playerID)
     {
         TeamID = teamID;
@@ -36,6 +38,11 @@ public class PlayerCamera : MonoBehaviour
     public void SetUIActive(bool isActive)
     {
         _simpleCameraFollow.SetCameraActive(!isActive);
+
+        if(ConnectControllerGO != null)
+        {
+            ConnectControllerGO.SetActive(isActive);
+        }
     }
 
     public void HandleCameraChange(bool isEnabled, bool isInstant)
