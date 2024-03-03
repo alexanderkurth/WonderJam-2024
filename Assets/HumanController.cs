@@ -16,7 +16,7 @@ public class HumanController : MonoBehaviour
     public GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private GameObject _text;
+    [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
@@ -26,7 +26,7 @@ public class HumanController : MonoBehaviour
     public StarterAssetsInputs inputs;
     public int DashDistance = 1;
     private TeamID _teamID;
-    public TeamID TeamID{ get { return _teamID; } }
+    public TeamID TeamID { get { return _teamID; } }
     private MontureController _currentMount = null;
 
     [SerializeField] private GameObject _visualParent;
@@ -115,18 +115,25 @@ public class HumanController : MonoBehaviour
             }
         }
 
-        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        BaseIA ia = _interactionComponent.bestTarget;
         MontureController mc = _interactionComponent.bestSaddle;
+        if (ia == null || _text == null || mc == null)
+        {
+            return;
+        }
+
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
         float distance = Vector3.Distance(ia.transform.position, transform.position);
 
         bool isDistanceValid = distance < radius;
         if (isDistanceValid)
         {
-            Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+            Vector3 pos = ia.transform.position;// _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+
             _text.gameObject.transform.position = pos;
         }
         _text.gameObject.SetActive(!ia.IsGrab && isDistanceValid);
+
         ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
@@ -134,7 +141,7 @@ public class HumanController : MonoBehaviour
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
             _saddleText.gameObject.transform.position = pos;
-            if(mc.IsReadyToMount())
+            if (mc.IsReadyToMount())
             {
                 _saddleText.text = "MOUNT";
             }

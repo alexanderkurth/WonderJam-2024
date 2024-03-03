@@ -8,7 +8,7 @@ public class HeadController : MonoBehaviour
     private Rigidbody2D m_RigidbodyToAttach;
 
     [SerializeField]
-    private SpringJoint2D m_HeadJoint;
+    private FixedJoint2D m_HeadJoint;
 
     private void Start()
     {
