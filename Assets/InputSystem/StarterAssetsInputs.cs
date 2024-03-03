@@ -34,7 +34,6 @@ namespace StarterAssets
             {
 			    _humanController.OnBillyInteraction();
             }
-            Debug.Log(value.ToString());
 		}
 
 		public void OnAttack(InputValue value)
@@ -47,7 +46,7 @@ namespace StarterAssets
 			_humanController.TriggerHorseRidingInteraction(value);
 		}
 
-		public void HorseRidingSingleDriver(InputValue value)
+		public void OnHorseRidingSingleDriver(InputValue value)
 		{
 			_humanController.TriggerHorseRidingInteraction(value, false);
 		}

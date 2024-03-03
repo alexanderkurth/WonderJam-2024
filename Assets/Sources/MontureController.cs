@@ -12,6 +12,8 @@ public class MontureController : MonoBehaviour
     [SerializeField] BodyPartSlot BackLeftLegSlot;
     [SerializeField] BodyPartSlot BackRightLegSlot;
 
+    [SerializeField] FixedJoint2D m_Saddle;
+
     // List to reference all slots
     private List<BodyPartSlot> slots = new List<BodyPartSlot>();
 
@@ -30,6 +32,15 @@ public class MontureController : MonoBehaviour
         AttachBodyPart(animalType);
     }
 #endif
+
+    public Vector3 GetSaddlePosition()
+    {
+        return m_Saddle.transform.position;
+    }
+    public Transform GetSaddleTransform()
+    {
+        return m_Saddle.transform;
+    }
 
     private void Start()
     {
@@ -70,8 +81,8 @@ public class MontureController : MonoBehaviour
         Vector3 bottomLeft = bodyCenter + new Vector3(-bodySize.x / 2, -bodySize.y / 2, 0) + yOffSet + xOffSet;
         Vector3 bottomRight = bodyCenter + new Vector3(bodySize.x / 2, -bodySize.y / 2, 0) + yOffSet - xOffSet;
 
-        // Set the position of the slots
         // You need to keep the z to keep the draw order of the slots
+        // Set the position of the slots
         FrontLeftLegSlot.transform.position = topLeft + new Vector3(0, 0, FrontLeftLegSlot.transform.position.z);
         FrontRightLegSlot.transform.position = topRight + new Vector3(0, 0, FrontRightLegSlot.transform.position.z);
         BackLeftLegSlot.transform.position = bottomLeft + new Vector3(0, 0, BackLeftLegSlot.transform.position.z);
@@ -112,6 +123,7 @@ public class MontureController : MonoBehaviour
 
         if (bodySlot.HasBodyPart() && bodySlot.GetBodyPart().TryGetComponent(out BodyScript m_BodyScript))
         {
+            m_Saddle.connectedBody = m_BodyScript.GetComponent<Rigidbody2D>();
             Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
             OrganiseSlots(m_BodyScript); // Set up distance between slots
 
@@ -134,23 +146,8 @@ public class MontureController : MonoBehaviour
                 case BodyPartType.FrontLeftLeg:
                 case BodyPartType.BackLeftLeg:
                 {
-                    if (isTeamFirstPlayer)
-                    {
-                        if (isHold)
-                        {
-                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
-                        }
-                        else
-                        {
-                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: false);
-                        }
-                    }
-                }
-                    break;
-                case BodyPartType.FrontRightLeg:
-                case BodyPartType.BackRightLeg:
-                {
-                    if (isTeamFirstPlayer && (!GameManager.Instance.IsTwoPlayerMod || !is4PlayerBehavior))
+                    if (isTeamFirstPlayer 
+                        && (!GameManager.Instance.IsTwoPlayerMod || is4PlayerBehavior))
                     {
                         continue;
                     }
@@ -165,7 +162,36 @@ public class MontureController : MonoBehaviour
                     }
                 }
                     break;
+                case BodyPartType.FrontRightLeg:
+                case BodyPartType.BackRightLeg:
+                {
+                    if (isTeamFirstPlayer && is4PlayerBehavior)
+                    {
+                        if (isHold)
+                        {
+                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
+                        }
+                        else
+                        {
+                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: false);
+                        }
+                    }
+                }
+                    break;
             }
         }
+    }
+
+    public bool IsReadyToMount()
+    {
+        foreach (BodyPartSlot bodyPartSlot in slots)
+        {
+            if (!bodyPartSlot.HasBodyPart())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

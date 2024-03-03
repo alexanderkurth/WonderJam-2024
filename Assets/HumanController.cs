@@ -21,6 +21,7 @@ public class HumanController : MonoBehaviour
     private TeamID _teamID;
     private MontureController _currentMount = null;
 
+    [SerializeField] private GameObject _visualParent;
     public GameObject EcuyerGameObject = null;
     public GameObject ChevalierGameObject = null;
 
@@ -80,6 +81,11 @@ public class HumanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_currentMount != null)
+        {
+            return;
+        }
+        
         if (inputs != null)
         {
             Vector2 direction2D = inputs.move;
@@ -99,6 +105,11 @@ public class HumanController : MonoBehaviour
 
     public void Dash(int dashDistance)
     {
+        if (_currentMount != null)
+        {
+            return;
+        }
+        
         if (isDashing == false)
         {
             isDashing = true;
@@ -109,6 +120,11 @@ public class HumanController : MonoBehaviour
 
     public void GetPushed(int pushDistance, Vector3 direction)
     {
+        if (_currentMount != null)
+        {
+            return;
+        }
+        
         if (isPushed)
         {
             return;
@@ -122,8 +138,6 @@ public class HumanController : MonoBehaviour
 
     public void OnBillyInteraction()
     {
-        Debug.Log("OnInteraction()");
-
         if (_interactionComponent.bestTarget == null)
         {
             return;
@@ -132,7 +146,7 @@ public class HumanController : MonoBehaviour
         BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
 
         MontureController mc = _interactionComponent.bestSaddle;
-        float distanceSaddle = Vector3.Distance(mc.transform.position, transform.position);
+        float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
 
         if (distanceSaddle <= radiusSaddle)
         {
@@ -142,6 +156,16 @@ public class HumanController : MonoBehaviour
                 ia.OnMerge(mc);
                 ia = null;
             }
+            else if (mc.IsReadyToMount())
+            {
+                ToggleMount(mc);
+            }
+
+            return;
+        }
+
+        if (_currentMount != null)
+        {
             return;
         }
 
@@ -170,8 +194,34 @@ public class HumanController : MonoBehaviour
             }
         }
     }
+
+    private void ToggleMount(MontureController mc)
+    {
+        if (_currentMount == null)
+        {
+            _currentMount = mc;
+            transform.parent = mc.GetSaddleTransform();
+            transform.localPosition = Vector3.zero;            
+        }
+        else
+        {
+            _currentMount = null;
+            transform.parent = null;
+            Vector3 tempPos = mc.GetSaddlePosition();
+            tempPos.x += _playerID == 1 ? -2 : 2;
+            transform.position = tempPos;
+        }
+        
+        _visualParent.SetActive(_currentMount == null);
+    }
+
     public void OnAttack()
     {
+        if (_currentMount != null)
+        {
+            return;
+        }
+        
         Dash(DashDistance);
     }
 

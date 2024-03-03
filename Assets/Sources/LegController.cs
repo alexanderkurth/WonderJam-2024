@@ -22,6 +22,7 @@ public class LegController : MonoBehaviour
 
     [SerializeField] private float m_StepUpSpeed = 400;
     [SerializeField] private float m_StepDownSpeed = 400;
+    [SerializeField] private float m_ImpulseForce = 200;
 
     private static float k_END_ANGLE_THRESHOLD = 10; // Stop at 10 degrees from the end
 
@@ -32,6 +33,34 @@ public class LegController : MonoBehaviour
     private short m_IdentificationMask = -1;
 
     public bool IsInitialized => m_IdentificationMask != -1;
+    public bool InitOnStart = false;
+
+#if UNITY_EDITOR
+    [ContextMenu("ReloadSpeeds")]
+    void ReloadSpeeds()
+    {
+        m_StepUpMotor = new JointMotor2D
+        {
+            motorSpeed = IsLeftLeg ? m_StepDownSpeed : m_StepUpSpeed,
+            maxMotorTorque = 500
+        };
+        m_StepDownMotor = new JointMotor2D
+        {
+            motorSpeed = IsLeftLeg ? m_StepUpSpeed : m_StepDownSpeed,
+            maxMotorTorque = 500
+        };
+    }
+#endif
+
+    private void Start()
+    {
+        if (InitOnStart)
+        {
+            BodyScript body = m_RigidbodyToAttach.GetComponent<BodyScript>();
+            SetBody(body);
+        }
+    }
+
 
     public void SetBody(BodyScript body)
     {
@@ -64,8 +93,7 @@ public class LegController : MonoBehaviour
             maxMotorTorque = 1000
         };
 
-        AnchorLeg();
-        StopMotor();
+        StartLegTravel(stepUp: true);
     }
 
     void AnchorLeg()
@@ -86,7 +114,6 @@ public class LegController : MonoBehaviour
     private void StopMotor()
     {
         m_MotorHinge.useMotor = false;
-        m_RigidbodyToAttach.velocity = Vector2.zero;
         m_BodyRef.LowerMask(m_IdentificationMask);
     }
 
@@ -108,11 +135,11 @@ public class LegController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(m_AnchorKey))
+        if (Input.GetKeyUp(m_AnchorKey))
         {
             StartLegTravel(stepUp: true);
         }
-        else if (Input.GetKeyUp(m_AnchorKey))
+        else if (Input.GetKeyDown(m_AnchorKey))
         {
             StartLegTravel(stepUp: false);
         }
@@ -127,6 +154,7 @@ public class LegController : MonoBehaviour
         }
         StopAllCoroutines();
         StopMotor();
+        ReleaseLeg();
     }
 
     public void StartLegTravel(bool stepUp)
@@ -136,8 +164,8 @@ public class LegController : MonoBehaviour
         // Interrupt all coroutines
         StopAllCoroutines();
         // Stop the motor and leg
-        AnchorLeg();
         StopMotor();
+        ReleaseLeg();
 
         StartCoroutine(stepUp ? LegTravelUp() : LegTravelDown());
     }
@@ -148,8 +176,7 @@ public class LegController : MonoBehaviour
     }
 
     IEnumerator LegTravelUp()
-    {
-        ReleaseLeg();
+    { 
         StartMotor(m_StepUpMotor);
         yield return new WaitUntil(IsLeftLeg ? IsAngleNearBottomLimit : IsAngleNearTopLimit);
         StopMotor();
@@ -157,9 +184,19 @@ public class LegController : MonoBehaviour
     
     IEnumerator LegTravelDown()
     {
+        // Travel Up until the limit - prevent the physics applied in between routines
+        StartMotor(m_StepUpMotor);
+        yield return new WaitUntil(IsLeftLeg ? IsAngleNearBottomLimit : IsAngleNearTopLimit);
+        StopMotor();
+
+        // Release the leg and apply an impulse
         AnchorLeg();
+        m_RigidbodyToAttach.velocity = Vector2.zero;
+        m_RigidbodyToAttach.AddRelativeForce(Vector2.up * m_ImpulseForce, ForceMode2D.Impulse);
+
         StartMotor(m_StepDownMotor);
         yield return new WaitUntil(IsLeftLeg ? IsAngleNearTopLimit : IsAngleNearBottomLimit);
         StopMotor();
+        ReleaseLeg();
     }
 }

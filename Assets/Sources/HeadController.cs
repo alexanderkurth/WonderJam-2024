@@ -8,24 +8,26 @@ public class HeadController : MonoBehaviour
     private Rigidbody2D m_RigidbodyToAttach;
 
     [SerializeField]
-    private HingeJoint2D m_HeadHinge;
-    private BodyScript m_BodyRef;
+    private SpringJoint2D m_HeadJoint;
 
-    public void SetBody(BodyScript body)
+    private void Start()
     {
-        m_BodyRef = body;
-        m_RigidbodyToAttach = body.GetComponent<Rigidbody2D>();
+        if (m_RigidbodyToAttach != null)
+        {
+            SetBody(m_RigidbodyToAttach);
+        }
+    }
 
-        Debug.Assert(m_RigidbodyToAttach != null, "Please attach a rigidBody to the Leg " + gameObject.name);
+    public void SetBody(Rigidbody2D body)
+    {
+        m_RigidbodyToAttach = body;
 
-        m_BodyRef = m_RigidbodyToAttach.GetComponent<BodyScript>();
-        Debug.Assert(m_BodyRef != null, "Please attach a BodyScript to the rigidBody " + m_RigidbodyToAttach.name);
-
-        m_HeadHinge.connectedBody = m_RigidbodyToAttach;
+        Debug.Assert(m_RigidbodyToAttach != null, "Please attach a valid rigidBody to " + gameObject.name);
+        m_HeadJoint.connectedBody = m_RigidbodyToAttach;
     }
 
     public Vector2 GetPivotLocation()
     {
-        return m_HeadHinge.anchor;
+        return m_HeadJoint.anchor;
     }
 }

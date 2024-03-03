@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InteractionManager2 : Singleton<InteractionManager2>
 {
-    public List<GameObject> m_Animals;
-    public List<MontureController> m_Saddles;
+    public List<GameObject> m_Animals = new List<GameObject>();
+    public List<MontureController> m_Saddles= new List<MontureController>();
 
     public void AddAnimal(GameObject animal)
     {
