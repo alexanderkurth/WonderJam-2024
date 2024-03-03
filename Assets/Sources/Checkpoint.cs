@@ -44,7 +44,6 @@ public class Checkpoint : MonoBehaviour
             Vector3 vector = controller.transform.position - transform.position;
             if(vector.sqrMagnitude < SquareValidatonDistance)
             {
-                Debug.Log("check " + controller);
                 CheckMonture(controller);
             }
         }
