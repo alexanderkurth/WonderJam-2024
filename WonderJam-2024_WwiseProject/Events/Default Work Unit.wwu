@@ -143,6 +143,28 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Dash" ID="{D0BA35A1-A775-49FB-B8BE-3F00612F384B}">
+					<ChildrenList>
+						<Action Name="" ID="{1BF7D267-7341-46C2-8FA4-CC4901F5F591}" ShortID="288865553">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Slap" ID="{000A5151-FEED-4256-99F5-B2BF0D42E2C7}">
+					<ChildrenList>
+						<Action Name="" ID="{5DBB36D8-C484-4FD9-8B11-A3A99CC3F31B}" ShortID="220844785">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

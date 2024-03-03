@@ -30,7 +30,16 @@ public class HumanController : MonoBehaviour
 
     public Color Team1Color = Color.red;
     public Color Team2Color = Color.blue;
-    
+
+    public bool isDashing = false;
+    public bool isPushed = false;
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AK.Wwise.Event SlapSoundEvent = null;
+    [SerializeField]
+    private AK.Wwise.Event DashSoundEvent = null;
+
     private void Start()
     {
         _cameraRoot.transform.SetParent(null);
@@ -38,26 +47,26 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [ContextMenu("TestINIT")]
     void TestInit()
     {
         Initialize(TeamID.Team2, 1);
     }
-    #endif
+#endif
 
     public void Initialize(TeamID teamID, int playerID)
     {
         _teamID = teamID;
         _playerID = playerID;
 
-        
 
-        if(EcuyerGameObject != null && ChevalierGameObject != null)
+
+        if (EcuyerGameObject != null && ChevalierGameObject != null)
         {
             List<SpriteRenderer> sprites = EcuyerSpritesToModify;
 
-            if(playerID != 0)
+            if (playerID != 0)
             {
                 EcuyerGameObject.active = false;
                 ChevalierGameObject.active = true;
@@ -67,16 +76,12 @@ public class HumanController : MonoBehaviour
 
             Color color = (teamID == TeamID.Team1) ? Team1Color : Team2Color;
 
-            foreach(SpriteRenderer spriteRenderer in sprites)
+            foreach (SpriteRenderer spriteRenderer in sprites)
             {
                 spriteRenderer.color = color;
             }
         }
     }
-
-    public bool isDashing = false;
-    public bool isPushed = false;
-
 
     // Update is called once per frame
     void Update()
@@ -85,7 +90,7 @@ public class HumanController : MonoBehaviour
         {
             return;
         }
-        
+
         if (inputs != null)
         {
             Vector2 direction2D = inputs.move;
@@ -109,10 +114,11 @@ public class HumanController : MonoBehaviour
         {
             return;
         }
-        
+
         if (isDashing == false)
         {
             isDashing = true;
+            DashSoundEvent.Post(gameObject);
             transform.DOMove(transform.position + transform.up * dashDistance, 0.2f)
                 .OnComplete(() => isDashing = false);
         }
@@ -124,12 +130,14 @@ public class HumanController : MonoBehaviour
         {
             return;
         }
-        
+
         if (isPushed)
         {
             return;
         }
         isPushed = true;
+
+        SlapSoundEvent.Post(gameObject);
 
         transform.DOMove(transform.position + direction * pushDistance, 1.0f)
         .SetEase(Ease.OutExpo)
@@ -150,7 +158,7 @@ public class HumanController : MonoBehaviour
 
         if (distanceSaddle <= radiusSaddle)
         {
-            if(ia.IsGrab)
+            if (ia.IsGrab)
             {
                 ia.transform.parent = null;
                 ia.OnMerge(mc);
@@ -188,7 +196,7 @@ public class HumanController : MonoBehaviour
                     ia.transform.parent = _anchor.transform;
                     ia.transform.localPosition = Vector3.zero;
                     ia.transform.localScale = _anchor.transform.localScale;
-                    ia.transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,-90f));
+                    ia.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, -90f));
                     return;
                 }
             }
@@ -197,25 +205,25 @@ public class HumanController : MonoBehaviour
 
     private void ToggleMount(MontureController mc)
     {
-    if(mc.TeamID == _teamID)
-    {    
-        if (_currentMount == null)
+        if (mc.TeamID == _teamID)
         {
-            _currentMount = mc;
-            transform.parent = mc.GetSaddleTransform();
-            transform.localPosition = Vector3.zero;            
+            if (_currentMount == null)
+            {
+                _currentMount = mc;
+                transform.parent = mc.GetSaddleTransform();
+                transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                _currentMount = null;
+                transform.parent = null;
+                Vector3 tempPos = mc.GetSaddlePosition();
+                tempPos.x += _playerID == 1 ? -2 : 2;
+                transform.position = tempPos;
+            }
+
+            _visualParent.SetActive(_currentMount == null);
         }
-        else
-        {
-            _currentMount = null;
-            transform.parent = null;
-            Vector3 tempPos = mc.GetSaddlePosition();
-            tempPos.x += _playerID == 1 ? -2 : 2;
-            transform.position = tempPos;
-        }
-        
-        _visualParent.SetActive(_currentMount == null);
-    }
     }
 
     public void OnAttack()
@@ -224,7 +232,7 @@ public class HumanController : MonoBehaviour
         {
             return;
         }
-        
+
         Dash(DashDistance);
     }
 
