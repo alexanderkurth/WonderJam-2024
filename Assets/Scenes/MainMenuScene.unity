@@ -1358,7 +1358,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 51c41faceb50c944f920e44180945796, type: 2}
-  _isTwoPlayerMod: 0
+  _isTwoPlayerMod: 1
   ScreenUIController: {fileID: 0}
 --- !u!4 &493798748
 Transform:
