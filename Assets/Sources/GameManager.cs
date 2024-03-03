@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.tvOS;
 
 namespace game
 {
@@ -78,7 +81,7 @@ namespace game
         public ScreenUIController ScreenUIController = null;
 
         private TeamID winnersID = TeamID.Invalid;
-            
+
         private void Start()
         {
             if (m_CurrentState == State.Gameplay)
@@ -92,61 +95,128 @@ namespace game
                     index++;
                 }
             }
-            
-            InputSystem.onDeviceChange += OnDeviceChanged;
         }
 
-        private void OnDisable()
+        private IEnumerator CheckIfControllerNeedReload()
         {
-            InputSystem.onDeviceChange -= OnDeviceChanged;
-        }
-
-        private void OnDeviceChanged(InputDevice arg1, InputDeviceChange change)
-        {
-            Debug.Log(change);
-            switch (change)
+            while (true)
             {
-                case InputDeviceChange.Added:
+                yield return new WaitForSeconds(1f);
+
+                List<PlayerInput> disconnectedInput = new List<PlayerInput>();
+                List<Gamepad> gamepads = new List<Gamepad>(Gamepad.all);
+                foreach (KeyValuePair<int, PlayerInput> playerInput in mPlayersInputs)
+                {
+                    Gamepad validGamePad = null;
+                    foreach (Gamepad gamepad in gamepads)
+                    {
+                        if(playerInput.Value != null && (playerInput.Value.devices.Contains(gamepad.device) || playerInput.Value.devices.Contains(Keyboard.current)))
+                        {
+                            validGamePad = gamepad;
+                            break;
+                        }
+                    }
+
+                    if (validGamePad == null && playerInput.Value != null)
+                    {
+                        disconnectedInput.Add(playerInput.Value);
+                    }
+                    else
+                    {
+                        gamepads.Remove(validGamePad);
+                    }
+                }
+
+                foreach (PlayerInput disconnect in disconnectedInput)
+                {
+                    OnPlayerDisconnected(disconnect);
+                }
+
+                foreach (Gamepad gamepad in gamepads)
+                {
+                    OnPlayerConnected(gamepad);
+                }
+            }
+        }
+
+        private void OnPlayerConnected(Gamepad gamepad)
+        {
+            int currentPlayerCount = mPlayersInputs.Keys.Count;
+
+            PlayerInput newPlayerInput = null;
+            int index = -1;
+            foreach (KeyValuePair<int, PlayerInput> playerInput in mPlayersInputs)
+            {
+                if (playerInput.Value == null)
+                {
+                    newPlayerInput = PlayerInput.Instantiate(mPlayerPrefab, playerInput.Key - 1, "Gamepad",playerInput.Key - 1, gamepad);
+                    index = playerInput.Key;
+                    int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
+                    int teamId = Mathf.FloorToInt((float)playerInput.Key / playerPerTeam);
+
+                    mCameraManager.PairPlayerToTeam(teamId, newPlayerInput);
+                    int playerID = Mathf.RoundToInt(playerInput.Key % (playerPerTeam / 2f) + 1);
+                    newPlayerInput.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
                     break;
-                case InputDeviceChange.Removed:
+                }
+            }
+
+            if (index > -1)
+            {
+                mPlayersInputs[index] = newPlayerInput;
+            }
+            
+            mCameraManager.Initialize();
+        }
+
+        private void OnPlayerDisconnected(PlayerInput disconnectedPlayer)
+        {
+            int key = -1;
+            foreach (KeyValuePair<int, PlayerInput> playerInput in mPlayersInputs)
+            {
+                if (playerInput.Value == disconnectedPlayer)
+                {
+                    int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
+                    int teamId = Mathf.FloorToInt((float)playerInput.Key / playerPerTeam);
+                    mCameraManager.UnpairPlayerToTeam(teamId, playerInput.Value);
+                    Destroy(disconnectedPlayer.gameObject);
                     break;
-                case InputDeviceChange.Disconnected:
-                    break;
-                case InputDeviceChange.Reconnected:
-                    break;
-                case InputDeviceChange.Enabled:
-                    break;
-                case InputDeviceChange.Disabled:
-                    break;
-                case InputDeviceChange.UsageChanged:
-                    break;
-                case InputDeviceChange.ConfigurationChanged:
-                    break;
-                case InputDeviceChange.SoftReset:
-                    break;
-                case InputDeviceChange.HardReset:
-                    break;
-                case InputDeviceChange.Destroyed:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(change), change, null);
+                }
+            }
+
+            if (key > 0)
+            {
+                mPlayersInputs[key] = null;
             }
         }
 
         private void CreateControllersAndCharacters()
         {
+            Debug.Log("test");
             mCameraManager.Initialize();
             int playerIndex = 0;
+
+            for (int i = 1; i <= 4; i++)
+            {
+                mPlayersInputs.Add(i, null);
+            }
+            
             foreach (Gamepad gamepad in Gamepad.all)
             {
                 PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, playerIndex, "Gamepad",playerIndex, gamepad);
                 
                 playerIndex++;
-                mPlayersInputs.Add(playerIndex, playerInput);
+                mPlayersInputs[playerIndex] = playerInput;
             }
 
+            Debug.Log("test");
             foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
             {
+                if (keyValuePair.Value == null)
+                {
+                    continue;
+                }
+                
                 int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
                 int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
 
@@ -157,6 +227,11 @@ namespace game
 
             UnityBadSystemOverride();
             mCameraManager.Initialize();
+
+            Debug.Log("test");
+            StopAllCoroutines();
+            StartCoroutine(CheckIfControllerNeedReload());
+            Debug.Log("test");
         }
 
         private void UnityBadSystemOverride()
@@ -165,7 +240,7 @@ namespace game
             KeyValuePair<int, PlayerInput> selectedKey = default;
             foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
             {
-                if (keyValuePair.Value.devices.Count > 1)
+                if (keyValuePair.Value != null && keyValuePair.Value.devices.Count > 1)
                 {
                     found = true;
                     selectedKey = keyValuePair;

@@ -36,8 +36,25 @@ public class CameraManager : Singleton<CameraManager>
             }
         }
 
-        SetHorseCameraForTeam((int)game.TeamID.Team1, false, true);
-        SetHorseCameraForTeam((int)game.TeamID.Team2, false, true);
+        bool isTeamMount = true;
+        foreach (PlayerCamera camera in GetTeamCameras((int)game.TeamID.Team1))
+        {
+            if (camera.Target != null && camera.Target.CurrentMount == null)
+            {
+                isTeamMount = false;
+            }
+        }
+        SetHorseCameraForTeam((int)game.TeamID.Team1, isTeamMount, true);
+
+        isTeamMount = true;
+        foreach (PlayerCamera camera in GetTeamCameras((int)game.TeamID.Team2))
+        {
+            if (camera.Target != null && camera.Target.CurrentMount == null)
+            {
+                isTeamMount = false;
+            }
+        }
+        SetHorseCameraForTeam((int)game.TeamID.Team2, isTeamMount, true);
     }
 
     public void SetHorseCameraForTeam(int teamID, bool isEnabled, bool isInstant = false)

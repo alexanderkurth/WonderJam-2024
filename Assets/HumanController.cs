@@ -27,6 +27,10 @@ public class HumanController : MonoBehaviour
     private TeamID _teamID;
     public TeamID TeamID { get { return _teamID; } }
     private MontureController _currentMount = null;
+    public MontureController CurrentMount
+    {
+        get { return _currentMount; }
+    }
 
     [SerializeField] private GameObject _visualParent;
     public GameObject EcuyerGameObject = null;

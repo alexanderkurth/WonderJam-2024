@@ -35,7 +35,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void SetUIActive(bool isActive)
     {
-        _simpleCameraFollow.SetCameraActive(!isActive);
+        _simpleCameraFollow.SetCameraActive(!isActive && Target != null);
     }
 
     public void HandleCameraChange(bool isEnabled, bool isInstant)
@@ -48,13 +48,13 @@ public class PlayerCamera : MonoBehaviour
         if (PlayerID == 0)
         {
             _camera.enabled = true;
-            _simpleCameraFollow.SetCameraActive(true);
+            _simpleCameraFollow.SetCameraActive(Target != null);
             cameraRect = isEnabled ? new Rect(x, 0, 0.5f, 1) : new Rect(x,1-height,0.5f,height);
         }
         else
         {
             _camera.enabled = !isEnabled;
-            _simpleCameraFollow.SetCameraActive(!isEnabled);
+            _simpleCameraFollow.SetCameraActive(!isEnabled && Target != null);
             cameraRect = new Rect(x, 0, 0.5f, height);
         }
 
