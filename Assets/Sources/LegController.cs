@@ -63,6 +63,9 @@ public class LegController : MonoBehaviour
             motorSpeed = IsLeftLeg ? m_StepUpSpeed : m_StepDownSpeed,
             maxMotorTorque = 1000
         };
+
+        AnchorLeg();
+        StopMotor();
     }
 
     void AnchorLeg()

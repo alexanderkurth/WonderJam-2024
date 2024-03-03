@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1134434969924786317, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_Anchor.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134434969924786317, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134434969924786317, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000013113417
+      objectReference: {fileID: 0}
     - target: {fileID: 1529815919031782854, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
       propertyPath: m_Name
       value: FrontLeftLeg_Frog
@@ -24,6 +36,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3360179555354738991, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360179555354738991, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_Size.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085632840040174088, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085632840040174088, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7085632840040174088, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -32,6 +60,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4b6203da7f3121245b274b27d56d6ba5, type: 3}
+    - target: {fileID: 8691152327571638701, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_Anchor.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691152327571638701, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691152327571638701, guid: 90f9717a7dd177742ae0499097b3a529, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

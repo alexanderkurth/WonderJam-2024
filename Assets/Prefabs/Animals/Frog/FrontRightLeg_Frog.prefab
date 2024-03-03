@@ -9,9 +9,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 590464656620825584, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 590464656620825584, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4b6203da7f3121245b274b27d56d6ba5, type: 3}
+    - target: {fileID: 1323271792642876629, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323271792642876629, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1529815919031782854, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
       propertyPath: m_Name
       value: FrontRightLeg_Frog
@@ -28,10 +40,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2129542861542437998, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_Anchor.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129542861542437998, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7212569427058660835, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4b6203da7f3121245b274b27d56d6ba5, type: 3}
+    - target: {fileID: 8607850766265407373, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_Anchor.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607850766265407373, guid: a828f3cbcb0fbfe4483567ff4066dfaa, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
