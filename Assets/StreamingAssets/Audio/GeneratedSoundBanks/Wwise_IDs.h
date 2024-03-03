@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID DASH = 1942692385U;
         static const AkUniqueID FROG_CROA = 2282389245U;
         static const AkUniqueID FROG_LEG = 2684604754U;
         static const AkUniqueID GENERIC_BUTTON = 45201699U;
@@ -25,6 +26,7 @@ namespace AK
         static const AkUniqueID PLAY_BUTTON = 2099555730U;
         static const AkUniqueID PLAY_OURGE = 245474584U;
         static const AkUniqueID QUIT_BUTTON = 3287051291U;
+        static const AkUniqueID SLAP = 821159915U;
     } // namespace EVENTS
 
     namespace BANKS
