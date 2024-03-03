@@ -22,6 +22,15 @@ public class HumanController : MonoBehaviour
     private TeamID _teamID;
     private MontureController _currentMount = null;
 
+    public GameObject EcuyerGameObject = null;
+    public GameObject ChevalierGameObject = null;
+
+    public List<SpriteRenderer> EcuyerSpritesToModify;
+    public List<SpriteRenderer> ChevalierSpritesToModify;
+
+    public Color Team1Color = Color.red;
+    public Color Team2Color = Color.blue;
+    
     private void Start()
     {
         _cameraRoot.transform.SetParent(null);
@@ -29,10 +38,40 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
+    #if UNITY_EDITOR
+    [ContextMenu("TestINIT")]
+    void TestInit()
+    {
+        Initialize(TeamID.Team2, 1);
+    }
+    #endif
+
     public void Initialize(TeamID teamID, int playerID)
     {
         _teamID = teamID;
         _playerID = playerID;
+
+        
+
+        if(EcuyerGameObject != null && ChevalierGameObject != null)
+        {
+            List<SpriteRenderer> sprites = EcuyerSpritesToModify;
+
+            if(playerID != 0)
+            {
+                EcuyerGameObject.active = false;
+                ChevalierGameObject.active = true;
+
+                sprites = ChevalierSpritesToModify;
+            }
+
+            Color color = (teamID == TeamID.Team1) ? Team1Color : Team2Color;
+
+            foreach(SpriteRenderer spriteRenderer in sprites)
+            {
+                spriteRenderer.color = color;
+            }
+        }
     }
 
     public bool isDashing = false;
