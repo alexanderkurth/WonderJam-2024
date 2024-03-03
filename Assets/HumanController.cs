@@ -113,7 +113,12 @@ public class HumanController : MonoBehaviour
             }
         }
 
-        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        BaseIA ia = _interactionComponent.bestTarget?.GetComponent<BaseIA>();
+
+        if (ia == null ||_text == null)
+        {
+            return;
+        }
         MontureController mc = _interactionComponent.bestSaddle;
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
         float distance = Vector3.Distance(ia.transform.position, transform.position);
