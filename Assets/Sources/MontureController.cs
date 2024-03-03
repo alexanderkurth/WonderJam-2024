@@ -33,10 +33,9 @@ public class MontureController : MonoBehaviour
 
     private void Start()
     {
-        InteractionManager2.Instance.AddSaddle(this);
+        InteractionManager2.Instance?.AddSaddle(this);
 
         NbSlotsEquipped = 0;
-        Debug.Assert(slots.Count > 0, "No slots found in MontureController");
 
         m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
 
@@ -111,7 +110,7 @@ public class MontureController : MonoBehaviour
             }
         }
 
-        if (TryGetComponentInChildren<BodyScript>(out m_BodyScript))
+        if (bodySlot.HasBodyPart() && bodySlot.GetBodyPart().TryGetComponent(out BodyScript m_BodyScript))
         {
             Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
             OrganiseSlots(m_BodyScript); // Set up distance between slots
@@ -155,7 +154,7 @@ public class MontureController : MonoBehaviour
                     {
                         continue;
                     }
-                        
+
                     if (isHold)
                     {
                         bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);

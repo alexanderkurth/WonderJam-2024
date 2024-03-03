@@ -13,6 +13,11 @@ public class BodyPartSlot : MonoBehaviour
         return m_InstantiatedPart != null;
     }
 
+    public GameObject GetBodyPart()
+    {
+        return m_InstantiatedPart;
+    }
+
     public void SetBodyPart(AnimalDatas data, AnimalType type)
     {
         // Prevent eventual editor attachments
