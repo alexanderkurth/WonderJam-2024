@@ -11,8 +11,8 @@ public class MontureController : MonoBehaviour
     [SerializeField] BodyPartSlot FrontRightLegSlot;
     [SerializeField] BodyPartSlot BackLeftLegSlot;
     [SerializeField] BodyPartSlot BackRightLegSlot;
-
     [SerializeField] FixedJoint2D m_Saddle;
+    [SerializeField] GameObject _outline;
 
     // List to reference all slots
     private List<BodyPartSlot> slots = new List<BodyPartSlot>();
@@ -24,6 +24,11 @@ public class MontureController : MonoBehaviour
 
     public TeamID TeamID;
     public AnimalType animalType;
+
+    public void SetOutlineVisibility(bool b)
+     {
+        _outline.SetActive(b);
+    }
 
 #if UNITY_EDITOR
     [ContextMenu("TestBodyPart")]

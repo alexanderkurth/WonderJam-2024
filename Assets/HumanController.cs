@@ -14,6 +14,7 @@ public class HumanController : MonoBehaviour
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _text;
+    [SerializeField] private GameObject _saddleText;
 
     private int _playerID = 0;
     public float MovementSpeed = 5.0f;
@@ -120,15 +121,17 @@ public class HumanController : MonoBehaviour
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
             _text.gameObject.transform.position = pos;
         }
-        _text.gameObject.SetActive(isDistanceValid);
-        ia.SetOulineVisibility(isDistanceValid);
+        _text.gameObject.SetActive(!ia.IsGrab && isDistanceValid);
+        ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
         if (isDistanceSaddlevalid) 
         {
-            Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
-            _text.gameObject.transform.position = pos;
+            Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
+            _saddleText.gameObject.transform.position = pos;
         }
+        _saddleText.gameObject.SetActive(ia.IsGrab && isDistanceSaddlevalid);
+        mc.SetOutlineVisibility(ia.IsGrab && isDistanceSaddlevalid);
     }
 
     public void Dash(int dashDistance)
