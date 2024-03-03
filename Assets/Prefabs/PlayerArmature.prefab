@@ -414,6 +414,8 @@ MonoBehaviour:
   MovementSpeed: 4
   RotationSpeed: 20
   inputs: {fileID: 135756642000475821}
+  _cameraRoot: {fileID: 8486422364527802273}
+  _interactionComponent: {fileID: 5311157219247394790}
   DashDistance: 3
   EcuyerGameObject: {fileID: 25669700216672163}
   ChevalierGameObject: {fileID: 8591783170740967667}
