@@ -110,6 +110,8 @@ public class MontureController : MonoBehaviour
         BackRightLegSlot.transform.position = bottomRight;
         headSlot.transform.position = middleTop;
         m_BodyScript.transform.position = center;
+
+        m_Saddle.connectedBody = body.GetComponent<Rigidbody2D>();
     }
 
     private void OnDestroy()
