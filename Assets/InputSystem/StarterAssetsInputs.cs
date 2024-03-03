@@ -30,8 +30,11 @@ namespace StarterAssets
 
 		public void OnInteraction(InputValue value)
 		{
-            Debug.Log("\t\tpublic void OnInteraction(InputValue value)\r\n");
-			_humanController.OnInteraction();
+            if(value.isPressed)
+            {
+			    _humanController.OnBillyInteraction();
+            }
+            Debug.Log(value.ToString());
 		}
 
 		public void OnAttack(InputValue value)
@@ -43,6 +46,12 @@ namespace StarterAssets
 		{
 			_humanController.TriggerHorseRidingInteraction(value);
 		}
+
+		public void HorseRidingSingleDriver(InputValue value)
+		{
+			_humanController.TriggerHorseRidingInteraction(value, false);
+		}
+		
 #endif
 
 

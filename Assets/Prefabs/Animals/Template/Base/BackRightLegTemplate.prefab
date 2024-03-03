@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 660895433559700503}
   - component: {fileID: 935726417340087286}
   - component: {fileID: 6880235223697053675}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BackRightLegTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3274311950032359005}
   - component: {fileID: 7002815918810226469}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

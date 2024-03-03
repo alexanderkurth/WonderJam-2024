@@ -953,12 +953,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5451a0966b0ba024794948117e7eb105, type: 2}
     - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
-      propertyPath: slots.Array.size
-      value: 7
+      propertyPath: animalType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
-      propertyPath: slots.Array.data[6]
-      value: 
+      propertyPath: slots.Array.size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: slots.Array.data[7]
