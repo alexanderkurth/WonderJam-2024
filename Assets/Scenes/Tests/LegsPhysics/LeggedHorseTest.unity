@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &106156055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5287863399375480961, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+  m_PrefabInstance: {fileID: 1453253499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3967f850f9276e499777e3ee1b22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &173477989
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +952,18 @@ PrefabInstance:
       propertyPath: m_AnimalDatas
       value: 
       objectReference: {fileID: 11400000, guid: 5451a0966b0ba024794948117e7eb105, type: 2}
+    - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+      propertyPath: slots.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+      propertyPath: slots.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+      propertyPath: slots.Array.data[7]
+      value: 
+      objectReference: {fileID: 106156055}
     - target: {fileID: 8511957527275831071, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
