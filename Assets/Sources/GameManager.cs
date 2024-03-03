@@ -11,11 +11,12 @@ namespace game
 {
     public enum TeamID : UInt32
     {
-        Team1 = 0,
-        Team2 = 1,
+        None = 0,
+        Team1 = 1,
+        Team2 = 2,
 
-        Count = 2,
-        Invalid = 3,
+        Count = 3,
+        Invalid = 4,
     };
 
     public enum PlayerID : UInt32
@@ -37,11 +38,10 @@ namespace game
         {
             MainMenu = 0,
             Gameplay = 1,
-            GameOver = 2,
-            InGameMenu = 3,
+            Prototype = 2,
 
-            Count = 4,
-            Invalid = 5,
+            Count = 3,
+            Invalid = 4,
         };
 
         [SerializeField] private State m_CurrentState = State.Invalid;
@@ -198,10 +198,18 @@ namespace game
                         break;
                     }
 
+                case State.Prototype:
+                    {
+                        m_CurrentState = State.Prototype;
+                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                        break;
+                    }
+
                 case State.Gameplay:
                     {
                         try
                         {
+                            GameObject.Find("Menu")?.SetActive(false);
                             PlayButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
                                                     {
                                                         m_CurrentState = State.Gameplay;
@@ -220,18 +228,6 @@ namespace game
                         break;
                     }
 
-                case State.GameOver:
-                    {
-                        m_CurrentState = State.GameOver;
-                        //ChangeState(State.MainMenu);
-                        break;
-                    }
-
-                case State.InGameMenu:
-                    {
-                        //handle in game menu when time has come
-                        break;
-                    }
                 default:
                     {
                         Debug.LogError("unknowm entry :" + state);
@@ -326,6 +322,11 @@ namespace game
             if (GUI.Button(new Rect(20, 70, 80, 20), "Gameplay"))
             {
                 ChangeState(State.Gameplay);
+            }
+
+            if (GUI.Button(new Rect(20, 100, 80, 20), "Prototype"))
+            {
+                ChangeState(State.Prototype);
             }
         }
 #endif // DEBUG
