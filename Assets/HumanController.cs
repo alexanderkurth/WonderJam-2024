@@ -1,4 +1,3 @@
-using System;
 using game;
 using StarterAssets;
 using UnityEngine;
@@ -13,7 +12,6 @@ public class HumanController : MonoBehaviour
     [SerializeField] private GameObject _anchor;
     [SerializeField] private GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
-
 
     private int _playerID = 0;
     public float MovementSpeed = 5.0f;
@@ -166,6 +164,7 @@ public class HumanController : MonoBehaviour
                     ia.transform.parent = _anchor.transform;
                     ia.transform.localPosition = Vector3.zero;
                     ia.transform.localScale = _anchor.transform.localScale;
+                    ia.transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,-90f));
                     return;
                 }
             }
