@@ -71,10 +71,6 @@ namespace game
 
         [SerializeField] private bool _isTwoPlayerMod = false;
         public bool IsTwoPlayerMod { get { return _isTwoPlayerMod; } }
-        public List<Checkpoint> Checkpoints;
-
-        private int Team1NbCheckpointsValidated = 0;
-        private int Team2NbCheckpointsValidated = 0;
 
         public ScreenUIController ScreenUIController = null;
 
@@ -82,16 +78,10 @@ namespace game
 
         private void Start()
         {
+            Debug.Log("Start GameManager");
             if (m_CurrentState == State.Gameplay)
             {
                 CreateControllersAndCharacters();
-
-                int index = 0;
-                foreach (Checkpoint cp in Checkpoints)
-                {
-                    cp.SetIndex(index);
-                    index++;
-                }
             }
 
             InputSystem.onDeviceChange += OnDeviceChanged;
@@ -193,33 +183,6 @@ namespace game
             playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
         }
 
-        public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
-        {
-            if(m_CurrentState != State.Gameplay)
-            {
-                return;
-            }
-
-            if(cpIndex == Checkpoints.Count - 1)
-            {
-                if (ScreenUIController != null)
-                {
-                    ScreenUIController.OnGameOver(teamID);
-                }
-
-                ChangeState(State.GameOver);
-            }
-        }
-
-        public bool IsCheckpointValidated(int index, TeamID teamID)
-        {
-            if (index < Checkpoints.Count)
-            {
-                return Checkpoints[index].IsValidatedByTeam(teamID);
-            }
-            return false;
-        }
-
         public void ChangeState(State state)
         {
             m_CurrentState = state;
@@ -248,6 +211,7 @@ namespace game
                 case State.GameOver:
                     {
                         m_CurrentState = State.GameOver;
+                        //ChangeState(State.MainMenu);
                         break;
                     }
 
@@ -270,13 +234,6 @@ namespace game
             if (scene.name == "GameplayScene")
             {
                 CreateControllersAndCharacters();
-
-                int index = 0;
-                foreach (Checkpoint cp in Checkpoints)
-                {
-                    cp.SetIndex(index);
-                    index++;
-                }
             }
         }
 
