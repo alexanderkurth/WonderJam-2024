@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2607556080" Type="User" Language="English(US)" Hash="{3B05E58F-CAFB-175B-6ED2-FED52E567696}">
+		<SoundBank Id="2607556080" Type="User" Language="English(US)" Hash="{B16BD3E1-62F5-AE3E-3528-AC031E9C8E30}">
 			<ShortName>Menu</ShortName>
 			<Path>English(US)/Menu.bnk</Path>
 			<Media>
@@ -49,6 +49,10 @@
 				<File Id="582458207" Language="English(US)" Streaming="false" Location="Memory">
 					<ShortName>Exit_01.wav</ShortName>
 					<CachePath>Voices/English(US)/Exit_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="584684328" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>main_menu_loop.wav</ShortName>
+					<CachePath>SFX/main_menu_loop_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TEMPORARY SOUND.wav</ShortName>
@@ -87,6 +91,11 @@
 						<MediaRef Id="1011393351"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="667425441" Name="Play_MainMenuMusic" DurationType="OneShot" DurationMin="27.428572" DurationMax="27.428572">
+					<MediaRefs>
+						<MediaRef Id="584684328"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="4.086712" DurationMax="6.4203176">
 					<MediaRefs>
 						<MediaRef Id="72377241"/>
@@ -97,13 +106,17 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{44097E22-C70D-2F17-088C-0866BA28785B}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{D4F98BFF-DD8B-4ED5-76E1-56BEE7EA66FC}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
 				<File Id="58390904" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SLAP.wav</ShortName>
 					<CachePath>SFX/SLAP_818F3B66.wem</CachePath>
+				</File>
+				<File Id="134152318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>racing_loop.wav</ShortName>
+					<CachePath>SFX/racing_loop_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="493567984" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dash.wav</ShortName>
@@ -174,6 +187,11 @@
 						<MediaRef Id="624157100"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3799629626" Name="Play_InGameMusic" DurationType="OneShot" DurationMin="45.714287" DurationMax="45.714287">
+					<MediaRefs>
+						<MediaRef Id="134152318"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="245474584" Name="Play_Ourge" DurationType="OneShot" DurationMin="0.7163333" DurationMax="0.7163333">
 					<MediaRefs>
 						<MediaRef Id="738180484"/>
@@ -187,5 +205,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{15859D05-90A4-D226-A0D1-DF8A20184487}</FileHash>
+	<FileHash>{DEFA53AF-DA1C-F181-6499-F2C9F15AB304}</FileHash>
 </SoundBanksInfo>

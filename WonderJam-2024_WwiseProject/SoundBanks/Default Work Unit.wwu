@@ -16,12 +16,14 @@
 						<ObjectRef Name="Dash" ID="{D0BA35A1-A775-49FB-B8BE-3F00612F384B}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Horse_Leg" ID="{76ECD35E-49E9-4A38-82EF-6535107DCDAF}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pig_HUIIIIII" ID="{C9C87A8D-798A-4C3D-8CE5-9BA8718564E7}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_InGameMusic" ID="{F60BBB29-3772-4F66-892C-917C6CBEA47F}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="Menu" ID="{D5138140-FEBF-4380-8D52-9D6259B7A127}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_MainMenuMusic" ID="{7D04BF2C-B2A6-41DC-93C3-DFCE1ABAF586}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Button" ID="{0529BBEC-1036-430B-B636-748590785819}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Generic_Button" ID="{DB2CBED7-9C97-4619-89AF-550F27D0219E}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Quit_Button" ID="{F0ED918C-E30C-4BE1-9CA8-BAD1398315DA}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
