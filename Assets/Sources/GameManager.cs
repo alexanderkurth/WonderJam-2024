@@ -141,9 +141,9 @@ namespace game
                 int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
                 int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
 
-                mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
                 int playerID = Mathf.RoundToInt(keyValuePair.Key % (playerPerTeam / 2f) + 1);
                 keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
+                mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
             }
 
             UnityBadSystemOverride();
@@ -199,12 +199,23 @@ namespace game
 
                 case State.Gameplay:
                     {
-                        PlayButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                        try
                         {
+                            PlayButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                                                    {
+                                                        m_CurrentState = State.Gameplay;
+                                                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                                                        SceneManager.sceneLoaded += OnSceneLoaded;
+                                                    });
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogWarning(e);
                             m_CurrentState = State.Gameplay;
                             SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
                             SceneManager.sceneLoaded += OnSceneLoaded;
-                        });
+                        }
+
                         break;
                     }
 
@@ -283,11 +294,17 @@ namespace game
 
         public void QuitGame()
         {
-            QuitButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
-                        {
-                            Application.Quit();
-                        });
-
+            try
+            {
+                QuitButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                {
+                    Application.Quit();
+                });
+            }
+            catch (Exception e)
+            {
+                Application.Quit();
+            }
         }
 
         public void PlayGenericSound()

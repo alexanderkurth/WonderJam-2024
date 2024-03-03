@@ -68,6 +68,7 @@ public class CameraManager : Singleton<CameraManager>
         {
             if (playerCamera.PlayerID == humanController.PlayerID)
             {
+                Debug.Log("pairing " + playerCamera.PlayerID + " from team " + teamId);
                 playerCamera.Initialize(humanController);                
             }
         }
