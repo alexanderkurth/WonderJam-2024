@@ -87,7 +87,7 @@ public class HumanController : MonoBehaviour
 
     public void OnAttack()
     {
-        Debug.Log("Player Attacked !");
+        //Debug.Log("Player Attacked !");
         Dash(DashDistance);
     }
 
