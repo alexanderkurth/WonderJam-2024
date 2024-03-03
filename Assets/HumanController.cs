@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using TMPro;
 
 public class HumanController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class HumanController : MonoBehaviour
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _text;
-    [SerializeField] private GameObject _saddleText;
+    [SerializeField] private TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
     public float MovementSpeed = 5.0f;
@@ -129,9 +130,14 @@ public class HumanController : MonoBehaviour
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
             _saddleText.gameObject.transform.position = pos;
+            if(mc.IsReadyToMount())
+            {
+                _saddleText.text = "MOUNT";
+            }
         }
-        _saddleText.gameObject.SetActive(ia.IsGrab && isDistanceSaddlevalid);
-        mc.SetOutlineVisibility(ia.IsGrab && isDistanceSaddlevalid);
+        bool condition = _currentMount == null && mc.IsReadyToMount() || ia.IsGrab && isDistanceSaddlevalid;
+        _saddleText.gameObject.SetActive(condition);
+        mc.SetOutlineVisibility(condition);
     }
 
     public void Dash(int dashDistance)
