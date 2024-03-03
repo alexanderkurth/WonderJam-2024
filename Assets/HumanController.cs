@@ -132,9 +132,9 @@ public class HumanController : MonoBehaviour
 
             _text.gameObject.transform.position = pos;
         }
-        _text.gameObject.SetActive(!ia.IsGrab && isDistanceValid);
-
-        ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
+        bool canInterac = !ia.IsGrab && isDistanceValid;
+        _text.gameObject.SetActive(canInterac);
+        ia.SetOulineVisibility(canInterac);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
         if (isDistanceSaddlevalid)

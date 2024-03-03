@@ -21,7 +21,7 @@ public class InteractionComponent2 : MonoBehaviour
                 if(tempDistance < distance)
                 {
                     distance = tempDistance;
-                    if(bestTarget != null)
+                    if(bestTarget != null && bestTarget!= animal)
                     {
                         bestTarget.SetOulineVisibility(false);
                     }
