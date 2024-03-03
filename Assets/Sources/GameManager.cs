@@ -195,12 +195,12 @@ namespace game
 
         public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
         {
-            if(m_CurrentState != State.Gameplay)
+            if (m_CurrentState != State.Gameplay)
             {
                 return;
             }
 
-            if(cpIndex == Checkpoints.Count - 1)
+            if (cpIndex == Checkpoints.Count - 1)
             {
                 if (ScreenUIController != null)
                 {
@@ -236,12 +236,23 @@ namespace game
 
                 case State.Gameplay:
                     {
-                        PlayButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                        try
                         {
+                            PlayButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                                                    {
+                                                        m_CurrentState = State.Gameplay;
+                                                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                                                        SceneManager.sceneLoaded += OnSceneLoaded;
+                                                    });
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogWarning(e);
                             m_CurrentState = State.Gameplay;
                             SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
                             SceneManager.sceneLoaded += OnSceneLoaded;
-                        });
+                        }
+
                         break;
                     }
 
@@ -326,11 +337,17 @@ namespace game
 
         public void QuitGame()
         {
-            QuitButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
-                        {
-                            Application.Quit();
-                        });
-
+            try
+            {
+                QuitButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                {
+                    Application.Quit();
+                });
+            }
+            catch (Exception e)
+            {
+                Application.Quit();
+            }
         }
 
         public void PlayGenericSound()
