@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1139668739019005025, guid: dfdcc2180740f7942a0e0a548f7b892a, type: 3}
+      propertyPath: m_Anchor.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139668739019005025, guid: dfdcc2180740f7942a0e0a548f7b892a, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1529815919031782854, guid: dfdcc2180740f7942a0e0a548f7b892a, type: 3}
       propertyPath: m_Name
       value: Head_Pig

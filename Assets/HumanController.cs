@@ -4,18 +4,19 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Data.Common;
+using Unity.VisualScripting;
 using TMPro;
 
 public class HumanController : MonoBehaviour
 {
-    [SerializeField] private float radius = 10.0f;
-    [SerializeField] private float radiusSaddle = 10.0f;
+    public float radius = 10.0f;
+    public float radiusSaddle = 10.0f;
     [SerializeField] private GameObject _anchor;
-    public GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private GameObject _text;
-    [SerializeField] private TextMeshProUGUI _saddleText;
+    public TextMeshProUGUI _text;
+    public TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
     public int PlayerID { get { return _playerID; } }
@@ -24,8 +25,8 @@ public class HumanController : MonoBehaviour
     public StarterAssetsInputs inputs;
     public int DashDistance = 1;
     private TeamID _teamID;
-    public TeamID TeamID{ get { return _teamID; } }
-    private MontureController _currentMount = null;
+    public TeamID TeamID { get { return _teamID; } }
+    public MontureController _currentMount = null;
 
     [SerializeField] private GameObject _visualParent;
     public GameObject EcuyerGameObject = null;
@@ -33,9 +34,6 @@ public class HumanController : MonoBehaviour
 
     public List<SpriteRenderer> EcuyerSpritesToModify;
     public List<SpriteRenderer> ChevalierSpritesToModify;
-
-    public Color Team1Color = Color.red;
-    public Color Team2Color = Color.blue;
 
     public bool isDashing = false;
     public bool isPushed = false;
@@ -45,13 +43,6 @@ public class HumanController : MonoBehaviour
     private AK.Wwise.Event SlapSoundEvent = null;
     [SerializeField]
     private AK.Wwise.Event DashSoundEvent = null;
-
-    private void Start()
-    {
-        _cameraRoot.transform.SetParent(null);
-        _cameraRoot.name = "PlayerCamera";
-        _cameraRoot.SetActive(true);
-    }
 
 #if UNITY_EDITOR
     [ContextMenu("TestINIT")]
@@ -66,8 +57,6 @@ public class HumanController : MonoBehaviour
         _teamID = teamID;
         _playerID = playerID;
 
-
-
         if (EcuyerGameObject != null && ChevalierGameObject != null)
         {
             List<SpriteRenderer> sprites = EcuyerSpritesToModify;
@@ -80,7 +69,7 @@ public class HumanController : MonoBehaviour
                 sprites = ChevalierSpritesToModify;
             }
 
-            Color color = (teamID == TeamID.Team1) ? Team1Color : Team2Color;
+            Color color = GameManager.Instance.GetAnimalDatas().GetColorForTeam(teamID);
 
             foreach (SpriteRenderer spriteRenderer in sprites)
             {
@@ -113,33 +102,39 @@ public class HumanController : MonoBehaviour
             }
         }
 
-        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        /*BaseIA ia = _interactionComponent.bestTarget;
         MontureController mc = _interactionComponent.bestSaddle;
+        if (ia == null || _text == null || mc == null)
+        {
+            return;
+        }
+
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
         float distance = Vector3.Distance(ia.transform.position, transform.position);
 
         bool isDistanceValid = distance < radius;
-        if(isDistanceValid)
+        if (isDistanceValid)
         {
-            Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+            Vector3 pos = ia.transform.position;// _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+
             _text.gameObject.transform.position = pos;
         }
-        _text.gameObject.SetActive(!ia.IsGrab && isDistanceValid);
-        ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
+        bool canInterac = isDistanceValid;
+        _text.gameObject.SetActive(canInterac);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
-        if (isDistanceSaddlevalid) 
+        if (isDistanceSaddlevalid)
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
             _saddleText.gameObject.transform.position = pos;
-            if(mc.IsReadyToMount())
+            if (mc.IsReadyToMount())
             {
                 _saddleText.text = "MOUNT";
             }
         }
         bool condition = _currentMount == null && mc.IsReadyToMount() || ia.IsGrab && isDistanceSaddlevalid;
         _saddleText.gameObject.SetActive(condition);
-        mc.SetOutlineVisibility(condition);
+        mc.SetOutlineVisibility(condition);*/
     }
 
     public void Dash(int dashDistance)
@@ -173,6 +168,12 @@ public class HumanController : MonoBehaviour
 
         SlapSoundEvent.Post(gameObject);
 
+        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        if (ia != null && ia.IsGrab)
+        {
+            DropItem(ia);
+        }
+
         transform.DOMove(transform.position + direction * pushDistance, 1.0f)
         .SetEase(Ease.OutExpo)
         .OnComplete(() => isPushed = false);
@@ -194,6 +195,7 @@ public class HumanController : MonoBehaviour
             if (ia.IsGrab)
             {
                 ia.transform.parent = null;
+                InteractionManager2.Instance.m_Animals.Remove(ia);
                 ia.OnMerge(mc);
                 ia = null;
             }
@@ -214,10 +216,7 @@ public class HumanController : MonoBehaviour
         {
             if (ia.IsGrab)
             {
-                ia.transform.parent = null;
-                ia.transform.localScale = Vector3.one;
-                ia.SetGrab(false);
-                ia = null;
+                DropItem(ia);
                 return;
             }
             else
@@ -234,6 +233,14 @@ public class HumanController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void DropItem(BaseIA ia)
+    {
+        ia.transform.parent = null;
+        ia.transform.localScale = Vector3.one;
+        ia.SetGrab(false);
+        ia = null;
     }
 
     private void ToggleMount(MontureController mc)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using game;
 using UnityEngine;
 
 public enum AnimalType
@@ -24,6 +25,14 @@ public class BodyPartGO
 {
     public BodyPartType Type = BodyPartType.Head;
     public GameObject Template = null;
+}
+
+[Serializable]
+public class TeamColors
+{
+    public TeamID TeamID = TeamID.Team1;
+    public Color Color = Color.red;
+    public string ColorName = "";
 }
 
 [Serializable]
@@ -53,8 +62,32 @@ public class AnimalDatas: ScriptableObject
 {
     public List<AnimalDataInfo> AnimalDataInfos = new List<AnimalDataInfo>();
 
+    public List<TeamColors> TeamColors;
+
     public AnimalDataInfo GetAnimalInfoByType(AnimalType animalType)
     {
         return AnimalDataInfos.Find((animal) => animal.AnimalType == animalType);
+    }
+
+    public Color GetColorForTeam(TeamID id)
+    {
+        TeamColors tc = TeamColors.Find(element => element.TeamID == id);
+        if(tc != null)
+        {
+            return tc.Color;
+        }
+
+        return Color.white;
+    }
+
+    public string GetColorStringTeam(TeamID id)
+    {
+        TeamColors tc = TeamColors.Find(element => element.TeamID == id);
+        if(tc != null)
+        {
+            return tc.ColorName;
+        }
+
+        return "MISSING DATA, LOL";
     }
 }

@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3470184846560902143}
   - component: {fileID: 492149224038320352}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,6 +189,7 @@ MonoBehaviour:
   BackRightLegSlot: {fileID: 2783252345333916168}
   m_Saddle: {fileID: 8282861259179360070}
   _outline: {fileID: 1688555668498114965}
+  _saddleSprite: {fileID: 2748381466688216476}
   TeamID: 0
   animalType: 0
 --- !u!1 &4423580142959188843
@@ -250,7 +251,7 @@ GameObject:
   - component: {fileID: 8282861259179360070}
   - component: {fileID: 128737797282559664}
   - component: {fileID: 2748381466688216476}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Saddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +317,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -20.12, y: -0.8900004}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!61 &128737797282559664
@@ -334,7 +335,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

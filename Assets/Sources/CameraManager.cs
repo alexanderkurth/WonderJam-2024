@@ -11,25 +11,28 @@ public class CameraManager : Singleton<CameraManager>
 
     public void Initialize()
     {
-        int playerPerTeam = GameManager.Instance.IsTwoPlayerMod ? 1 : 2;
-        int playerCount = playerPerTeam * 2;
-        for (int i = 0; i < playerCount * 2; i++)
+        if (mTeamCameras.Keys.Count <= 0)
         {
-            PlayerCamera newCamera = Instantiate(_playerCameraPrefab);
-            int teamId = Mathf.FloorToInt(i / playerPerTeam);
-            int playerID = (i + 1) % playerPerTeam;
-            newCamera.SetTeamID((TeamID)teamId, playerID);
-            newCamera.SetUIActive(true);
-            
-            if (mTeamCameras.ContainsKey(teamId))
+            int playerPerTeam = GameManager.Instance.IsTwoPlayerMod ? 1 : 2;
+            int playerCount = playerPerTeam * 2;
+            for (int i = 0; i < playerCount; i++)
             {
-                mTeamCameras[teamId].Add(newCamera);
-            }
-            else
-            {
-                List<PlayerCamera> linkedPlayer = new List<PlayerCamera>();
-                linkedPlayer.Add(newCamera);
-                mTeamCameras.Add(teamId, linkedPlayer);
+                PlayerCamera newCamera = Instantiate(_playerCameraPrefab);
+                int teamId = Mathf.FloorToInt(i / playerPerTeam);
+                int playerID = i % playerPerTeam;
+                newCamera.SetTeamID((TeamID)teamId, playerID);
+                newCamera.SetUIActive(true);
+
+                if (mTeamCameras.ContainsKey(teamId))
+                {
+                    mTeamCameras[teamId].Add(newCamera);
+                }
+                else
+                {
+                    List<PlayerCamera> linkedPlayer = new List<PlayerCamera>();
+                    linkedPlayer.Add(newCamera);
+                    mTeamCameras.Add(teamId, linkedPlayer);
+                }
             }
         }
 
@@ -65,6 +68,7 @@ public class CameraManager : Singleton<CameraManager>
         {
             if (playerCamera.PlayerID == humanController.PlayerID)
             {
+                Debug.Log("pairing " + playerCamera.PlayerID + " from team " + teamId);
                 playerCamera.Initialize(humanController);                
             }
         }

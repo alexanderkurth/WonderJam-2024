@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{D326F752-7CA2-0A14-FDB1-63ECE89D0199}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{8CE00D37-D3B9-E544-2934-8CC1602DC2B2}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -22,13 +22,53 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2607556080" Type="User" Language="SFX" Hash="{B5499C87-C1D3-7AFF-E44B-F6277C5EAF20}">
+		<SoundBank Id="2607556080" Type="User" Language="English(US)" Hash="{3B05E58F-CAFB-175B-6ED2-FED52E567696}">
 			<ShortName>Menu</ShortName>
-			<Path>Menu.bnk</Path>
+			<Path>English(US)/Menu.bnk</Path>
 			<Media>
+				<File Id="72377241" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_02.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="247242420" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_04.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="438280460" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_03.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="478256974" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_01.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="499568951" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_06.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="582458207" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Exit_01.wav</ShortName>
+					<CachePath>Voices/English(US)/Exit_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TEMPORARY SOUND.wav</ShortName>
 					<CachePath>SFX/TEMPORARY SOUND_818F3B66.wem</CachePath>
+				</File>
+				<File Id="634188148" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_05.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="774652217" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_02.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="778846064" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_04.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1011393351" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Starter_03.wav</ShortName>
+					<CachePath>Voices/English(US)/Starter_03_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -37,22 +77,38 @@
 						<MediaRef Id="624157100"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2099555730" Name="Play_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="2099555730" Name="Play_Button" DurationType="OneShot" DurationMin="3.7964625" DurationMax="12.281066">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="478256974"/>
+						<MediaRef Id="499568951"/>
+						<MediaRef Id="634188148"/>
+						<MediaRef Id="774652217"/>
+						<MediaRef Id="778846064"/>
+						<MediaRef Id="1011393351"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="4.086712" DurationMax="6.4203176">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="72377241"/>
+						<MediaRef Id="247242420"/>
+						<MediaRef Id="438280460"/>
+						<MediaRef Id="582458207"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{21626169-6C07-3E81-C814-4558DBCA83BE}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{44097E22-C70D-2F17-088C-0866BA28785B}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="58390904" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SLAP.wav</ShortName>
+					<CachePath>SFX/SLAP_818F3B66.wem</CachePath>
+				</File>
+				<File Id="493567984" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dash.wav</ShortName>
+					<CachePath>SFX/Dash_818F3B66.wem</CachePath>
+				</File>
 				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TEMPORARY SOUND.wav</ShortName>
 					<CachePath>SFX/TEMPORARY SOUND_818F3B66.wem</CachePath>
@@ -62,11 +118,21 @@
 					<CachePath>SFX/Ourge_818F3B66.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="901929720" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
+				</Custom>
+			</Plugins>
 			<Events>
-				<Event Id="1942692385" Name="Dash" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="1942692385" Name="Dash" DurationType="OneShot" DurationMin="0.33146876" DurationMax="0.33146876">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="493567984"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="901929720"/>
+						</Custom>
+					</PluginRefs>
 				</Event>
 				<Event Id="2282389245" Name="Frog_Croa" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
 					<MediaRefs>
@@ -113,13 +179,13 @@
 						<MediaRef Id="738180484"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="821159915" Name="Slap" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="821159915" Name="Slap" DurationType="OneShot" DurationMin="0.51153123" DurationMax="0.51153123">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="58390904"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4142A135-EE4F-6D29-C05D-B1853D5BCDDD}</FileHash>
+	<FileHash>{F5A18D8C-61AB-4463-4D45-4C276EAE5B6F}</FileHash>
 </SoundBanksInfo>

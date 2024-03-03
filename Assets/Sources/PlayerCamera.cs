@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using game;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -9,10 +11,14 @@ public class PlayerCamera : MonoBehaviour
     
     [SerializeField] private Camera _camera;
     [SerializeField] private SimpleCameraFollow _simpleCameraFollow;
+    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI _saddleText;
 
     public int PlayerID { get; private set; }
     private TeamID TeamID = TeamID.Invalid; 
     public HumanController Target { get; private set; }
+
+    public GameObject ConnectControllerGO = null;
 
     public void SetTeamID(TeamID teamID, int playerID)
     {
@@ -25,16 +31,23 @@ public class PlayerCamera : MonoBehaviour
         if (owner != null)
         {
             _simpleCameraFollow.m_Target = owner.transform;
-            _simpleCameraFollow.m_CameraParent = owner._cameraRoot;
+            owner.GetComponent<PlayerInput>().camera = _camera;
         }
         
         Target = owner;
+        Target._text = _text;
+        Target._saddleText = _saddleText;
         SetUIActive(Target == null);
     }
 
     public void SetUIActive(bool isActive)
     {
-        _simpleCameraFollow.SetCameraActive(Target != null);
+        _simpleCameraFollow.SetCameraActive(!isActive);
+
+        if(ConnectControllerGO != null)
+        {
+            ConnectControllerGO.SetActive(isActive);
+        }
     }
 
     public void HandleCameraChange(bool isEnabled, bool isInstant)
@@ -44,7 +57,7 @@ public class PlayerCamera : MonoBehaviour
         float height = GameManager.Instance.IsTwoPlayerMod ? 1f : 0.5f;
         
         Rect cameraRect = default;
-        if (PlayerID == 1)
+        if (PlayerID == 0)
         {
             _camera.enabled = true;
             _simpleCameraFollow.SetCameraActive(true);

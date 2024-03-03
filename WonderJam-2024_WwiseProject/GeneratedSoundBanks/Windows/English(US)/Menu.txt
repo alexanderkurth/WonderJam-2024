@@ -1,0 +1,18 @@
+Event	ID	Name			Wwise Object Path	Notes
+	45201699	Generic_Button			\Default Work Unit\Menu\Generic_Button	
+	2099555730	Play_Button			\Default Work Unit\Menu\Play_Button	
+	3287051291	Quit_Button			\Default Work Unit\Menu\Quit_Button	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	72377241	Exit_02	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Exit_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ExitRandomContainer\Exit_02		1132640
+	247242420	Exit_04	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Exit_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ExitRandomContainer\Exit_04		733388
+	438280460	Exit_03	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Exit_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ExitRandomContainer\Exit_03		788172
+	478256974	Starter_01	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Starter_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_01		1254604
+	499568951	Starter_06	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Starter_06_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_06		2166476
+	582458207	Exit_01	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Exit_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ExitRandomContainer\Exit_01		720992
+	624157100	TEMPORARY SOUND	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\SFX\TEMPORARY SOUND_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMPORARY SOUND		181296
+	634188148	Starter_05	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Starter_05_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_05		1390688
+	774652217	Starter_02	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Starter_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_02		669792
+	778846064	Starter_04	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Starter_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_04		1181792
+	1011393351	Starter_03	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Windows\Voices\English(US)\Starter_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_03		1046624
+
