@@ -35,9 +35,6 @@ public class HumanController : MonoBehaviour
     public List<SpriteRenderer> EcuyerSpritesToModify;
     public List<SpriteRenderer> ChevalierSpritesToModify;
 
-    public Color Team1Color = Color.red;
-    public Color Team2Color = Color.blue;
-
     public bool isDashing = false;
     public bool isPushed = false;
 
@@ -60,8 +57,6 @@ public class HumanController : MonoBehaviour
         _teamID = teamID;
         _playerID = playerID;
 
-
-
         if (EcuyerGameObject != null && ChevalierGameObject != null)
         {
             List<SpriteRenderer> sprites = EcuyerSpritesToModify;
@@ -74,7 +69,7 @@ public class HumanController : MonoBehaviour
                 sprites = ChevalierSpritesToModify;
             }
 
-            Color color = (teamID == TeamID.Team1) ? Team1Color : Team2Color;
+            Color color = GameManager.Instance.GetAnimalDatas().GetColorForTeam(teamID);
 
             foreach (SpriteRenderer spriteRenderer in sprites)
             {
