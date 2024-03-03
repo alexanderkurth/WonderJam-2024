@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1312017395594081435}
   - component: {fileID: 3578521730984683872}
-  - component: {fileID: 7846337537408934524}
-  - component: {fileID: 6046540360091325009}
   - component: {fileID: 2308329268550704596}
   - component: {fileID: 8144179648433225624}
   m_Layer: 6
@@ -55,76 +53,6 @@ MonoBehaviour:
   _obstacleDistance: 3
   _wanderAngleModifier: 8
   _wanderTarget: {fileID: 2709893473894680981}
---- !u!114 &7846337537408934524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569918637535146180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16465ddca29ca6e4488f74c94bb44bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractSprite: {fileID: 0}
-  m_TargetTag: Player
-  OnEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3578521730984683872}
-        m_TargetAssemblyTypeName: BaseIA, Assembly-CSharp
-        m_MethodName: OnGrab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6046540360091325009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569918637535146180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16465ddca29ca6e4488f74c94bb44bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractSprite: {fileID: 0}
-  m_TargetTag: Saddle
-  OnEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3578521730984683872}
-        m_TargetAssemblyTypeName: BaseIA, Assembly-CSharp
-        m_MethodName: OnMerge
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!50 &2308329268550704596
 Rigidbody2D:
   serializedVersion: 4

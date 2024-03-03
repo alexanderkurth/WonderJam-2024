@@ -8,17 +8,19 @@ public class MontureController : MonoBehaviour
     public List<BodyPartSlot> slots;
     private int NbSlotsEquipped = 0;
 
-    // Start is called before the first frame update
-
     void Start()
     {
+        InteractionManager2.Instance.AddSaddle(this);
+
         NbSlotsEquipped = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        if(InteractionManager2.Instance != null)
+        {
+             InteractionManager2.Instance.m_Saddles.Remove(this);
+        }
     }
 
     #if UNITY_EDITOR
