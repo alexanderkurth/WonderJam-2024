@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479298094}
   - component: {fileID: 479298093}
+  - component: {fileID: 479298095}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -191,6 +192,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479298095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479298092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26958d01246ad1d4c84fb241775a60a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7ec8dc1b7855fa54d9ecdefc0d4b5755, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1001 &482502887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,12 +396,17 @@ Transform:
   m_GameObject: {fileID: 638893018}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.85, y: 7, z: 3.54}
+  m_LocalPosition: {x: -0.85, y: 7, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1042813122 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5186891588650192436, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+  m_PrefabInstance: {fileID: 1288349238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1046797611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -725,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4611922104051940793, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8282861259179360070, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -745,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8511957527275831071, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8511957527275831071, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -933,7 +964,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.58
+  orthographic size: 4.94
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1057,7 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CameraParent: {fileID: 0}
-  m_Target: {fileID: 0}
+  m_Target: {fileID: 1042813122}
   _offset: {x: 0, y: 0, z: -10}
 --- !u!1001 &2028675827
 PrefabInstance:
