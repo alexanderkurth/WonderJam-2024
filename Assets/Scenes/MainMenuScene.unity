@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -877,6 +877,8 @@ GameObject:
   m_Component:
   - component: {fileID: 493798748}
   - component: {fileID: 493798747}
+  - component: {fileID: 493798749}
+  - component: {fileID: 493798750}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -899,7 +901,9 @@ MonoBehaviour:
   duplicationHandling: 1
   DoNotDestroyOnLoad: 1
   m_CurrentState: 0
-  m_AnimalDatas: {fileID: 0}
+  mPlayerPrefab: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  mCameraManager: {fileID: 493798749}
+  m_AnimalDatas: {fileID: 11400000, guid: 5451a0966b0ba024794948117e7eb105, type: 2}
   m_LoadingScreen: {fileID: 0}
   PlayButtonEvent:
     idInternal: 0
@@ -913,6 +917,8 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 51c41faceb50c944f920e44180945796, type: 2}
+  _isTwoPlayerMod: 0
+  Checkpoints: []
 --- !u!4 &493798748
 Transform:
   m_ObjectHideFlags: 0
@@ -928,6 +934,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &493798749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493798746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d18ecd7e18d494ab7f103125a4ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duplicationHandling: 1
+  DoNotDestroyOnLoad: 1
+--- !u!114 &493798750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493798746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f041d747b4005d4b9519a69aa191aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duplicationHandling: 1
+  DoNotDestroyOnLoad: 1
+  m_Animals: []
+  m_Saddles: []
 --- !u!1 &654038130 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3554890116069415304, guid: 0f3efcab26d566f46a80bea656247d78, type: 3}

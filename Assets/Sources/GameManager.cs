@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -180,6 +181,8 @@ namespace game
                 {
                     m_CurrentState = State.Gameplay;
                     SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                    SceneManager.sceneLoaded += OnSceneLoaded;
+                    
                     break;
                 }
 
@@ -200,6 +203,14 @@ namespace game
                     Debug.LogError("unknowm entry :" + state);
                     break;
                 }
+            }
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadedSceneMode)
+        {
+            if (scene.name == "GameplayScene")
+            {
+                CreateControllersAndCharacters();
             }
         }
 
