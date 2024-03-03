@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	245474584	Play_Ourge			\Default Work Unit\Play_Ourge	
+	821159915	Slap			\Default Work Unit\Slap	
 	1503779022	Horse_HUUUUU			\Default Work Unit\Animals\Horse_HUUUUU	
 	1663394018	Pig_Leg			\Default Work Unit\Animals\Pig_Leg	
 	1889053413	Pig_HUIIIIII			\Default Work Unit\Animals\Pig_HUIIIIII	
+	1942692385	Dash			\Default Work Unit\Dash	
 	2282389245	Frog_Croa			\Default Work Unit\Animals\Frog_Croa	
 	2298677883	Pig_Ron			\Default Work Unit\Animals\Pig_Ron	
 	2684604754	Frog_Leg			\Default Work Unit\Animals\Frog_Leg	
