@@ -12,6 +12,8 @@ public class HumanController : MonoBehaviour
     [SerializeField] private GameObject _anchor;
     [SerializeField] private GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private GameObject _text;
 
     private int _playerID = 0;
     public float MovementSpeed = 5.0f;
@@ -101,6 +103,27 @@ public class HumanController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
             }
         }
+
+        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        MontureController mc = _interactionComponent.bestSaddle;
+        float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
+        float distance = Vector3.Distance(ia.transform.position, transform.position);
+
+        bool isDistanceValid = distance < radius;
+        if(isDistanceValid)
+        {
+            Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+            _text.gameObject.transform.position = pos;
+        }
+        _text.gameObject.SetActive(isDistanceValid);
+
+        bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
+        if (isDistanceSaddlevalid) 
+        {
+            Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+            _text.gameObject.transform.position = pos;
+        }
+        _text.gameObject.SetActive(isDistanceSaddlevalid);
     }
 
     public void Dash(int dashDistance)
@@ -144,7 +167,6 @@ public class HumanController : MonoBehaviour
         }
 
         BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
-
         MontureController mc = _interactionComponent.bestSaddle;
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
 
