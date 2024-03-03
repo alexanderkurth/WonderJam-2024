@@ -328,6 +328,6 @@ namespace game
                 ChangeState(State.Gameplay);
             }
         }
-    }
 #endif // DEBUG
+    }
 }
