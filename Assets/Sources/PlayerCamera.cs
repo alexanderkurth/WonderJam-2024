@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using game;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,10 +11,14 @@ public class PlayerCamera : MonoBehaviour
     
     [SerializeField] private Camera _camera;
     [SerializeField] private SimpleCameraFollow _simpleCameraFollow;
+    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI _saddleText;
 
     public int PlayerID { get; private set; }
     private TeamID TeamID = TeamID.Invalid; 
     public HumanController Target { get; private set; }
+
+    public GameObject ConnectControllerGO = null;
 
     public void SetTeamID(TeamID teamID, int playerID)
     {
@@ -30,12 +35,19 @@ public class PlayerCamera : MonoBehaviour
         }
         
         Target = owner;
+        Target._text = _text;
+        Target._saddleText = _saddleText;
         SetUIActive(Target == null);
     }
 
     public void SetUIActive(bool isActive)
     {
         _simpleCameraFollow.SetCameraActive(!isActive && Target != null);
+
+        if(ConnectControllerGO != null)
+        {
+            ConnectControllerGO.SetActive(isActive);
+        }
     }
 
     public void HandleCameraChange(bool isEnabled, bool isInstant)

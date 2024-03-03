@@ -10,13 +10,13 @@ using TMPro;
 
 public class HumanController : MonoBehaviour
 {
-    [SerializeField] private float radius = 10.0f;
-    [SerializeField] private float radiusSaddle = 10.0f;
+    public float radius = 10.0f;
+    public float radiusSaddle = 10.0f;
     [SerializeField] private GameObject _anchor;
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private TextMeshProUGUI _text;
-    [SerializeField] private TextMeshProUGUI _saddleText;
+    public TextMeshProUGUI _text;
+    public TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
     public int PlayerID { get { return _playerID; } }
@@ -106,7 +106,7 @@ public class HumanController : MonoBehaviour
             }
         }
 
-        BaseIA ia = _interactionComponent.bestTarget;
+        /*BaseIA ia = _interactionComponent.bestTarget;
         MontureController mc = _interactionComponent.bestSaddle;
         if (ia == null || _text == null || mc == null)
         {
@@ -123,9 +123,8 @@ public class HumanController : MonoBehaviour
 
             _text.gameObject.transform.position = pos;
         }
-        _text.gameObject.SetActive(!ia.IsGrab && isDistanceValid);
-
-        ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
+        bool canInterac = isDistanceValid;
+        _text.gameObject.SetActive(canInterac);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
         if (isDistanceSaddlevalid)
@@ -139,7 +138,7 @@ public class HumanController : MonoBehaviour
         }
         bool condition = _currentMount == null && mc.IsReadyToMount() || ia.IsGrab && isDistanceSaddlevalid;
         _saddleText.gameObject.SetActive(condition);
-        mc.SetOutlineVisibility(condition);
+        mc.SetOutlineVisibility(condition);*/
     }
 
     public void Dash(int dashDistance)
@@ -200,6 +199,7 @@ public class HumanController : MonoBehaviour
             if (ia.IsGrab)
             {
                 ia.transform.parent = null;
+                InteractionManager2.Instance.m_Animals.Remove(ia);
                 ia.OnMerge(mc);
                 ia = null;
             }

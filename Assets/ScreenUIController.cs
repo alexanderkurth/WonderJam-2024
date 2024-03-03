@@ -16,7 +16,9 @@ public class ScreenUIController : MonoBehaviour
         if(EndGameGO != null && EndText != null)
         {
             EndGameGO.SetActive(true);
-            EndText.text.Replace("{}", id.ToString());
+            string name = GameManager.Instance.GetAnimalDatas().GetColorStringTeam(id);
+
+            EndText.text = EndText.text.Replace("{}", name);
         }
     }
 }

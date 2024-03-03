@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using AK.Wwise;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -52,7 +53,7 @@ namespace game
 
         [SerializeField] private GameObject mPlayerPrefab;
         [SerializeField] private CameraManager mCameraManager;
-        
+
         [SerializeField]
         private AnimalDatas m_AnimalDatas;
 
@@ -203,8 +204,8 @@ namespace game
             
             foreach (Gamepad gamepad in Gamepad.all)
             {
-                PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, playerIndex, "Gamepad",playerIndex, gamepad);
-                
+                PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, playerIndex, "Gamepad", playerIndex, gamepad);
+
                 playerIndex++;
                 mPlayersInputs[playerIndex] = playerInput;
             }
@@ -220,9 +221,9 @@ namespace game
                 int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
                 int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
 
-                mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
                 int playerID = Mathf.RoundToInt(keyValuePair.Key % (playerPerTeam / 2f) + 1);
                 keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
+                mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
             }
 
             UnityBadSystemOverride();
@@ -252,16 +253,16 @@ namespace game
             {
                 return;
             }
-            
+
             Gamepad gamepad = Gamepad.all[selectedKey.Key - 1];
-            PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, selectedKey.Key, "Gamepad",selectedKey.Key, gamepad);
+            PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, selectedKey.Key, "Gamepad", selectedKey.Key, gamepad);
 
             int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
             int teamId = Mathf.FloorToInt((float)selectedKey.Key / playerPerTeam);
             mCameraManager.UnpairPlayerToTeam(teamId, selectedKey.Value);
             Destroy(mPlayersInputs[selectedKey.Key].gameObject);
             mPlayersInputs[selectedKey.Key] = playerInput;
-                    
+
             mCameraManager.PairPlayerToTeam(teamId, playerInput);
             int playerID = Mathf.RoundToInt(selectedKey.Key % (playerPerTeam / 2f) + 1);
             playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
@@ -269,20 +270,25 @@ namespace game
 
         public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
         {
-            if(cpIndex == Checkpoints.Count - 1)
+            if (m_CurrentState != State.Gameplay)
             {
-                if(ScreenUIController != null)
+                return;
+            }
+
+            if (cpIndex == Checkpoints.Count - 1)
+            {
+                if (ScreenUIController != null)
                 {
                     ScreenUIController.OnGameOver(teamID);
                 }
-                
+
                 ChangeState(State.GameOver);
             }
         }
 
         public bool IsCheckpointValidated(int index, TeamID teamID)
         {
-            if(index < Checkpoints.Count)
+            if (index < Checkpoints.Count)
             {
                 return Checkpoints[index].IsValidatedByTeam(teamID);
             }
@@ -295,39 +301,52 @@ namespace game
             switch (state)
             {
                 case State.MainMenu:
-                {
-                    m_CurrentState = State.MainMenu;
+                    {
+                        m_CurrentState = State.MainMenu;
 
-                    m_LoadingOperation = SceneManager.LoadSceneAsync((Int32)m_CurrentState, LoadSceneMode.Single);
+                        m_LoadingOperation = SceneManager.LoadSceneAsync((Int32)m_CurrentState, LoadSceneMode.Single);
 
-                    break;
-                }
+                        break;
+                    }
 
                 case State.Gameplay:
-                {
-                    m_CurrentState = State.Gameplay;
-                    SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
-                    SceneManager.sceneLoaded += OnSceneLoaded;
-                    
-                    break;
-                }
+                    {
+                        try
+                        {
+                            PlayButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                                                    {
+                                                        m_CurrentState = State.Gameplay;
+                                                        SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                                                        SceneManager.sceneLoaded += OnSceneLoaded;
+                                                    });
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogWarning(e);
+                            m_CurrentState = State.Gameplay;
+                            SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                            SceneManager.sceneLoaded += OnSceneLoaded;
+                        }
+
+                        break;
+                    }
 
                 case State.GameOver:
-                {
-                     m_CurrentState = State.GameOver;                     
-                    break;
-                }
+                    {
+                        m_CurrentState = State.GameOver;
+                        break;
+                    }
 
                 case State.InGameMenu:
-                {
-                    //handle in game menu when time has come
-                    break;
-                }
+                    {
+                        //handle in game menu when time has come
+                        break;
+                    }
                 default:
-                {
-                    Debug.LogError("unknowm entry :" + state);
-                    break;
-                }
+                    {
+                        Debug.LogError("unknowm entry :" + state);
+                        break;
+                    }
             }
         }
 
@@ -337,13 +356,13 @@ namespace game
             if (scene.name == "GameplayScene")
             {
                 CreateControllersAndCharacters();
-                
-            int index = 0;
-            foreach(Checkpoint cp in Checkpoints)
-            {
-                cp.SetIndex(index);
-                index++;
-            }
+
+                int index = 0;
+                foreach (Checkpoint cp in Checkpoints)
+                {
+                    cp.SetIndex(index);
+                    index++;
+                }
             }
         }
 
@@ -351,7 +370,7 @@ namespace game
         {
             return m_CurrentState;
         }
-        
+
         public AnimalDatas GetAnimalDatas()
         {
             return m_AnimalDatas;
@@ -359,16 +378,16 @@ namespace game
 
         public void Update()
         {
-            if(m_CurrentState == State.Gameplay)
+            if (m_CurrentState == State.Gameplay)
             {
-                
+
             }
 
-            if(m_LoadingOperation != null)
+            if (m_LoadingOperation != null)
             {
                 float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
                 Debug.Log(value);
-                if(m_LoadingOperation.isDone)
+                if (m_LoadingOperation.isDone)
                 {
                     m_LoadingOperation = null;
                 }
@@ -383,7 +402,6 @@ namespace game
         public void ChangeToGameplay()
         {
             ChangeState(State.Gameplay);
-            PlayButtonEvent.Post(gameObject);
         }
 
         public void ChangeToMainMenu()
@@ -394,8 +412,17 @@ namespace game
 
         public void QuitGame()
         {
-            QuitButtonEvent.Post(gameObject);
-            Application.Quit();
+            try
+            {
+                QuitButtonEvent.Post(gameObject, (uint)AkCallbackType.AK_EndOfEvent, (object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info) =>
+                {
+                    Application.Quit();
+                });
+            }
+            catch (Exception e)
+            {
+                Application.Quit();
+            }
         }
 
         public void PlayGenericSound()
