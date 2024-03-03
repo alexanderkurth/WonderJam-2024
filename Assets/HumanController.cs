@@ -1,9 +1,9 @@
-using System;
 using game;
 using StarterAssets;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class HumanController : MonoBehaviour
 {
@@ -12,7 +12,6 @@ public class HumanController : MonoBehaviour
     [SerializeField] private GameObject _anchor;
     [SerializeField] private GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
-
 
     private int _playerID = 0;
     public float MovementSpeed = 5.0f;
