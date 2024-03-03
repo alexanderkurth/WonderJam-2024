@@ -167,6 +167,7 @@ Transform:
   - {fileID: 8478240222652852978}
   - {fileID: 939915785828054612}
   - {fileID: 4767309833091454327}
+  - {fileID: 6539443388670204888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6982812146204527121
@@ -322,13 +323,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   radiusSaddle: 1
+  _anchor: {fileID: 8311620396505299491}
+  _cameraRoot: {fileID: 8486422364527802273}
+  _interactionComponent: {fileID: 5311157219247394790}
   MovementSpeed: 4
   RotationSpeed: 20
   inputs: {fileID: 135756642000475821}
-  _cameraRoot: {fileID: 8486422364527802273}
-  _interactionComponent: {fileID: 5311157219247394790}
   DashDistance: 3
-  m_Sate: 3
   isDashing: 0
   isPushed: 0
 --- !u!58 &618115413724295515
@@ -395,6 +396,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bestTarget: {fileID: 0}
   bestSaddle: {fileID: 0}
+--- !u!1 &8311620396505299491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6539443388670204888}
+  m_Layer: 0
+  m_Name: Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6539443388670204888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8311620396505299491}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3893294197879345259}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &8486422364527802273
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,10 @@ public class BaseIA : MonoBehaviour
     private AnimalDataInfo _animalDataInfo = null;
 
     public bool IsGrab => _isGrab;
+    public void SetGrab(bool b)
+    {
+        _isGrab = b;
+    }
 
     public void Initialize(AnimalSpawner animalSpawner)
     {
@@ -96,7 +100,7 @@ public class BaseIA : MonoBehaviour
     }
 
     public void OnMerge(MontureController montureController)
-    {
+    {   
         _isGrab = false;
         _isMerge = true;
         _animalSpawner.OnSpawnAnimalRemove();
