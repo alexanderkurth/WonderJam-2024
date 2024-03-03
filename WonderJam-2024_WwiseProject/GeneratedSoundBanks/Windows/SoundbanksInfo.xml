@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{340F58F4-2143-796C-EA8B-735FD363A1FA}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -49,10 +49,18 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{21626169-6C07-3E81-C814-4558DBCA83BE}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{44097E22-C70D-2F17-088C-0866BA28785B}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="58390904" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SLAP.wav</ShortName>
+					<CachePath>SFX/SLAP_818F3B66.wem</CachePath>
+				</File>
+				<File Id="493567984" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dash.wav</ShortName>
+					<CachePath>SFX/Dash_818F3B66.wem</CachePath>
+				</File>
 				<File Id="624157100" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TEMPORARY SOUND.wav</ShortName>
 					<CachePath>SFX/TEMPORARY SOUND_818F3B66.wem</CachePath>
@@ -62,11 +70,21 @@
 					<CachePath>SFX/Ourge_818F3B66.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="901929720" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
+				</Custom>
+			</Plugins>
 			<Events>
-				<Event Id="1942692385" Name="Dash" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="1942692385" Name="Dash" DurationType="OneShot" DurationMin="0.33146876" DurationMax="0.33146876">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="493567984"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="901929720"/>
+						</Custom>
+					</PluginRefs>
 				</Event>
 				<Event Id="2282389245" Name="Frog_Croa" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
 					<MediaRefs>
@@ -113,13 +131,13 @@
 						<MediaRef Id="738180484"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="821159915" Name="Slap" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+				<Event Id="821159915" Name="Slap" DurationType="OneShot" DurationMin="0.51153123" DurationMax="0.51153123">
 					<MediaRefs>
-						<MediaRef Id="624157100"/>
+						<MediaRef Id="58390904"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7727F855-A2C9-B806-1D2E-C14FC61C15F4}</FileHash>
+	<FileHash>{F2B1EC2B-C546-9658-6136-959168F32C8C}</FileHash>
 </SoundBanksInfo>

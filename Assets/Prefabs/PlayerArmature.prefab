@@ -621,11 +621,11 @@ MonoBehaviour:
   SlapSoundEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: a0be19b6f6251394ab42d496cbb4f932, type: 2}
   DashSoundEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: b692eb46c927114439eb974103f3f137, type: 2}
 --- !u!58 &618115413724295515
 CircleCollider2D:
   m_ObjectHideFlags: 0
