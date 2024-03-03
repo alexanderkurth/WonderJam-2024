@@ -194,6 +194,11 @@ namespace game
 
         public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
         {
+            if(m_CurrentState != State.Gameplay)
+            {
+                return;
+            }
+
             if(cpIndex == Checkpoints.Count - 1)
             {
                 if(ScreenUIController != null)
