@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class InteractorComponent : MonoBehaviour
 {
-
     private InteractableComponent m_Target;
     public InteractableComponent Target { get { return m_Target; } }
     public float offScreenCooldown = 1f;

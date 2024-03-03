@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using TMPro;
 
 public class HumanController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class HumanController : MonoBehaviour
     [SerializeField] private GameObject _anchor;
     public GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private GameObject _text;
+    [SerializeField] private TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
     public int PlayerID { get { return _playerID; } }
@@ -108,6 +112,34 @@ public class HumanController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
             }
         }
+
+        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        MontureController mc = _interactionComponent.bestSaddle;
+        float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
+        float distance = Vector3.Distance(ia.transform.position, transform.position);
+
+        bool isDistanceValid = distance < radius;
+        if(isDistanceValid)
+        {
+            Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
+            _text.gameObject.transform.position = pos;
+        }
+        _text.gameObject.SetActive(!ia.IsGrab && isDistanceValid);
+        ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
+
+        bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
+        if (isDistanceSaddlevalid) 
+        {
+            Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
+            _saddleText.gameObject.transform.position = pos;
+            if(mc.IsReadyToMount())
+            {
+                _saddleText.text = "MOUNT";
+            }
+        }
+        bool condition = _currentMount == null && mc.IsReadyToMount() || ia.IsGrab && isDistanceSaddlevalid;
+        _saddleText.gameObject.SetActive(condition);
+        mc.SetOutlineVisibility(condition);
     }
 
     public void Dash(int dashDistance)
@@ -154,7 +186,6 @@ public class HumanController : MonoBehaviour
         }
 
         BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
-
         MontureController mc = _interactionComponent.bestSaddle;
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
 
