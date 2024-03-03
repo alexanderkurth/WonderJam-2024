@@ -74,24 +74,64 @@ namespace game
 
         private int Team1NbCheckpointsValidated = 0;
         private int Team2NbCheckpointsValidated = 0;
-            
+
         private void Start()
         {
-        if(m_CurrentState == State.Gameplay)
-        {
-            CreateControllersAndCharacters();
-
-            int index = 0;
-            foreach(Checkpoint cp in Checkpoints)
+            if (m_CurrentState == State.Gameplay)
             {
-                cp.SetIndex(index);
-                index++;
+                CreateControllersAndCharacters();
+
+                int index = 0;
+                foreach (Checkpoint cp in Checkpoints)
+                {
+                    cp.SetIndex(index);
+                    index++;
+                }
             }
+            
+            InputSystem.onDeviceChange += OnDeviceChanged;
         }
+
+        private void OnDisable()
+        {
+            InputSystem.onDeviceChange -= OnDeviceChanged;
+        }
+
+        private void OnDeviceChanged(InputDevice arg1, InputDeviceChange change)
+        {
+            Debug.Log(change);
+            switch (change)
+            {
+                case InputDeviceChange.Added:
+                    break;
+                case InputDeviceChange.Removed:
+                    break;
+                case InputDeviceChange.Disconnected:
+                    break;
+                case InputDeviceChange.Reconnected:
+                    break;
+                case InputDeviceChange.Enabled:
+                    break;
+                case InputDeviceChange.Disabled:
+                    break;
+                case InputDeviceChange.UsageChanged:
+                    break;
+                case InputDeviceChange.ConfigurationChanged:
+                    break;
+                case InputDeviceChange.SoftReset:
+                    break;
+                case InputDeviceChange.HardReset:
+                    break;
+                case InputDeviceChange.Destroyed:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(change), change, null);
+            }
         }
 
         private void CreateControllersAndCharacters()
         {
+            mCameraManager.Initialize();
             int playerIndex = 0;
             foreach (Gamepad gamepad in Gamepad.all)
             {
