@@ -11,18 +11,20 @@ public class HumanController : MonoBehaviour
     [SerializeField] private float radius = 10.0f;
     [SerializeField] private float radiusSaddle = 10.0f;
     [SerializeField] private GameObject _anchor;
-    [SerializeField] private GameObject _cameraRoot;
+    public GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _text;
     [SerializeField] private TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
+    public int PlayerID { get { return _playerID; } }
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
     public int DashDistance = 1;
     private TeamID _teamID;
+    public TeamID TeamID{ get { return _teamID; } }
     private MontureController _currentMount = null;
 
     [SerializeField] private GameObject _visualParent;
