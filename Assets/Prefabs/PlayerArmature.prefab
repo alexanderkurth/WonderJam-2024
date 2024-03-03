@@ -1383,6 +1383,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 3778878764991381772, guid: 1e2c61a0401b3714c993fa44b6a06e27, type: 3}
+      propertyPath: inputs
+      value: 
+      objectReference: {fileID: 135756642000475821}
+    - target: {fileID: 3778878764991381772, guid: 1e2c61a0401b3714c993fa44b6a06e27, type: 3}
+      propertyPath: humanController
+      value: 
+      objectReference: {fileID: 4726852103038870418}
     - target: {fileID: 6164961430105447707, guid: 1e2c61a0401b3714c993fa44b6a06e27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
