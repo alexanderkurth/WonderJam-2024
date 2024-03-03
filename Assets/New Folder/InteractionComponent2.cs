@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InteractionComponent2 : MonoBehaviour
 {
-     public GameObject bestTarget = null;
+     public BaseIA bestTarget = null;
      public MontureController bestSaddle = null;
 
     private void Update()
@@ -11,7 +11,7 @@ public class InteractionComponent2 : MonoBehaviour
         float distance2 = Mathf.Infinity;
         Vector3 pos = transform.position;
 
-        foreach (GameObject animal in InteractionManager2.Instance.m_Animals)
+        foreach (BaseIA animal in InteractionManager2.Instance.m_Animals)
         {
             if (animal != null)
             {
@@ -21,6 +21,10 @@ public class InteractionComponent2 : MonoBehaviour
                 if(tempDistance < distance)
                 {
                     distance = tempDistance;
+                    if(bestTarget != null)
+                    {
+                        bestTarget.SetOulineVisibility(false);
+                    }
                     bestTarget = animal;
                 }
             }

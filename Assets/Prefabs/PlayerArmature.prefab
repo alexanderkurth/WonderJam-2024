@@ -594,6 +594,7 @@ MonoBehaviour:
   _anchor: {fileID: 8619075794331694626}
   _cameraRoot: {fileID: 8486422364527802273}
   _interactionComponent: {fileID: 5311157219247394790}
+  _playerInput: {fileID: 4416926081852918493}
   MovementSpeed: 4
   RotationSpeed: 20
   inputs: {fileID: 135756642000475821}

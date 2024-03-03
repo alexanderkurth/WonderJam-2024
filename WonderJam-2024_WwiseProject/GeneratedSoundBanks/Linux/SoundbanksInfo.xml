@@ -49,7 +49,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{5C6E2330-4EBA-C778-0C84-EBB81580FFB1}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{21626169-6C07-3E81-C814-4558DBCA83BE}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -63,6 +63,11 @@
 				</File>
 			</Media>
 			<Events>
+				<Event Id="1942692385" Name="Dash" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2282389245" Name="Frog_Croa" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
 					<MediaRefs>
 						<MediaRef Id="624157100"/>
@@ -108,8 +113,13 @@
 						<MediaRef Id="738180484"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="821159915" Name="Slap" DurationType="OneShot" DurationMin="1.8875" DurationMax="1.8875">
+					<MediaRefs>
+						<MediaRef Id="624157100"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{104B6B6C-8481-A6C6-2948-2D9A75E46B0C}</FileHash>
+	<FileHash>{4C99B829-1FC9-EC47-BA33-E3FF2A6AEE61}</FileHash>
 </SoundBanksInfo>

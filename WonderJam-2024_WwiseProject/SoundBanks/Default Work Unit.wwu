@@ -7,11 +7,13 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_Ourge" ID="{AD0CCD25-F838-40F1-B702-88B424FB4B00}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pig_Leg" ID="{74C5AB40-FF69-4189-8E0B-540C82221832}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Slap" ID="{000A5151-FEED-4256-99F5-B2BF0D42E2C7}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Frog_Croa" ID="{EEB5281D-4603-431B-857D-6F2DE8B2270D}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Horse_Brrrr" ID="{2CFBC648-35E7-43B1-A8EF-6881BA0DBD07}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Frog_Leg" ID="{CB197F6C-4EE2-45F2-A50A-FA7BF0A8B93D}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pig_Ron" ID="{B1D40E0B-70C5-46B7-80FE-4A9D58E6B510}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Horse_HUUUUU" ID="{10992AD1-79E3-48A3-93F3-32BB3BBDEDEE}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Dash" ID="{D0BA35A1-A775-49FB-B8BE-3F00612F384B}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Horse_Leg" ID="{76ECD35E-49E9-4A38-82EF-6535107DCDAF}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pig_HUIIIIII" ID="{C9C87A8D-798A-4C3D-8CE5-9BA8718564E7}" WorkUnitID="{F930255B-7D46-4F4C-8FFA-21DFCDC85B2C}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

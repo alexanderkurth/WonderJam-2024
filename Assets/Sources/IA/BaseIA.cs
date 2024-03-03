@@ -9,6 +9,7 @@ public class BaseIA : MonoBehaviour
     [SerializeField] private float _obstacleDistance = 2f;
     [SerializeField] private float _wanderAngleModifier = 8.0f;
     [SerializeField] private Transform _wanderTarget;
+    [SerializeField] private GameObject _outline;
 
     private bool _isIdle = false;
     private bool _isGrab = false;
@@ -22,10 +23,17 @@ public class BaseIA : MonoBehaviour
     private AnimalSpawner _animalSpawner = null;
     private AnimalDataInfo _animalDataInfo = null;
 
+    private Animator _animator = null;
+
     public bool IsGrab => _isGrab;
     public void SetGrab(bool b)
     {
         _isGrab = b;
+    }
+
+    public void SetOulineVisibility(bool b)
+    {
+        _outline.SetActive(b);
     }
 
     public void Initialize(AnimalSpawner animalSpawner)
@@ -37,6 +45,7 @@ public class BaseIA : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponentInChildren<Animator>();
         _animalDataInfo = GameManager.Instance.GetAnimalDatas().GetAnimalInfoByType(_animalType);
         _speed = Random.Range(_animalDataInfo.MinSpeed, _animalDataInfo.MaxSpeed);
         _idleRangeTime = _animalDataInfo.IdleTimeRandomRange;
@@ -75,6 +84,7 @@ public class BaseIA : MonoBehaviour
 
     private void Wander()
     {
+        _animator.SetBool("IsMoving", true);
         _nextAngle += Random.Range(-_wanderAngleModifier, _wanderAngleModifier);
         if (Mathf.Abs(_nextAngle) > 90)
         {
@@ -100,7 +110,7 @@ public class BaseIA : MonoBehaviour
     }
 
     public void OnMerge(MontureController montureController)
-    {   
+    {
         _isGrab = false;
         _isMerge = true;
         _animalSpawner.OnSpawnAnimalRemove();
@@ -125,6 +135,7 @@ public class BaseIA : MonoBehaviour
     private void Idle()
     {
         _isIdle = true;
+        _animator.SetBool("IsMoving", false);
         _idleTime = Random.Range(_idleRangeTime.x, _idleRangeTime.y);
         _timeSinceLastIdle = Time.timeSinceLevelLoad;
         StopAllCoroutines();
@@ -132,14 +143,14 @@ public class BaseIA : MonoBehaviour
 
     void Awake()
     {
-        InteractionManager2.Instance.m_Animals.Add(gameObject);
+        InteractionManager2.Instance.m_Animals.Add(this);
     }
 
     void OnDestroy()
     {
-        if(InteractionManager2.Instance != null)
+        if (InteractionManager2.Instance != null)
         {
-            InteractionManager2.Instance.m_Animals.Remove(gameObject);
+            InteractionManager2.Instance.m_Animals.Remove(this);
         }
     }
 }
