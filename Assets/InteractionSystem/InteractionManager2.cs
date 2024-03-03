@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class InteractionManager2 : Singleton<InteractionManager2>
 {
-    public List<GameObject> m_Animals = new List<GameObject>();
+    public List<BaseIA> m_Animals = new List<BaseIA>();
     public List<MontureController> m_Saddles= new List<MontureController>();
 
-    public void AddAnimal(GameObject animal)
+    public void AddAnimal(BaseIA animal)
     {
         m_Animals.Add(animal);
     }

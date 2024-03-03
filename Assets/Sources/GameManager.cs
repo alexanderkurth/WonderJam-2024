@@ -77,6 +77,8 @@ namespace game
             
         private void Start()
         {
+        if(m_CurrentState == State.Gameplay)
+        {
             CreateControllersAndCharacters();
 
             int index = 0;
@@ -85,6 +87,7 @@ namespace game
                 cp.SetIndex(index);
                 index++;
             }
+        }
         }
 
         private void CreateControllersAndCharacters()
@@ -109,6 +112,7 @@ namespace game
             }
 
             UnityBadSystemOverride();
+            mCameraManager.Initialize();
         }
 
         private void UnityBadSystemOverride()
@@ -140,7 +144,6 @@ namespace game
             mPlayersInputs[selectedKey.Key] = playerInput;
                     
             mCameraManager.PairPlayerToTeam(teamId, playerInput);
-            mCameraManager.Initialize();
             int playerID = Mathf.RoundToInt(selectedKey.Key % (playerPerTeam / 2f) + 1);
             playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
         }
@@ -208,9 +211,17 @@ namespace game
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadedSceneMode)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             if (scene.name == "GameplayScene")
             {
                 CreateControllersAndCharacters();
+                
+            int index = 0;
+            foreach(Checkpoint cp in Checkpoints)
+            {
+                cp.SetIndex(index);
+                index++;
+            }
             }
         }
 

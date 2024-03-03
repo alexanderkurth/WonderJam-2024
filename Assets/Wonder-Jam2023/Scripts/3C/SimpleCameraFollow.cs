@@ -8,6 +8,8 @@ public class SimpleCameraFollow : MonoBehaviour
     public Transform m_Target;
     public Vector3 _offset = default;
 
+    private bool _isActive = true;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,8 @@ public class SimpleCameraFollow : MonoBehaviour
         }
         
         if(m_Target == null){
-            Debug.LogError("Target not set");
+            _isActive = false;
+            return;
         }
 
         Vector3 targetPos = m_Target.position;
@@ -27,8 +30,18 @@ public class SimpleCameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!_isActive)
+        {
+            return;
+        }
+
         Vector3 targetPos = m_Target.position;
         targetPos += _offset;
         m_CameraParent.transform.position = targetPos;
+    }
+
+    public void SetCameraActive(bool isActive)
+    {
+        _isActive = isActive;
     }
 }
