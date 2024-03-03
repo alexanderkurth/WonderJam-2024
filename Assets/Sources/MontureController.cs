@@ -11,6 +11,8 @@ public class MontureController : MonoBehaviour
     BodyScript m_BodyScript;
     private AnimalDatas m_AnimalDatas;
 
+    public TeamID TeamID;
+
 #if UNITY_EDITOR
     [ContextMenu("TestBodyPart")]
     void TestAttachBodyPart()
