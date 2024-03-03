@@ -51,7 +51,7 @@ public class BodyPartSlot : MonoBehaviour
             if (m_InstantiatedPart.TryGetComponent(out headController)) // Head can be null if the body part is not a head
             {
                 m_InstantiatedPart.transform.localPosition = - headController.GetPivotLocation();
-                headController.SetBody(body);
+                headController.SetBody(body.GetComponent<Rigidbody2D>());
             }
         }
     }

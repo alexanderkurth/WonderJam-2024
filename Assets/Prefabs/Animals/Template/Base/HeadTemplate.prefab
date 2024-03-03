@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8808257302468469536}
   - component: {fileID: 61577263886666056}
   - component: {fileID: 8120939360183059906}
-  - component: {fileID: 5789818226217521148}
+  - component: {fileID: 2636491149010745458}
   m_Layer: 11
   m_Name: HeadTemplate
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RigidbodyToAttach: {fileID: 0}
-  m_HeadHinge: {fileID: 5789818226217521148}
+  m_HeadJoint: {fileID: 2636491149010745458}
 --- !u!61 &61577263886666056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -207,8 +207,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!233 &5789818226217521148
-HingeJoint2D:
+--- !u!231 &2636491149010745458
+SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -221,17 +221,13 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: -0.5}
-  m_ConnectedAnchor: {x: 0, y: -0.5}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 1
-  m_AngleLimits:
-    m_LowerAngle: -60
-    m_UpperAngle: 60
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: -0.69}
+  m_ConnectedAnchor: {x: 0, y: 1.68}
+  m_AutoConfigureDistance: 1
+  m_Distance: 0.13
+  m_DampingRatio: 0.5
+  m_Frequency: 100
 --- !u!1 &7788081079087397936
 GameObject:
   m_ObjectHideFlags: 0

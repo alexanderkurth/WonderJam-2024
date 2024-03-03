@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 61577263886666056, guid: dfdcc2180740f7942a0e0a548f7b892a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 1529815919031782854, guid: dfdcc2180740f7942a0e0a548f7b892a, type: 3}
       propertyPath: m_Name
       value: Head_Horse

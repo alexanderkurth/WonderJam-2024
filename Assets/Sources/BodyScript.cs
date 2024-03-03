@@ -15,6 +15,8 @@ public class BodyScript : MonoBehaviour
     private short m_ActiveMotorMask = 0;
     private short m_RegisteredLegsCount = 0;
 
+    [SerializeField] bool m_EnableStopOnNoMotor = true;
+
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
@@ -36,7 +38,7 @@ public class BodyScript : MonoBehaviour
     public void LowerMask(short mask)
     {
         m_ActiveMotorMask &= (short)~mask;
-        if (m_ActiveMotorMask == 0)
+        if (m_EnableStopOnNoMotor && m_ActiveMotorMask == 0)
         {
             m_Rigidbody.velocity = Vector2.zero;
         }
