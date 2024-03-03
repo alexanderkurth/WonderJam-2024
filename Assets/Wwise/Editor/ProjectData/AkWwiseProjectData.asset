@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2527c7b704760c478d5f017f298822f0
     GuidInternal: 
-    m_lastTime: -8584921266426167684
+    m_lastTime: -8584921095059123370
     List:
     - name: Main
       guid: d91d0e8bce9c1a4f812d636e05b2219d
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
     GuidInternal: 
-    m_lastTime: -8584921214875793954
+    m_lastTime: -8584921092997623134
     List:
     - name: Animals
       guid: b63c0926ff0fda4faa48f854db012cec
@@ -359,8 +359,42 @@ MonoBehaviour:
         guid: ecbb290536100b43b636748590785819
       Path: Events\Default Work Unit\Menu\Play_Button
       maxAttenuation: 0
-      maxDuration: 1.8875
-      minDuration: 1.8875
+      maxDuration: 12.281066
+      minDuration: 3.7964625
+    - name: Play_InGameMusic
+      guid: 29bb0bf67237664f892c917c6cbea47f
+      id: 3799629626
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
+      - ElementName: Play_InGameMusic
+        ObjectType: 3
+        guid: 29bb0bf67237664f892c917c6cbea47f
+      Path: Events\Default Work Unit\Play_InGameMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_MainMenuMusic
+      guid: 2cbf047da6b2dc4193c3dfce1abaf586
+      id: 667425441
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
+      - ElementName: Play_MainMenuMusic
+        ObjectType: 3
+        guid: 2cbf047da6b2dc4193c3dfce1abaf586
+      Path: Events\Default Work Unit\Play_MainMenuMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Ourge
       guid: 25cd0cad38f8f140b70288b424fb4b00
       id: 245474584
@@ -396,8 +430,8 @@ MonoBehaviour:
         guid: 8c91edf00ce3e14b9ca8bad1398315da
       Path: Events\Default Work Unit\Menu\Quit_Button
       maxAttenuation: 0
-      maxDuration: 1.8875
-      minDuration: 1.8875
+      maxDuration: 6.4203176
+      minDuration: 4.086712
     - name: Slap
       guid: 51510a00edfe564299f5b2bf0d42e2c7
       id: 821159915
@@ -472,8 +506,8 @@ MonoBehaviour:
     m_lastTime: -8584922638785928186
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 06000000070000001100000012000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 

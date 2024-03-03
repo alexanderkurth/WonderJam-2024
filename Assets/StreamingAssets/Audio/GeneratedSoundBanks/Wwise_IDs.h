@@ -24,6 +24,8 @@ namespace AK
         static const AkUniqueID PIG_LEG = 1663394018U;
         static const AkUniqueID PIG_RON = 2298677883U;
         static const AkUniqueID PLAY_BUTTON = 2099555730U;
+        static const AkUniqueID PLAY_INGAMEMUSIC = 3799629626U;
+        static const AkUniqueID PLAY_MAINMENUMUSIC = 667425441U;
         static const AkUniqueID PLAY_OURGE = 245474584U;
         static const AkUniqueID QUIT_BUTTON = 3287051291U;
         static const AkUniqueID SLAP = 821159915U;
