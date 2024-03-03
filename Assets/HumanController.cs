@@ -111,8 +111,8 @@ public class HumanController : MonoBehaviour
         {
             if (ia.IsGrab)
             {
-                ia.transform.localScale = Vector3.one;
                 ia.transform.parent = null;
+                ia.transform.localScale = Vector3.one;
                 ia.SetGrab(false);
                 ia = null;
                 return;
