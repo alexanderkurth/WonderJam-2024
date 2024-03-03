@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using game;
 using StarterAssets;
 using UnityEditor;
 using UnityEngine;
+using DG.Tweening;
 
 public class HumanController : MonoBehaviour
 {
@@ -24,9 +26,9 @@ public class HumanController : MonoBehaviour
     public StarterAssetsInputs inputs;
     [SerializeField] private GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
-
-    public Action TryInteract;
-
+    private TeamID _teamID;
+    public InteractionState m_State = InteractionState.Invalid;
+    public int DashDistance = 1;
     private void Start()
     {
         _cameraRoot.transform.SetParent(null);
@@ -34,7 +36,14 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
-    public InteractionState m_Sate = InteractionState.Invalid;
+    public void Initialize(TeamID teamID)
+    {
+        _teamID = teamID;
+    }
+
+    public bool isDashing = false;
+    public bool isPushed = false;
+
 
     // Update is called once per frame
     void Update()
@@ -54,6 +63,29 @@ public class HumanController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
             }
         }
+    }
+
+    public void Dash(int dashDistance)
+    {
+        if (isDashing == false)
+        {
+            isDashing = true;
+            transform.DOMove(transform.position + transform.up * dashDistance, 0.2f)
+                .OnComplete(() => isDashing = false);
+        }
+    }
+
+    public void GetPushed(int pushDistance, Vector3 direction)
+    {
+        if (isPushed)
+        {
+            return;
+        }
+        isPushed = true;
+
+        transform.DOMove(transform.position + direction * pushDistance, 1.0f)
+        .SetEase(Ease.OutExpo)
+        .OnComplete(() => isPushed = false);
     }
 
     public void OnInteraction()
@@ -92,7 +124,8 @@ public class HumanController : MonoBehaviour
 
     public void OnAttack()
     {
-        throw new System.NotImplementedException();
+        //Debug.Log("Player Attacked !");
+        Dash(DashDistance);
     }
 
     public void OnHorseRidingInteraction()

@@ -27,18 +27,18 @@ namespace StarterAssets
 		{
 			MoveInput(value.Get<Vector2>());
 		}
-		
+
 		public void OnInteraction(InputValue value)
 		{
             Debug.Log("\t\tpublic void OnInteraction(InputValue value)\r\n");
 			_humanController.OnInteraction();
 		}
-		
+
 		public void OnAttack(InputValue value)
 		{
 			_humanController.OnAttack();
 		}
-		
+
 		public void OnHorseRidingInteraction(InputValue value)
 		{
 			_humanController.OnHorseRidingInteraction();
@@ -49,7 +49,7 @@ namespace StarterAssets
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -76,5 +76,5 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }

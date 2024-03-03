@@ -1,13 +1,17 @@
+using game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 
 public class MontureController : MonoBehaviour
 { 
     public List<BodyPartSlot> slots;
     private int NbSlotsEquipped = 0;
 
+    BodyScript m_BodyScript;
+    private AnimalDatas m_AnimalDatas;
+
+    public TeamID TeamID;
     void Start()
     {
         InteractionManager2.Instance.AddSaddle(this);
@@ -29,24 +33,42 @@ public class MontureController : MonoBehaviour
     {
         AttachBodyPart(AnimalType.Horse);
     }
-    #endif
+#endif
+
+    private void Start()
+    {
+        Debug.Assert(slots.Count > 0, "No slots found in MontureController");
+        m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
+        Debug.Assert(m_AnimalDatas != null, "No AnimalDatas - no GameManager");
+    }
 
     public void AttachBodyPart(AnimalType type)
     {
+        // If all slots are equipped, change a random one
         if(NbSlotsEquipped == slots.Count)
         {
             int partToChangeIndex = Random.Range(0, slots.Count);
-            slots[partToChangeIndex].SetBodyPart(type);
+            slots[partToChangeIndex].SetBodyPart(m_AnimalDatas, type);
         }
-        
-        foreach(BodyPartSlot slot in slots)
+        else
         {
-            if(!slot.IsSet())
+            // Fill body part slots
+            foreach (BodyPartSlot slot in slots)
             {
-                slot.SetBodyPart(type);
-                NbSlotsEquipped++;
-                break; 
+                if (!slot.HasBodyPart())
+                {
+                    slot.SetBodyPart(m_AnimalDatas, type);
+                    NbSlotsEquipped++;
+                }
             }
+        }
+
+        m_BodyScript = GetComponentInChildren<BodyScript>();
+        Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
+
+        foreach (BodyPartSlot slot in slots)
+        {
+            slot.AttachToBody(m_BodyScript);
         }
     }
 }

@@ -29,17 +29,17 @@ namespace game
 
     public class GameManager : Singleton<GameManager>
     {
-        private const int PLAYER_PER_TEAM = 2;
         //This enum matches the scene index in the build settings. 
         //Modifying the build setting will reqiure to update this enum
         public enum State : UInt32
         {
             MainMenu = 0,
             Gameplay = 1,
-            InGameMenu = 2,
+            GameOver = 2,
+            InGameMenu = 3,
 
-            Count = 3,
-            Invalid = 4,
+            Count = 4,
+            Invalid = 5,
         };
 
         [SerializeField] private State m_CurrentState = State.Invalid;
@@ -66,13 +66,27 @@ namespace game
         private AK.Wwise.Event QuitButtonEvent = null;
 
         private Dictionary<int, PlayerInput> mPlayersInputs = new Dictionary<int, PlayerInput>();
+
+        [SerializeField] private bool _isTwoPlayerMod = false;
+        public bool IsTwoPlayerMod { get { return _isTwoPlayerMod; } }
+        public List<Checkpoint> Checkpoints;
+
+        private int Team1NbCheckpointsValidated = 0;
+        private int Team2NbCheckpointsValidated = 0;
             
         private void Start()
         {
             CreateControllersAndCharacters();
+
+            int index = 0;
+            foreach(Checkpoint cp in Checkpoints)
+            {
+                cp.SetIndex(index);
+                index++;
+            }
         }
 
-        public void CreateControllersAndCharacters()
+        private void CreateControllersAndCharacters()
         {
             int playerIndex = 0;
             foreach (Gamepad gamepad in Gamepad.all)
@@ -85,8 +99,11 @@ namespace game
 
             foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
             {
-                int teamId = Mathf.CeilToInt((float)keyValuePair.Key / PLAYER_PER_TEAM);
+                int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
+                int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
+
                 mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
+                keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId);
             }
 
             UnityBadSystemOverride();
@@ -114,13 +131,33 @@ namespace game
             Gamepad gamepad = Gamepad.all[selectedKey.Key - 1];
             PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, selectedKey.Key, "Gamepad",selectedKey.Key, gamepad);
 
-            int teamId = Mathf.CeilToInt((float)selectedKey.Key / PLAYER_PER_TEAM);
+            int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
+            int teamId = Mathf.FloorToInt((float)selectedKey.Key / playerPerTeam);
             mCameraManager.UnpairPlayerToTeam(teamId, selectedKey.Value);
             Destroy(mPlayersInputs[selectedKey.Key].gameObject);
             mPlayersInputs[selectedKey.Key] = playerInput;
                     
             mCameraManager.PairPlayerToTeam(teamId, playerInput);
             mCameraManager.Initialize();
+            playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId);
+        }
+
+        public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
+        {
+            if(cpIndex == Checkpoints.Count - 1)
+            {
+                //TEAm WON
+                ChangeState(State.GameOver);
+            }
+        }
+
+        public bool IsCheckpointValidated(int index, TeamID teamID)
+        {
+            if(index < Checkpoints.Count)
+            {
+                return Checkpoints[index].IsValidatedByTeam(teamID);
+            }
+            return false;
         }
 
         public void ChangeState(State state)
@@ -141,6 +178,13 @@ namespace game
                 {
                     m_CurrentState = State.Gameplay;
                     SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                    break;
+                }
+
+                case State.GameOver:
+                {
+                     m_CurrentState = State.GameOver;
+                     Debug.Log("Change to GameOver");
                     break;
                 }
 
@@ -169,6 +213,11 @@ namespace game
 
         public void Update()
         {
+            if(m_CurrentState == State.Gameplay)
+            {
+                
+            }
+
             if(m_LoadingOperation != null)
             {
                 float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
@@ -178,6 +227,11 @@ namespace game
                     m_LoadingOperation = null;
                 }
             }
+        }
+
+        public void ChangeToRunPhase()
+        {
+
         }
 
         public void ChangeToGameplay()
