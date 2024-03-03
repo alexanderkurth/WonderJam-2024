@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: ede3db2b1d1bfa4c9b16ca2546f4a9ae
     GuidInternal: 
-    m_lastTime: -8584922126007936493
+    m_lastTime: -8584922884552768626
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: fa5ad539cc032245a601285c512b51f6
     GuidInternal: 
-    m_lastTime: -8584922126007976590
+    m_lastTime: -8584922884552818469
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2527c7b704760c478d5f017f298822f0
     GuidInternal: 
-    m_lastTime: -8584921266426167684
+    m_lastTime: -8584921278032980408
     List:
     - name: Main
       guid: d91d0e8bce9c1a4f812d636e05b2219d
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
     GuidInternal: 
-    m_lastTime: -8584921266426937178
+    m_lastTime: -8584921218830432926
     List:
     - name: Animals
       guid: b63c0926ff0fda4faa48f854db012cec
@@ -142,8 +142,8 @@ MonoBehaviour:
         guid: a135bad075a7fb49b8be3f00612f384b
       Path: Events\Default Work Unit\Dash
       maxAttenuation: 0
-      maxDuration: 1.8875
-      minDuration: 1.8875
+      maxDuration: 0.33146876
+      minDuration: 0.33146876
     - name: Frog_Croa
       guid: 1d28b5ee03461b43857d6f2de8b2270d
       id: 2282389245
@@ -413,8 +413,8 @@ MonoBehaviour:
         guid: 51510a00edfe564299f5b2bf0d42e2c7
       Path: Events\Default Work Unit\Slap
       maxAttenuation: 0
-      maxDuration: 1.8875
-      minDuration: 1.8875
+      maxDuration: 0.51153123
+      minDuration: 0.51153123
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -427,7 +427,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 15541c92f9b7d44ba8f701d2cfde1c92
     GuidInternal: 
-    m_lastTime: -8584922126008016585
+    m_lastTime: -8584922884552838426
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -441,7 +441,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: c57f23d874b0b647bb54aad2fbd797cc
     GuidInternal: 
-    m_lastTime: -8584922126007941549
+    m_lastTime: -8584922884552788446
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -455,7 +455,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: d1eabbc6ef72d04fb78d644a70353be3
     GuidInternal: 
-    m_lastTime: -8584922126007941549
+    m_lastTime: -8584922884552768626
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -469,7 +469,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: e972c229506ec649b7e680a217c24c34
     GuidInternal: 
-    m_lastTime: -8584922126007936493
+    m_lastTime: -8584922884552768626
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 

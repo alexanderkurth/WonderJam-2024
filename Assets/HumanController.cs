@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Data.Common;
+using Unity.VisualScripting;
 using TMPro;
 
 public class HumanController : MonoBehaviour
@@ -11,18 +13,20 @@ public class HumanController : MonoBehaviour
     [SerializeField] private float radius = 10.0f;
     [SerializeField] private float radiusSaddle = 10.0f;
     [SerializeField] private GameObject _anchor;
-    [SerializeField] private GameObject _cameraRoot;
+    public GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _text;
     [SerializeField] private TextMeshProUGUI _saddleText;
 
     private int _playerID = 0;
+    public int PlayerID { get { return _playerID; } }
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
     public int DashDistance = 1;
     private TeamID _teamID;
+    public TeamID TeamID{ get { return _teamID; } }
     private MontureController _currentMount = null;
 
     [SerializeField] private GameObject _visualParent;
@@ -111,13 +115,18 @@ public class HumanController : MonoBehaviour
             }
         }
 
-        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        BaseIA ia = _interactionComponent.bestTarget?.GetComponent<BaseIA>();
+
+        if (ia == null ||_text == null)
+        {
+            return;
+        }
         MontureController mc = _interactionComponent.bestSaddle;
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
         float distance = Vector3.Distance(ia.transform.position, transform.position);
 
         bool isDistanceValid = distance < radius;
-        if(isDistanceValid)
+        if (isDistanceValid)
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
             _text.gameObject.transform.position = pos;
@@ -126,7 +135,7 @@ public class HumanController : MonoBehaviour
         ia.SetOulineVisibility(!ia.IsGrab && isDistanceValid);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
-        if (isDistanceSaddlevalid) 
+        if (isDistanceSaddlevalid)
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(mc.transform.position);
             _saddleText.gameObject.transform.position = pos;
@@ -171,6 +180,12 @@ public class HumanController : MonoBehaviour
 
         SlapSoundEvent.Post(gameObject);
 
+        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        if (ia != null && ia.IsGrab)
+        {
+            DropItem(ia);
+        }
+
         transform.DOMove(transform.position + direction * pushDistance, 1.0f)
         .SetEase(Ease.OutExpo)
         .OnComplete(() => isPushed = false);
@@ -212,10 +227,7 @@ public class HumanController : MonoBehaviour
         {
             if (ia.IsGrab)
             {
-                ia.transform.parent = null;
-                ia.transform.localScale = Vector3.one;
-                ia.SetGrab(false);
-                ia = null;
+                DropItem(ia);
                 return;
             }
             else
@@ -232,6 +244,14 @@ public class HumanController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void DropItem(BaseIA ia)
+    {
+        ia.transform.parent = null;
+        ia.transform.localScale = Vector3.one;
+        ia.SetGrab(false);
+        ia = null;
     }
 
     private void ToggleMount(MontureController mc)

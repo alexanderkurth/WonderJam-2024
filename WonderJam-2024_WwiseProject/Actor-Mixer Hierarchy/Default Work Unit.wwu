@@ -47,6 +47,74 @@
 						<ActiveSource Name="TEMPORARY SOUND" ID="{7D15D07C-F9F4-4811-81B9-3BA29B4FD0D5}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Dash" ID="{DF2B5CDF-8131-42AC-B2A8-7D2F3661710F}" ShortID="1032186546">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{149847D9-9B83-48D9-9EDE-1FBB1198EBF5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{39D55AFA-03CC-4522-A601-285C512B51F6}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dash" ID="{9E81A150-635F-4600-85D3-ACC045EA2B44}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dash.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="493567984"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<Reference>
+								<Local>
+									<EffectSlot Name="" ID="{7855AA60-8B22-4F6F-9A28-10999BD59A2B}" ShortID="419301023">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Time Stretch (Custom)" ID="{5BD51C41-B724-4A4B-948B-5B261B13D6D8}" ShortID="901929720" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3">
+														<PropertyList>
+															<Property Name="TimeStretch" Type="Real32" Value="70"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+					<ActiveSourceList>
+						<ActiveSource Name="Dash" ID="{9E81A150-635F-4600-85D3-ACC045EA2B44}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SLAP" ID="{A74DD23D-86CF-4BBA-9743-179277AB04DB}" ShortID="559686349">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{149847D9-9B83-48D9-9EDE-1FBB1198EBF5}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{39D55AFA-03CC-4522-A601-285C512B51F6}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SLAP" ID="{01574912-B0CD-43AF-B8A8-9EB3B0EE8988}">
+							<Language>SFX</Language>
+							<AudioFile>SLAP.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="58390904"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SLAP" ID="{01574912-B0CD-43AF-B8A8-9EB3B0EE8988}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
