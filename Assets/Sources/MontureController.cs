@@ -4,32 +4,82 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MontureController : MonoBehaviour
-{ 
-    public List<BodyPartSlot> slots;
+{
+    [SerializeField] BodyPartSlot headSlot;
+    [SerializeField] BodyPartSlot bodySlot;
+    [SerializeField] BodyPartSlot FrontLeftLegSlot;
+    [SerializeField] BodyPartSlot FrontRightLegSlot;
+    [SerializeField] BodyPartSlot BackLeftLegSlot;
+    [SerializeField] BodyPartSlot BackRightLegSlot;
+
+    // List to reference all slots
+    private List<BodyPartSlot> slots = new List<BodyPartSlot>();
+
     private int NbSlotsEquipped = 0;
 
     BodyScript m_BodyScript;
     private AnimalDatas m_AnimalDatas;
 
     public TeamID TeamID;
+    public AnimalType animalType;
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [ContextMenu("TestBodyPart")]
     void TestAttachBodyPart()
     {
-        AttachBodyPart(AnimalType.Horse);
+        AttachBodyPart(animalType);
     }
 #endif
 
     private void Start()
     {
-        InteractionManager2.Instance.AddSaddle(this);
+        InteractionManager2.Instance?.AddSaddle(this);
 
         NbSlotsEquipped = 0;
-        Debug.Assert(slots.Count > 0, "No slots found in MontureController");
+
         m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
-        Debug.Assert(m_AnimalDatas != null, "No AnimalDatas - no GameManager");
+
+        // Fill slots list
+        slots.Add(headSlot);
+        slots.Add(bodySlot);
+        slots.Add(FrontLeftLegSlot);
+        slots.Add(FrontRightLegSlot);
+        slots.Add(BackLeftLegSlot);
+        slots.Add(BackRightLegSlot);
     }
+
+    void OrganiseSlots(BodyScript body)
+    {
+        // Get the collider of the body as AABB
+        var bodyCollider = body.GetComponent<BoxCollider2D>();
+        body.transform.localPosition = Vector3.zero;
+        bodySlot.transform.position = bodyCollider.bounds.center;
+
+        Vector3 bodyCenter = bodyCollider.bounds.center;
+        bodyCenter.z = 0;
+        Vector3 bodySize = bodyCollider.bounds.size;
+        bodySize.z = 0;
+
+        // Padding dans le corps
+        Vector3 yOffSet = Vector3.up * 0.15f;
+        Vector3 xOffSet = Vector3.right * 0.1f;
+
+        // Get top left, top right, bottom left and bottom right of the body
+        Vector3 topLeft = bodyCenter + new Vector3(-bodySize.x / 2, bodySize.y / 2, 0) - yOffSet + xOffSet;
+        Vector3 topRight = bodyCenter + new Vector3(bodySize.x / 2, bodySize.y / 2, 0) - yOffSet - xOffSet;
+        Vector3 bottomLeft = bodyCenter + new Vector3(-bodySize.x / 2, -bodySize.y / 2, 0) + yOffSet + xOffSet;
+        Vector3 bottomRight = bodyCenter + new Vector3(bodySize.x / 2, -bodySize.y / 2, 0) + yOffSet - xOffSet;
+
+        // Set the position of the slots
+        // You need to keep the z to keep the draw order of the slots
+        FrontLeftLegSlot.transform.position = topLeft + new Vector3(0, 0, FrontLeftLegSlot.transform.position.z);
+        FrontRightLegSlot.transform.position = topRight + new Vector3(0, 0, FrontRightLegSlot.transform.position.z);
+        BackLeftLegSlot.transform.position = bottomLeft + new Vector3(0, 0, BackLeftLegSlot.transform.position.z);
+        BackRightLegSlot.transform.position = bottomRight + new Vector3(0, 0, BackRightLegSlot.transform.position.z);
+
+        headSlot.transform.position = bodyCenter + new Vector3(0, bodySize.y / 2, 0) + new Vector3(0, 0, headSlot.transform.position.z);
+    }
+
     private void OnDestroy()
     {
         if (InteractionManager2.Instance != null)
@@ -60,13 +110,19 @@ public class MontureController : MonoBehaviour
             }
         }
 
-        //m_BodyScript = GetComponentInChildren<BodyScript>();
-        //Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
+        if (bodySlot.HasBodyPart() && bodySlot.GetBodyPart().TryGetComponent(out BodyScript m_BodyScript))
+        {
+            Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
+            OrganiseSlots(m_BodyScript); // Set up distance between slots
 
-        //foreach (BodyPartSlot slot in slots)
-        //{
-        //    slot.AttachToBody(m_BodyScript);
-        //}
+            foreach (BodyPartSlot slot in slots)
+            {
+                if (slot.HasBodyPart())
+                {
+                    slot.AttachToBody(m_BodyScript);
+                }
+            }
+        }
     }
     
     public void TriggerLegMovement(bool isTeamFirstPlayer, bool isHold, bool is4PlayerBehavior)
@@ -98,7 +154,7 @@ public class MontureController : MonoBehaviour
                     {
                         continue;
                     }
-                        
+
                     if (isHold)
                     {
                         bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
