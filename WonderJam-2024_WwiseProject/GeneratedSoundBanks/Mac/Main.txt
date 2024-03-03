@@ -11,7 +11,12 @@ Event	ID	Name			Wwise Object Path	Notes
 	3143914661	Horse_Leg			\Default Work Unit\Animals\Horse_Leg	
 	3579122959	Horse_Brrrr			\Default Work Unit\Animals\Horse_Brrrr	
 
+Effect plug-ins	ID	Name	Type				Notes
+	901929720	Time Stretch (Custom)	Wwise Time Stretch			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	58390904	SLAP	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\SLAP_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\SLAP		32834
+	493567984	Dash	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\Dash_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dash		21310
 	624157100	TEMPORARY SOUND	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\TEMPORARY SOUND_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMPORARY SOUND		181296
 	738180484	Ourge	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\Ourge_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ourge		68864
 

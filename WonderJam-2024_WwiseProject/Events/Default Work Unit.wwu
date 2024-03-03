@@ -148,7 +148,7 @@
 						<Action Name="" ID="{1BF7D267-7341-46C2-8FA4-CC4901F5F591}" ShortID="288865553">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+									<ObjectRef Name="Dash" ID="{DF2B5CDF-8131-42AC-B2A8-7D2F3661710F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -159,7 +159,7 @@
 						<Action Name="" ID="{5DBB36D8-C484-4FD9-8B11-A3A99CC3F31B}" ShortID="220844785">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TEMPORARY SOUND" ID="{F591610D-05B8-4E37-8A1E-B1F887019B2F}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
+									<ObjectRef Name="SLAP" ID="{A74DD23D-86CF-4BBA-9743-179277AB04DB}" WorkUnitID="{047A9694-9F0A-4091-BDE7-15FBC1CB9126}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
