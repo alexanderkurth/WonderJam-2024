@@ -77,6 +77,8 @@ namespace game
             
         private void Start()
         {
+        if(m_CurrentState == State.Gameplay)
+        {
             CreateControllersAndCharacters();
 
             int index = 0;
@@ -85,6 +87,7 @@ namespace game
                 cp.SetIndex(index);
                 index++;
             }
+        }
         }
 
         private void CreateControllersAndCharacters()
@@ -211,6 +214,13 @@ namespace game
             if (scene.name == "GameplayScene")
             {
                 CreateControllersAndCharacters();
+                
+            int index = 0;
+            foreach(Checkpoint cp in Checkpoints)
+            {
+                cp.SetIndex(index);
+                index++;
+            }
             }
         }
 

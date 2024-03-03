@@ -219,6 +219,8 @@ public class HumanController : MonoBehaviour
 
     private void ToggleMount(MontureController mc)
     {
+    if(mc.TeamID == _teamID)
+    {    
         if (_currentMount == null)
         {
             _currentMount = mc;
@@ -235,6 +237,7 @@ public class HumanController : MonoBehaviour
         }
         
         _visualParent.SetActive(_currentMount == null);
+    }
     }
 
     public void OnAttack()
