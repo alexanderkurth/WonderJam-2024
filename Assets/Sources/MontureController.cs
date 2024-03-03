@@ -21,7 +21,7 @@ public class MontureController : MonoBehaviour
     }
 #endif
 
-    private void Awake()
+    private void Start()
     {
         Debug.Assert(slots.Count > 0, "No slots found in MontureController");
         m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
