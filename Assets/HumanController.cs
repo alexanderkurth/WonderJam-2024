@@ -122,12 +122,12 @@ public class HumanController : MonoBehaviour
         Dash(DashDistance);
     }
 
-    public void TriggerHorseRidingInteraction(InputValue value)
+    public void TriggerHorseRidingInteraction(InputValue value, bool is4PlayerBehavior = true)
     {
         if (_currentMount != null)
         {
             bool isFirstPlayer = _playerID == 1;
-            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed);
+            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed, is4PlayerBehavior);
         }
     }
 }

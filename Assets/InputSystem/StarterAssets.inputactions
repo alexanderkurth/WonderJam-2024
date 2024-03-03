@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HorseRidingSingleDriver",
+                    "type": "Button",
+                    "id": "efba7d83-5692-4111-bf14-33bfa40b148c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -178,10 +187,21 @@
                 {
                     "name": "",
                     "id": "f12ee699-4336-4fb7-892e-3ba4c8a5f450",
-                    "path": "",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
+                    "action": "HorseRidingInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c309756-e66b-48e6-8c97-44ebb8299868",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
                     "action": "HorseRidingInteraction",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -205,6 +225,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da5bd88f-eb46-48f8-9765-977adfcbc86e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "HorseRidingSingleDriver",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6c5be93-ba98-4e40-88a7-1ee7a8409f6e",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HorseRidingSingleDriver",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
