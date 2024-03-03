@@ -9,23 +9,15 @@ using DG.Tweening;
 
 public class HumanController : MonoBehaviour
 {
-    public enum InteractionState : Int32
-    {
-        Idle = 0,
-        Grab = 1,
-
-        Count = 2,
-        Invalid = 3
-    }
-
+    [SerializeField] private float radius = 10.0f;
+    [SerializeField] private float radiusSaddle = 10.0f;
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
     [SerializeField] private GameObject _cameraRoot;
+    [SerializeField] private InteractionComponent2 _interactionComponent;
     private TeamID _teamID;
-    public InteractionState m_State = InteractionState.Invalid;
     public int DashDistance = 1;
-    
     private void Start()
     {
         _cameraRoot.transform.SetParent(null);
@@ -87,7 +79,34 @@ public class HumanController : MonoBehaviour
 
     public void OnInteraction()
     {
-        Debug.Log("Player Interacted !");
+        if(_interactionComponent.bestTarget == null)
+        {
+            return;
+        }
+
+        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+
+        MontureController mc = _interactionComponent.bestSaddle;
+        float distanceSaddle = Vector3.Distance(mc.transform.position, transform.position);
+
+        if (distanceSaddle <= radiusSaddle)
+        {
+            ia.OnMerge(mc);
+            ia = null;
+            return;
+        }
+
+        float distance = Vector3.Distance(ia.transform.position, transform.position);
+        if (distance <= radius)
+        {
+            if (ia != null && !ia.IsGrab)
+            {
+                ia.OnGrab();
+                ia.transform.parent = transform;
+                ia.transform.localScale *= 0.75f;
+                return;
+            }
+        }
     }
 
     public void OnAttack()

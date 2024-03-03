@@ -13,7 +13,7 @@ public class MontureController : MonoBehaviour
 
     public TeamID TeamID;
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     [ContextMenu("TestBodyPart")]
     void TestAttachBodyPart()
     {
@@ -23,9 +23,19 @@ public class MontureController : MonoBehaviour
 
     private void Start()
     {
+        InteractionManager2.Instance.AddSaddle(this);
+
+        NbSlotsEquipped = 0;
         Debug.Assert(slots.Count > 0, "No slots found in MontureController");
         m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
         Debug.Assert(m_AnimalDatas != null, "No AnimalDatas - no GameManager");
+    }
+    private void OnDestroy()
+    {
+        if (InteractionManager2.Instance != null)
+        {
+            InteractionManager2.Instance.m_Saddles.Remove(this);
+        }
     }
 
     public void AttachBodyPart(AnimalType type)
@@ -45,16 +55,17 @@ public class MontureController : MonoBehaviour
                 {
                     slot.SetBodyPart(m_AnimalDatas, type);
                     NbSlotsEquipped++;
+                    break;
                 }
             }
         }
 
-        m_BodyScript = GetComponentInChildren<BodyScript>();
-        Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
+        //m_BodyScript = GetComponentInChildren<BodyScript>();
+        //Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
 
-        foreach (BodyPartSlot slot in slots)
-        {
-            slot.AttachToBody(m_BodyScript);
-        }
+        //foreach (BodyPartSlot slot in slots)
+        //{
+        //    slot.AttachToBody(m_BodyScript);
+        //}
     }
 }

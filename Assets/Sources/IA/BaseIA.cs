@@ -1,7 +1,6 @@
 using game;
 using System.Collections;
 using UnityEngine;
-using static HumanController;
 using Random = UnityEngine.Random;
 
 public class BaseIA : MonoBehaviour
@@ -23,7 +22,7 @@ public class BaseIA : MonoBehaviour
     private AnimalSpawner _animalSpawner = null;
     private AnimalDataInfo _animalDataInfo = null;
 
-    private HumanController m_HumanController;
+    public bool IsGrab => _isGrab;
 
     public void Initialize(AnimalSpawner animalSpawner)
     {
@@ -93,45 +92,19 @@ public class BaseIA : MonoBehaviour
 
     public void OnGrab()
     {
-        InteractionComponent inte = GetComponent<InteractionComponent>();
-        GameObject target = inte.m_Map[inte.m_TargetTag];
-
-        if (target.tag == "Player")
-        {
-            m_HumanController = target.GetComponent<HumanController>();
-            if (m_HumanController.m_State == InteractionState.Grab)
-            {
-                return;
-            }
-            else
-            {
-                m_HumanController.m_State = InteractionState.Grab;
-            }
-        }
-
         _isGrab = true;
-        transform.parent = target.transform;
-        transform.localScale *= 0.75f;
     }
 
-    public void OnMerge()
+    public void OnMerge(MontureController montureController)
     {
         _isGrab = false;
         _isMerge = true;
         _animalSpawner.OnSpawnAnimalRemove();
 
-        InteractionComponent[] components = GetComponents<InteractionComponent>();
-
-        foreach (InteractionComponent component in components)
+        if (montureController)
         {
-            MontureController montureController = component.m_Map[component.m_TargetTag].GetComponent<MontureController>();
-            if (montureController)
-            {
-                montureController.AttachBodyPart(_animalDataInfo.AnimalType);
-                component.m_Map.Remove(component.m_TargetTag);
-                m_HumanController.m_State = InteractionState.Idle;
-                Destroy(gameObject);
-            }
+            montureController.AttachBodyPart(_animalDataInfo.AnimalType);
+            DestroyImmediate(gameObject);
         }
     }
 
@@ -151,5 +124,18 @@ public class BaseIA : MonoBehaviour
         _idleTime = Random.Range(_idleRangeTime.x, _idleRangeTime.y);
         _timeSinceLastIdle = Time.timeSinceLevelLoad;
         StopAllCoroutines();
+    }
+
+    void Awake()
+    {
+        InteractionManager2.Instance.m_Animals.Add(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        if(InteractionManager2.Instance != null)
+        {
+            InteractionManager2.Instance.m_Animals.Remove(gameObject);
+        }
     }
 }
