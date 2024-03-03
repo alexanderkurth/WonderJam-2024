@@ -99,13 +99,13 @@ public class BaseIA : MonoBehaviour
         if (target.tag == "Player")
         {
             m_HumanController = target.GetComponent<HumanController>();
-            if (m_HumanController.m_Sate == InteractionState.Grab)
+            if (m_HumanController.m_State == InteractionState.Grab)
             {
                 return;
             }
             else
             {
-                m_HumanController.m_Sate = InteractionState.Grab;
+                m_HumanController.m_State = InteractionState.Grab;
             }
         }
 
@@ -129,7 +129,7 @@ public class BaseIA : MonoBehaviour
             {
                 montureController.AttachBodyPart(_animalDataInfo.AnimalType);
                 component.m_Map.Remove(component.m_TargetTag);
-                m_HumanController.m_Sate = InteractionState.Idle;
+                m_HumanController.m_State = InteractionState.Idle;
                 Destroy(gameObject);
             }
         }

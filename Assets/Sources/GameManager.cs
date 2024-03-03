@@ -29,7 +29,6 @@ namespace game
 
     public class GameManager : Singleton<GameManager>
     {
-        private const int PLAYER_PER_TEAM = 2;
         //This enum matches the scene index in the build settings. 
         //Modifying the build setting will reqiure to update this enum
         public enum State : UInt32
@@ -66,13 +65,16 @@ namespace game
         private AK.Wwise.Event QuitButtonEvent = null;
 
         private Dictionary<int, PlayerInput> mPlayersInputs = new Dictionary<int, PlayerInput>();
+
+        [SerializeField] private bool _isTwoPlayerMod = false;
+        public bool IsTwoPlayerMod { get { return _isTwoPlayerMod; } }
             
         private void Start()
         {
             CreateControllersAndCharacters();
         }
 
-        public void CreateControllersAndCharacters()
+        private void CreateControllersAndCharacters()
         {
             int playerIndex = 0;
             foreach (Gamepad gamepad in Gamepad.all)
@@ -85,8 +87,11 @@ namespace game
 
             foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
             {
-                int teamId = Mathf.CeilToInt((float)keyValuePair.Key / PLAYER_PER_TEAM);
+                int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
+                int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
+
                 mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
+                keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId);
             }
 
             UnityBadSystemOverride();
@@ -114,13 +119,15 @@ namespace game
             Gamepad gamepad = Gamepad.all[selectedKey.Key - 1];
             PlayerInput playerInput = PlayerInput.Instantiate(mPlayerPrefab, selectedKey.Key, "Gamepad",selectedKey.Key, gamepad);
 
-            int teamId = Mathf.CeilToInt((float)selectedKey.Key / PLAYER_PER_TEAM);
+            int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
+            int teamId = Mathf.FloorToInt((float)selectedKey.Key / playerPerTeam);
             mCameraManager.UnpairPlayerToTeam(teamId, selectedKey.Value);
             Destroy(mPlayersInputs[selectedKey.Key].gameObject);
             mPlayersInputs[selectedKey.Key] = playerInput;
                     
             mCameraManager.PairPlayerToTeam(teamId, playerInput);
             mCameraManager.Initialize();
+            playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId);
         }
 
         public void ChangeState(State state)

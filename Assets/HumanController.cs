@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using game;
 using StarterAssets;
 using UnityEditor;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class HumanController : MonoBehaviour
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
     [SerializeField] private GameObject _cameraRoot;
+    private TeamID _teamID;
+    public InteractionState m_State = InteractionState.Invalid;
     
     private void Start()
     {
@@ -28,7 +31,10 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
-    public InteractionState m_Sate = InteractionState.Invalid;
+    public void Initialize(TeamID teamID)
+    {
+        _teamID = teamID;
+    }
 
     // Update is called once per frame
     void Update()
