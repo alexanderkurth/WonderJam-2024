@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2607556080" Type="User" Language="English(US)" Hash="{3B05E58F-CAFB-175B-6ED2-FED52E567696}">
+		<SoundBank Id="2607556080" Type="User" Language="English(US)" Hash="{92275FBC-E44F-9282-1D87-8CC842AB7E67}">
 			<ShortName>Menu</ShortName>
 			<Path>English(US)/Menu.bnk</Path>
 			<Media>
@@ -87,6 +87,7 @@
 						<MediaRef Id="1011393351"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="667425441" Name="Play_MainMenuMusic" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="3287051291" Name="Quit_Button" DurationType="OneShot" DurationMin="4.086712" DurationMax="6.4203176">
 					<MediaRefs>
 						<MediaRef Id="72377241"/>
@@ -97,7 +98,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{44097E22-C70D-2F17-088C-0866BA28785B}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{5BFAAD4A-5802-ECA3-A18D-18EF74CB64BB}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -174,6 +175,7 @@
 						<MediaRef Id="624157100"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3799629626" Name="Play_InGameMusic" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="245474584" Name="Play_Ourge" DurationType="OneShot" DurationMin="0.7163333" DurationMax="0.7163333">
 					<MediaRefs>
 						<MediaRef Id="738180484"/>
@@ -187,5 +189,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{5CC27ABF-4B10-1D7B-0F41-67D561447290}</FileHash>
+	<FileHash>{A4928869-2C37-B9B0-6A62-7F6C1C0511DE}</FileHash>
 </SoundBanksInfo>

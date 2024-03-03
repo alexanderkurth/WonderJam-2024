@@ -48,4 +48,12 @@ public class AnimalSpawner : MonoBehaviour
     {
         _animalSpawned--; 
     }
+
+    #if UNITY_EDITOR
+    [ContextMenu("Randomize")]
+    void Randomize()
+    {
+        _timeBetweenSpawn = Random.Range(10, 20);
+    }
+    #endif
 }

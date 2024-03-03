@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	45201699	Generic_Button			\Default Work Unit\Menu\Generic_Button	
+	667425441	Play_MainMenuMusic			\Default Work Unit\Play_MainMenuMusic	
 	2099555730	Play_Button			\Default Work Unit\Menu\Play_Button	
 	3287051291	Quit_Button			\Default Work Unit\Menu\Quit_Button	
 
@@ -10,6 +11,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	478256974	Starter_01	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\Voices\English(US)\Starter_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_01		1254604
 	499568951	Starter_06	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\Voices\English(US)\Starter_06_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_06		2166476
 	582458207	Exit_01	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\Voices\English(US)\Exit_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ExitRandomContainer\Exit_01		720992
+	584684328	main_menu_loop	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\main_menu_loop_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\main_menu_loop\main_menu_loop		4838496
 	624157100	TEMPORARY SOUND	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\SFX\TEMPORARY SOUND_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMPORARY SOUND		181296
 	634188148	Starter_05	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\Voices\English(US)\Starter_05_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_05		1390688
 	774652217	Starter_02	D:\WonderJam-2024\WonderJam-2024_WwiseProject\.cache\Mac\Voices\English(US)\Starter_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartRandomContainer\Starter_02		669792

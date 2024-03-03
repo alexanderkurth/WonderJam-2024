@@ -28,15 +28,17 @@ public class PlayerCamera : MonoBehaviour
     
     public void Initialize(HumanController owner)
     {
-        if (owner != null)
-        {
-            _simpleCameraFollow.m_Target = owner.transform;
-            owner.GetComponent<PlayerInput>().camera = _camera;
-        }
-        
         Target = owner;
-        Target._text = _text;
-        Target._saddleText = _saddleText;
+        
+        if (Target != null)
+        {
+            _simpleCameraFollow.m_Target = Target.transform;
+            Target.GetComponent<PlayerInput>().camera = _camera;
+            
+            Target._text = _text;
+            Target._saddleText = _saddleText;
+        }
+
         SetUIActive(Target == null);
     }
 

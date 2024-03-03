@@ -139,9 +139,9 @@ namespace game
             foreach (KeyValuePair<int, PlayerInput> keyValuePair in mPlayersInputs)
             {
                 int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
-                int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
+                int teamId = Mathf.RoundToInt((float)keyValuePair.Key / playerPerTeam);
 
-                int playerID = Mathf.RoundToInt(keyValuePair.Key % (playerPerTeam / 2f) + 1);
+                int playerID = Mathf.RoundToInt((keyValuePair.Key - 1) % (playerPerTeam / 2f));
                 keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
                 mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
             }
@@ -178,9 +178,10 @@ namespace game
             Destroy(mPlayersInputs[selectedKey.Key].gameObject);
             mPlayersInputs[selectedKey.Key] = playerInput;
 
-            mCameraManager.PairPlayerToTeam(teamId, playerInput);
-            int playerID = Mathf.RoundToInt(selectedKey.Key % (playerPerTeam / 2f) + 1);
+            int playerID = Mathf.RoundToInt((selectedKey.Key - 1) % (playerPerTeam / 2f));
             playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
+            
+            mCameraManager.PairPlayerToTeam(teamId, playerInput);
         }
 
         public void ChangeState(State state)
@@ -327,6 +328,6 @@ namespace game
                 ChangeState(State.Gameplay);
             }
         }
-    }
 #endif // DEBUG
+    }
 }

@@ -54,6 +54,11 @@ MonoBehaviour:
   m_MotorHinge: {fileID: 2129542861542437998}
   m_AnchorKey: 275
   IsLeftLeg: 0
+  FootStepEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  m_FootstepPrefab: {fileID: 8642138615351189478, guid: 7b7c393500c2b494881a0ab11e14a2bd, type: 3}
   m_StepUpSpeed: 280
   m_StepDownSpeed: 220
   m_ImpulseForce: 1750

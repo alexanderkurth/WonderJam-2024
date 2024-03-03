@@ -37,6 +37,15 @@ public class MontureController : MonoBehaviour
     {
         AttachBodyPart(animalType);
     }
+
+    [ContextMenu("FillAll")]
+    void FillAll()
+    {
+        while (NbSlotsEquipped < slots.Count)
+        {
+            AttachBodyPart(animalType);
+        }
+    }
 #endif
 
     public Vector3 GetSaddlePosition()
