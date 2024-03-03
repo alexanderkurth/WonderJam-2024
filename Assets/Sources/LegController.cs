@@ -18,6 +18,15 @@ public class LegController : MonoBehaviour
 
     [SerializeField]
     private bool IsLeftLeg = false;
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AK.Wwise.Event FootStepEvent = null;
+
+    [SerializeField] GameObject m_FootstepPrefab;
+    Queue<GameObject> m_Footsteps = new Queue<GameObject>(20);
+    int m_MaxFootsteps = 20;
+    int m_FootstepsCount = 0;
     public bool IsLeft => IsLeftLeg;
 
     [SerializeField] private float m_StepUpSpeed = 400;
@@ -96,9 +105,38 @@ public class LegController : MonoBehaviour
         StartLegTravel(stepUp: true);
     }
 
+    void SpawnFootStep()
+    {
+        float fwdOffset = 0.01f;
+        Vector3 positionForSpawn = new Vector3(m_GroundAnchorHinge.anchor.x, m_GroundAnchorHinge.anchor.y, 0);
+        positionForSpawn = transform.TransformPoint(positionForSpawn);
+        positionForSpawn.z = fwdOffset;
+
+        // Get rotation from transform.left
+        Quaternion quaternion = Quaternion.LookRotation(transform.forward, IsLeft ? transform.up : -transform.up);
+
+        GameObject step = Instantiate(m_FootstepPrefab,positionForSpawn, quaternion);
+        m_Footsteps.Enqueue(step);
+
+        // Call wwise event
+        FootStepEvent?.Post(step);
+
+        if (m_FootstepsCount < m_MaxFootsteps)
+        {
+            m_FootstepsCount++;
+        }
+        else
+        {
+            GameObject toDestroy = m_Footsteps.Dequeue();
+            Destroy(toDestroy);
+        }
+    }
+
     void AnchorLeg()
     {
         m_GroundAnchorHinge.enabled = true;
+        // Spawn footstep
+        SpawnFootStep();
     }
     void ReleaseLeg()
     {
