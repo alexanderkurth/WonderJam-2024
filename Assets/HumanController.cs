@@ -126,6 +126,7 @@ public class HumanController : MonoBehaviour
                     ia.transform.parent = _anchor.transform;
                     ia.transform.localPosition = Vector3.zero;
                     ia.transform.localScale = _anchor.transform.localScale;
+                    ia.transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,-90f));
                     return;
                 }
             }
