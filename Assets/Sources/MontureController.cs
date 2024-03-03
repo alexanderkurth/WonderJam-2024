@@ -11,6 +11,8 @@ public class MontureController : MonoBehaviour
     BodyScript m_BodyScript;
     private AnimalDatas m_AnimalDatas;
 
+    public TeamID TeamID;
+
 #if UNITY_EDITOR
     [ContextMenu("TestBodyPart")]
     void TestAttachBodyPart()
@@ -19,7 +21,7 @@ public class MontureController : MonoBehaviour
     }
 #endif
 
-    private void Awake()
+    private void Start()
     {
         Debug.Assert(slots.Count > 0, "No slots found in MontureController");
         m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
