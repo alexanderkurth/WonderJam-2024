@@ -25,7 +25,7 @@
                 },
                 {
                     "name": "HorseRidingInteraction",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "11efd40c-4cb4-49a8-b2ab-965bd84f8bf7",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -43,12 +43,12 @@
                 },
                 {
                     "name": "HorseRidingSingleDriver",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "efba7d83-5692-4111-bf14-33bfa40b148c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
