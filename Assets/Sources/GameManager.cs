@@ -138,7 +138,7 @@ namespace game
 
         public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
         {
-            if(cpIndex == Checkpoints.Count)
+            if(cpIndex == Checkpoints.Count - 1)
             {
                 //TEAm WON
                 ChangeState(State.GameOver);
@@ -178,7 +178,7 @@ namespace game
                 case State.GameOver:
                 {
                      m_CurrentState = State.GameOver;
-                     Debug.Log("Change to run state");
+                     Debug.Log("Change to GameOver");
                     break;
                 }
 
