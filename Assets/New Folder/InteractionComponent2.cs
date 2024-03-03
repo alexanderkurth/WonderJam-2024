@@ -30,7 +30,7 @@ public class InteractionComponent2 : MonoBehaviour
         {
             if (saddle != null)
             {
-                Vector3 posSaddle = saddle.transform.position;
+                Vector3 posSaddle = saddle.GetSaddlePosition();
                 float tempDistance = Vector3.Distance(posSaddle, pos);
 
                 if (tempDistance < distance2)

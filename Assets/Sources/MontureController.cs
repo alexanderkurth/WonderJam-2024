@@ -12,6 +12,8 @@ public class MontureController : MonoBehaviour
     [SerializeField] BodyPartSlot BackLeftLegSlot;
     [SerializeField] BodyPartSlot BackRightLegSlot;
 
+    [SerializeField] FixedJoint2D m_Saddle;
+
     // List to reference all slots
     private List<BodyPartSlot> slots = new List<BodyPartSlot>();
 
@@ -30,6 +32,15 @@ public class MontureController : MonoBehaviour
         AttachBodyPart(animalType);
     }
 #endif
+
+    public Vector3 GetSaddlePosition()
+    {
+        return m_Saddle.transform.position;
+    }
+    public Transform GetSaddleTransform()
+    {
+        return m_Saddle.transform;
+    }
 
     private void Start()
     {
@@ -112,6 +123,7 @@ public class MontureController : MonoBehaviour
 
         if (bodySlot.HasBodyPart() && bodySlot.GetBodyPart().TryGetComponent(out BodyScript m_BodyScript))
         {
+            m_Saddle.connectedBody = m_BodyScript.GetComponent<Rigidbody2D>();
             Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
             OrganiseSlots(m_BodyScript); // Set up distance between slots
 

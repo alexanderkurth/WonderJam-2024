@@ -146,7 +146,7 @@ public class HumanController : MonoBehaviour
         BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
 
         MontureController mc = _interactionComponent.bestSaddle;
-        float distanceSaddle = Vector3.Distance(mc.transform.position, transform.position);
+        float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
 
         if (distanceSaddle <= radiusSaddle)
         {
@@ -200,14 +200,14 @@ public class HumanController : MonoBehaviour
         if (_currentMount == null)
         {
             _currentMount = mc;
-            transform.parent = _currentMount.transform;
+            transform.parent = mc.GetSaddleTransform();
             transform.localPosition = Vector3.zero;            
         }
         else
         {
             _currentMount = null;
             transform.parent = null;
-            Vector3 tempPos = mc.transform.position;
+            Vector3 tempPos = mc.GetSaddlePosition();
             tempPos.x += _playerID == 1 ? -2 : 2;
             transform.position = tempPos;
         }
