@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Data.Common;
+using Unity.VisualScripting;
 
 public class HumanController : MonoBehaviour
 {
@@ -115,7 +117,7 @@ public class HumanController : MonoBehaviour
         float distance = Vector3.Distance(ia.transform.position, transform.position);
 
         bool isDistanceValid = distance < radius;
-        if(isDistanceValid)
+        if (isDistanceValid)
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
             _text.gameObject.transform.position = pos;
@@ -124,7 +126,7 @@ public class HumanController : MonoBehaviour
         ia.SetOulineVisibility(isDistanceValid);
 
         bool isDistanceSaddlevalid = distanceSaddle < radiusSaddle;
-        if (isDistanceSaddlevalid) 
+        if (isDistanceSaddlevalid)
         {
             Vector3 pos = _playerInput.camera.WorldToScreenPoint(ia.transform.position);
             _text.gameObject.transform.position = pos;
@@ -161,6 +163,12 @@ public class HumanController : MonoBehaviour
         isPushed = true;
 
         SlapSoundEvent.Post(gameObject);
+
+        BaseIA ia = _interactionComponent.bestTarget.GetComponent<BaseIA>();
+        if (ia != null && ia.IsGrab)
+        {
+            DropItem(ia);
+        }
 
         transform.DOMove(transform.position + direction * pushDistance, 1.0f)
         .SetEase(Ease.OutExpo)
@@ -203,10 +211,7 @@ public class HumanController : MonoBehaviour
         {
             if (ia.IsGrab)
             {
-                ia.transform.parent = null;
-                ia.transform.localScale = Vector3.one;
-                ia.SetGrab(false);
-                ia = null;
+                DropItem(ia);
                 return;
             }
             else
@@ -223,6 +228,14 @@ public class HumanController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void DropItem(BaseIA ia)
+    {
+        ia.transform.parent = null;
+        ia.transform.localScale = Vector3.one;
+        ia.SetGrab(false);
+        ia = null;
     }
 
     private void ToggleMount(MontureController mc)
