@@ -69,7 +69,7 @@ public class MontureController : MonoBehaviour
         //}
     }
     
-    public void TriggerLegMovement(bool isTeamFirstPlayer, bool isHold)
+    public void TriggerLegMovement(bool isTeamFirstPlayer, bool isHold, bool is4PlayerBehavior)
     { 
         foreach (BodyPartSlot bodyPartSlot in slots)
         {
@@ -82,11 +82,11 @@ public class MontureController : MonoBehaviour
                     {
                         if (isHold)
                         {
-                            bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: true);
+                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
                         }
                         else
                         {
-                            bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: false);
+                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: false);
                         }
                     }
                 }
@@ -94,18 +94,18 @@ public class MontureController : MonoBehaviour
                 case BodyPartType.FrontRightLeg:
                 case BodyPartType.BackRightLeg:
                 {
-                    if (isTeamFirstPlayer && !GameManager.Instance.IsTwoPlayerMod)
+                    if (isTeamFirstPlayer && (!GameManager.Instance.IsTwoPlayerMod || !is4PlayerBehavior))
                     {
                         continue;
                     }
                         
                     if (isHold)
                     {
-                        bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: true);
+                        bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
                     }
                     else
                     {
-                        bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: false);
+                        bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: false);
                     }
                 }
                     break;
