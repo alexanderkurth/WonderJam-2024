@@ -15,6 +15,8 @@ public class Checkpoint : MonoBehaviour
 
     public float SquareValidatonDistance = 5.0f;
 
+    private GameModeManager gameMode = null;
+
     public bool IsValidatedByTeam(TeamID id)
     {
         switch (id)
@@ -34,6 +36,11 @@ public class Checkpoint : MonoBehaviour
 
     void Update()
     {
+        if(gameMode == null)
+        {
+            return;
+        }
+
         foreach(MontureController controller in Montures)
         {
             if(IsValidatedByTeam(controller.TeamID))
@@ -52,13 +59,14 @@ public class Checkpoint : MonoBehaviour
 
     private void CheckMonture(MontureController monture)
     {
+        Debug.Log("Check checkpoints " + _CheckpointIndex);
         if(monture != null)
         {
             if(_CheckpointIndex == 0) //First checkpoint
             {
                 SetValidated(monture.TeamID);
             }
-            else if(GameManager.Instance.IsCheckpointValidated(_CheckpointIndex - 1, monture.TeamID)) //replace by teamID
+            else if(gameMode.IsCheckpointValidated(_CheckpointIndex - 1, monture.TeamID)) //replace by teamID
             {
                 SetValidated(monture.TeamID);
             }
@@ -67,7 +75,7 @@ public class Checkpoint : MonoBehaviour
                 return;
             }
 
-            GameManager.Instance.NotifyNewCheckpointValidatedByTeam(monture.TeamID, _CheckpointIndex);
+            gameMode.NotifyNewCheckpointValidatedByTeam(monture.TeamID, _CheckpointIndex);
         }
     }
 
@@ -88,9 +96,11 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    public void SetIndex(int index)
+    public void SetIndex(int index, GameModeManager mode)
     {
+        Debug.Log("SetIndex : " + index);
         _CheckpointIndex = index;
+        gameMode = mode;
     }
 
     void OnDrawGizmosSelected()
