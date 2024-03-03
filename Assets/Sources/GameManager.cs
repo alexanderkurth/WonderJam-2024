@@ -151,9 +151,9 @@ namespace game
                 int playerPerTeam = IsTwoPlayerMod ? 2 : 4;
                 int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
 
-                mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
                 int playerID = Mathf.RoundToInt(keyValuePair.Key % (playerPerTeam / 2f) + 1);
                 keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
+                mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
             }
 
             UnityBadSystemOverride();
