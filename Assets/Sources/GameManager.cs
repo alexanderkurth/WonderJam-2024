@@ -74,6 +74,10 @@ namespace game
 
         private int Team1NbCheckpointsValidated = 0;
         private int Team2NbCheckpointsValidated = 0;
+
+        public ScreenUIController ScreenUIController = null;
+
+        private TeamID winnersID = TeamID.Invalid;
             
         private void Start()
         {
@@ -152,7 +156,11 @@ namespace game
         {
             if(cpIndex == Checkpoints.Count - 1)
             {
-                //TEAm WON
+                if(ScreenUIController != null)
+                {
+                    ScreenUIController.OnGameOver(teamID);
+                }
+                
                 ChangeState(State.GameOver);
             }
         }
@@ -191,8 +199,7 @@ namespace game
 
                 case State.GameOver:
                 {
-                     m_CurrentState = State.GameOver;
-                     Debug.Log("Change to GameOver");
+                     m_CurrentState = State.GameOver;                     
                     break;
                 }
 
