@@ -595,6 +595,8 @@ MonoBehaviour:
   _cameraRoot: {fileID: 8486422364527802273}
   _interactionComponent: {fileID: 5311157219247394790}
   _playerInput: {fileID: 4416926081852918493}
+  _text: {fileID: 0}
+  _saddleText: {fileID: 0}
   MovementSpeed: 4
   RotationSpeed: 20
   inputs: {fileID: 135756642000475821}
@@ -616,6 +618,14 @@ MonoBehaviour:
   Team2Color: {r: 0, g: 0, b: 1, a: 1}
   isDashing: 0
   isPushed: 0
+  SlapSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  DashSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!58 &618115413724295515
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1167,6 +1177,10 @@ PrefabInstance:
     - target: {fileID: 4815702297893543689, guid: 2bab98c28c5a66a4d91bcbe6caabe3a0, type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866272338611759672, guid: 2bab98c28c5a66a4d91bcbe6caabe3a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252253745943229306, guid: 2bab98c28c5a66a4d91bcbe6caabe3a0, type: 3}
       propertyPath: m_LocalPosition.x
