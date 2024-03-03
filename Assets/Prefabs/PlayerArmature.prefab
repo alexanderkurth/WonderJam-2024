@@ -595,6 +595,7 @@ MonoBehaviour:
   _cameraRoot: {fileID: 8486422364527802273}
   _interactionComponent: {fileID: 5311157219247394790}
   _playerInput: {fileID: 4416926081852918493}
+  _text: {fileID: 0}
   MovementSpeed: 4
   RotationSpeed: 20
   inputs: {fileID: 135756642000475821}
@@ -616,6 +617,14 @@ MonoBehaviour:
   Team2Color: {r: 0, g: 0, b: 1, a: 1}
   isDashing: 0
   isPushed: 0
+  SlapSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a0be19b6f6251394ab42d496cbb4f932, type: 2}
+  DashSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b692eb46c927114439eb974103f3f137, type: 2}
 --- !u!58 &618115413724295515
 CircleCollider2D:
   m_ObjectHideFlags: 0

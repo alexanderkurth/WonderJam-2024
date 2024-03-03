@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2527c7b704760c478d5f017f298822f0
     GuidInternal: 
-    m_lastTime: -8584921993756235297
+    m_lastTime: -8584921278032980408
     List:
     - name: Main
       guid: d91d0e8bce9c1a4f812d636e05b2219d
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
     GuidInternal: 
-    m_lastTime: -8584921993756373359
+    m_lastTime: -8584921247514642051
     List:
     - name: Animals
       guid: b63c0926ff0fda4faa48f854db012cec
@@ -127,6 +127,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Dash
+      guid: a135bad075a7fb49b8be3f00612f384b
+      id: 1942692385
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
+      - ElementName: Dash
+        ObjectType: 3
+        guid: a135bad075a7fb49b8be3f00612f384b
+      Path: Events\Default Work Unit\Dash
+      maxAttenuation: 0
+      maxDuration: 0.33146876
+      minDuration: 0.33146876
     - name: Frog_Croa
       guid: 1d28b5ee03461b43857d6f2de8b2270d
       id: 2282389245
@@ -381,6 +398,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.8875
       minDuration: 1.8875
+    - name: Slap
+      guid: 51510a00edfe564299f5b2bf0d42e2c7
+      id: 821159915
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5b2530f9467d4c4f8ffa21dfcdc85b2c
+      - ElementName: Slap
+        ObjectType: 3
+        guid: 51510a00edfe564299f5b2bf0d42e2c7
+      Path: Events\Default Work Unit\Slap
+      maxAttenuation: 0
+      maxDuration: 0.51153123
+      minDuration: 0.51153123
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -438,7 +472,7 @@ MonoBehaviour:
     m_lastTime: -8584922126007936493
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 06000000070000000f00000010000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
