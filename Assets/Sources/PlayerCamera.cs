@@ -52,7 +52,7 @@ public class PlayerCamera : MonoBehaviour
         float height = GameManager.Instance.IsTwoPlayerMod ? 1f : 0.5f;
         
         Rect cameraRect = default;
-        if (PlayerID == 1)
+        if (PlayerID == 0)
         {
             _camera.enabled = true;
             _simpleCameraFollow.SetCameraActive(true);
