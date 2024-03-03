@@ -188,6 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e841838bad427c49ad4c2845d7233ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraParent: {fileID: 0}
+  m_CameraParent: {fileID: 5072131090634977135}
   m_Target: {fileID: 0}
   _offset: {x: 0, y: 0, z: -8}

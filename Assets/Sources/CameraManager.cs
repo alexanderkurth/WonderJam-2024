@@ -19,7 +19,7 @@ public class CameraManager : Singleton<CameraManager>
             {
                 PlayerCamera newCamera = Instantiate(_playerCameraPrefab);
                 int teamId = Mathf.FloorToInt(i / playerPerTeam);
-                int playerID = (i + 1) % playerPerTeam;
+                int playerID = i % playerPerTeam;
                 newCamera.SetTeamID((TeamID)teamId, playerID);
                 newCamera.SetUIActive(true);
 
