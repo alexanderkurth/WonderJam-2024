@@ -6,11 +6,14 @@ using StarterAssets;
 using UnityEditor;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class HumanController : MonoBehaviour
 {
     [SerializeField] private float radius = 10.0f;
     [SerializeField] private float radiusSaddle = 10.0f;
+
+    private int _playerID = 0;
     public float MovementSpeed = 5.0f;
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
@@ -18,6 +21,9 @@ public class HumanController : MonoBehaviour
     [SerializeField] private InteractionComponent2 _interactionComponent;
     private TeamID _teamID;
     public int DashDistance = 1;
+    
+    private MontureController _currentMount = null;
+    
     private void Start()
     {
         _cameraRoot.transform.SetParent(null);
@@ -25,9 +31,10 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
-    public void Initialize(TeamID teamID)
+    public void Initialize(TeamID teamID, int playerID)
     {
         _teamID = teamID;
+        _playerID = playerID;
     }
 
     public bool isDashing = false;
@@ -115,8 +122,12 @@ public class HumanController : MonoBehaviour
         Dash(DashDistance);
     }
 
-    public void OnHorseRidingInteraction()
+    public void TriggerHorseRidingInteraction(InputValue value)
     {
-        throw new System.NotImplementedException();
+        if (_currentMount != null)
+        {
+            bool isFirstPlayer = _playerID == 1;
+            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed);
+        }
     }
 }

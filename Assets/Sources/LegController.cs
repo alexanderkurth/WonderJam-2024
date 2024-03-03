@@ -126,7 +126,7 @@ public class LegController : MonoBehaviour
         StopMotor();
     }
 
-    void StartLegTravel(bool stepUp)
+    public void StartLegTravel(bool stepUp)
     {
         Debug.Assert(IsInitialized, "Leg " + gameObject.name + " is not initialized");
 
