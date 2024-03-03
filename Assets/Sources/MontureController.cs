@@ -1,53 +1,58 @@
+using game;
 using System.Collections;
 using System.Collections.Generic;
-using game;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 
 public class MontureController : MonoBehaviour
 { 
     public List<BodyPartSlot> slots;
     private int NbSlotsEquipped = 0;
 
-    public TeamID TeamID = TeamID.Team1;
+    BodyScript m_BodyScript;
+    private AnimalDatas m_AnimalDatas;
 
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        NbSlotsEquipped = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [ContextMenu("TestBodyPart")]
     void TestAttachBodyPart()
     {
         AttachBodyPart(AnimalType.Horse);
     }
-    #endif
+#endif
+
+    private void Awake()
+    {
+        Debug.Assert(slots.Count > 0, "No slots found in MontureController");
+        m_AnimalDatas = GameManager.Instance?.GetAnimalDatas();
+        Debug.Assert(m_AnimalDatas != null, "No AnimalDatas - no GameManager");
+    }
 
     public void AttachBodyPart(AnimalType type)
     {
+        // If all slots are equipped, change a random one
         if(NbSlotsEquipped == slots.Count)
         {
             int partToChangeIndex = Random.Range(0, slots.Count);
-            slots[partToChangeIndex].SetBodyPart(type);
+            slots[partToChangeIndex].SetBodyPart(m_AnimalDatas, type);
         }
-        
-        foreach(BodyPartSlot slot in slots)
+        else
         {
-            if(!slot.IsSet())
+            // Fill body part slots
+            foreach (BodyPartSlot slot in slots)
             {
-                slot.SetBodyPart(type);
-                NbSlotsEquipped++;
-                break; 
+                if (!slot.HasBodyPart())
+                {
+                    slot.SetBodyPart(m_AnimalDatas, type);
+                    NbSlotsEquipped++;
+                }
             }
+        }
+
+        m_BodyScript = GetComponentInChildren<BodyScript>();
+        Debug.Assert(m_BodyScript != null, "No BodyScript found in children of MontureController");
+
+        foreach (BodyPartSlot slot in slots)
+        {
+            slot.AttachToBody(m_BodyScript);
         }
     }
 }

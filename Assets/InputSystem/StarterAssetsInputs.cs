@@ -20,28 +20,27 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		[SerializeField] private HumanController _humanController = null;
+
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
 
-		public void OnLook(InputValue value)
+		public void OnInteraction(InputValue value)
 		{
-			if(cursorInputForLook)
-			{
-				LookInput(value.Get<Vector2>());
-			}
+			_humanController.OnInteraction();
 		}
 
-		public void OnJump(InputValue value)
+		public void OnAttack(InputValue value)
 		{
-			JumpInput(value.isPressed);
+			_humanController.OnAttack();
 		}
 
-		public void OnSprint(InputValue value)
+		public void OnHorseRidingInteraction(InputValue value)
 		{
-			SprintInput(value.isPressed);
+			_humanController.OnHorseRidingInteraction();
 		}
 #endif
 
@@ -49,7 +48,7 @@ namespace StarterAssets
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -76,5 +75,5 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }

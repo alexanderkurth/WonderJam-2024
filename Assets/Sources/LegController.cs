@@ -18,6 +18,7 @@ public class LegController : MonoBehaviour
 
     [SerializeField]
     private bool IsLeftLeg = false;
+    public bool IsLeft => IsLeftLeg;
 
     [SerializeField] private float m_StepUpSpeed = 400;
     [SerializeField] private float m_StepDownSpeed = 400;
@@ -28,10 +29,16 @@ public class LegController : MonoBehaviour
     private JointMotor2D m_StepUpMotor;
     private JointMotor2D m_StepDownMotor;
     private BodyScript m_BodyRef;
-    private short m_IdentificationMask;
+    private short m_IdentificationMask = -1;
 
-    private void Awake()
+    public bool IsInitialized => m_IdentificationMask != -1;
+
+    public void SetBody(BodyScript body)
     {
+        m_BodyRef = body;
+        m_IdentificationMask = m_BodyRef.ObtainMask();
+        m_RigidbodyToAttach = body.GetComponent<Rigidbody2D>();
+
         Debug.Assert(m_AnchorKey != KeyCode.None, "Please set a key for the Leg " + gameObject.name);
         Debug.Assert(m_RigidbodyToAttach != null, "Please attach a rigidBody to the Leg " + gameObject.name);
         m_MotorHinge.connectedBody = m_RigidbodyToAttach;
@@ -92,6 +99,12 @@ public class LegController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IsInitialized == false)
+        {
+            // Not initialized
+            return;
+        }
+
         if (Input.GetKeyDown(m_AnchorKey))
         {
             StartLegTravel(stepUp: true);
@@ -102,8 +115,21 @@ public class LegController : MonoBehaviour
         }
     }
 
+    public void OnDisable()
+    {
+        if (IsInitialized == false)
+        {
+            // Not initialized
+            return;
+        }
+        StopAllCoroutines();
+        StopMotor();
+    }
+
     void StartLegTravel(bool stepUp)
     {
+        Debug.Assert(IsInitialized, "Leg " + gameObject.name + " is not initialized");
+
         // Interrupt all coroutines
         StopAllCoroutines();
         // Stop the motor and leg
@@ -111,6 +137,11 @@ public class LegController : MonoBehaviour
         StopMotor();
 
         StartCoroutine(stepUp ? LegTravelUp() : LegTravelDown());
+    }
+
+    public Vector2 GetPivotLocation()
+    {
+        return m_MotorHinge.anchor;
     }
 
     IEnumerator LegTravelUp()
