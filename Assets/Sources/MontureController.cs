@@ -68,4 +68,48 @@ public class MontureController : MonoBehaviour
         //    slot.AttachToBody(m_BodyScript);
         //}
     }
+    
+    public void TriggerLegMovement(bool isTeamFirstPlayer, bool isHold)
+    { 
+        foreach (BodyPartSlot bodyPartSlot in slots)
+        {
+            switch (bodyPartSlot.BodyPartType)
+            {
+                case BodyPartType.FrontLeftLeg:
+                case BodyPartType.BackLeftLeg:
+                {
+                    if (isTeamFirstPlayer)
+                    {
+                        if (isHold)
+                        {
+                            bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: true);
+                        }
+                        else
+                        {
+                            bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: false);
+                        }
+                    }
+                }
+                    break;
+                case BodyPartType.FrontRightLeg:
+                case BodyPartType.BackRightLeg:
+                {
+                    if (isTeamFirstPlayer && !GameManager.Instance.IsTwoPlayerMod)
+                    {
+                        continue;
+                    }
+                        
+                    if (isHold)
+                    {
+                        bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: true);
+                    }
+                    else
+                    {
+                        bodyPartSlot.m_InstantiatedPart.StartLegTravel(stepUp: false);
+                    }
+                }
+                    break;
+            }
+        }
+    }
 }

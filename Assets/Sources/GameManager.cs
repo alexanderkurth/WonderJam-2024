@@ -103,7 +103,8 @@ namespace game
                 int teamId = Mathf.FloorToInt((float)keyValuePair.Key / playerPerTeam);
 
                 mCameraManager.PairPlayerToTeam(teamId, keyValuePair.Value);
-                keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId);
+                int playerID = Mathf.RoundToInt(keyValuePair.Key % (playerPerTeam / 2f) + 1);
+                keyValuePair.Value.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
             }
 
             UnityBadSystemOverride();
@@ -139,7 +140,8 @@ namespace game
                     
             mCameraManager.PairPlayerToTeam(teamId, playerInput);
             mCameraManager.Initialize();
-            playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId);
+            int playerID = Mathf.RoundToInt(selectedKey.Key % (playerPerTeam / 2f) + 1);
+            playerInput.GetComponent<HumanController>().Initialize((TeamID)teamId, playerID);
         }
 
         public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
