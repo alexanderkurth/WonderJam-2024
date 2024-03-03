@@ -36,10 +36,11 @@ namespace game
         {
             MainMenu = 0,
             Gameplay = 1,
-            InGameMenu = 2,
+            GameOver = 2,
+            InGameMenu = 3,
 
-            Count = 3,
-            Invalid = 4,
+            Count = 4,
+            Invalid = 5,
         };
 
         [SerializeField] private State m_CurrentState = State.Invalid;
@@ -66,10 +67,22 @@ namespace game
         private AK.Wwise.Event QuitButtonEvent = null;
 
         private Dictionary<int, PlayerInput> mPlayersInputs = new Dictionary<int, PlayerInput>();
+
+        public List<Checkpoint> Checkpoints;
+
+        private int Team1NbCheckpointsValidated = 0;
+        private int Team2NbCheckpointsValidated = 0;
             
         private void Start()
         {
             CreateControllersAndCharacters();
+
+            int index = 0;
+            foreach(Checkpoint cp in Checkpoints)
+            {
+                cp.SetIndex(index);
+                index++;
+            }
         }
 
         public void CreateControllersAndCharacters()
@@ -92,6 +105,24 @@ namespace game
             mCameraManager.Initialize();
         }
 
+        public void NotifyNewCheckpointValidatedByTeam(TeamID teamID, int cpIndex)
+        {
+            if(cpIndex == Checkpoints.Count)
+            {
+                //TEAm WON
+                ChangeState(State.GameOver);
+            }
+        }
+
+        public bool IsCheckpointValidated(int index, TeamID teamID)
+        {
+            if(index < Checkpoints.Count)
+            {
+                return Checkpoints[index].IsValidatedByTeam(teamID);
+            }
+            return false;
+        }
+
         public void ChangeState(State state)
         {
             m_CurrentState = state;
@@ -110,6 +141,13 @@ namespace game
                 {
                     m_CurrentState = State.Gameplay;
                     SceneManager.LoadScene((Int32)m_CurrentState, LoadSceneMode.Single);
+                    break;
+                }
+
+                case State.GameOver:
+                {
+                     m_CurrentState = State.GameOver;
+                     Debug.Log("Change to run state");
                     break;
                 }
 
@@ -138,6 +176,11 @@ namespace game
 
         public void Update()
         {
+            if(m_CurrentState == State.Gameplay)
+            {
+                
+            }
+
             if(m_LoadingOperation != null)
             {
                 float value = Mathf.Clamp01(m_LoadingOperation.progress / 0.9f);
@@ -147,6 +190,11 @@ namespace game
                     m_LoadingOperation = null;
                 }
             }
+        }
+
+        public void ChangeToRunPhase()
+        {
+
         }
 
         public void ChangeToGameplay()
