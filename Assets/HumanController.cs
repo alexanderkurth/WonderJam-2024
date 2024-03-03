@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using game;
 using StarterAssets;
 using UnityEditor;
 using UnityEngine;
@@ -21,9 +22,10 @@ public class HumanController : MonoBehaviour
     public float RotationSpeed = 10.0f;
     public StarterAssetsInputs inputs;
     [SerializeField] private GameObject _cameraRoot;
-
+    private TeamID _teamID;
+    public InteractionState m_State = InteractionState.Invalid;
     public int DashDistance = 1;
-
+    
     private void Start()
     {
         _cameraRoot.transform.SetParent(null);
@@ -31,7 +33,10 @@ public class HumanController : MonoBehaviour
         _cameraRoot.SetActive(true);
     }
 
-    public InteractionState m_Sate = InteractionState.Invalid;
+    public void Initialize(TeamID teamID)
+    {
+        _teamID = teamID;
+    }
 
     public bool isDashing = false;
     public bool isPushed = false;

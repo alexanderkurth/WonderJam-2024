@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,22 +20,22 @@ public class CameraManager : Singleton<CameraManager>
     {
         List<Camera> cameras = GetTeamCameras(teamID);
         bool isFirst = true;
+        float height = GameManager.Instance.IsTwoPlayerMod ? 1f : 0.5f;
         foreach (Camera camera in cameras)
         {
             float timing = isInstant ? 0f : LERP_TIME;
-            float x = 0.5f * (teamID - 1);
+            float x = 0.5f * teamID;
             Rect cameraRect = default;
             if (isFirst)
             {
                 isFirst = false;
                 camera.enabled = true;
-                cameraRect = isEnabled ? new Rect(x, 0, 0.5f, 1) : new Rect(x,0.5f,0.5f,0.5f);
+                cameraRect = isEnabled ? new Rect(x, 0, 0.5f, 1) : new Rect(x,1-height,0.5f,height);
             }
             else
             {
                 camera.enabled = !isEnabled;
-                cameraRect = new Rect(x, 0, 0.5f, 0.5f);
-
+                cameraRect = new Rect(x, 0, 0.5f, height);
             }
 
             StartCoroutine(LerpCameraInScreen(camera, cameraRect, timing));

@@ -29,6 +29,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter " + other.gameObject);
         MontureController monture = other.gameObject.GetComponent<MontureController>();
         if(monture != null)
         {
@@ -36,14 +37,37 @@ public class Checkpoint : MonoBehaviour
             {
                 SetValidated(monture.TeamID);
             }
-            if(GameManager.Instance.IsCheckpointValidated(_CheckpointIndex - 1, monture.TeamID)) //replace by teamID
+            else if(GameManager.Instance.IsCheckpointValidated(_CheckpointIndex - 1, monture.TeamID)) //replace by teamID
             {
                 SetValidated(monture.TeamID);
+            }
+             else
+            {
+                return;
             }
 
             GameManager.Instance.NotifyNewCheckpointValidatedByTeam(monture.TeamID, _CheckpointIndex);
         }
-        //Check team tag somewhere
+
+        //TestCode because we don't have the monture :'(
+        // HumanController controller = other.gameObject.GetComponentInParent<HumanController>();
+        // if(controller != null)
+        // {
+        //     if(_CheckpointIndex == 0) //First checkpoint
+        //     {
+        //         SetValidated(TeamID.Team1);
+        //     }
+        //     else if(GameManager.Instance.IsCheckpointValidated(_CheckpointIndex - 1, TeamID.Team1)) //replace by teamID
+        //     {
+        //         SetValidated(TeamID.Team1);
+        //     }
+        //     else
+        //     {
+        //         return;
+        //     }
+
+        //     GameManager.Instance.NotifyNewCheckpointValidatedByTeam(TeamID.Team1, _CheckpointIndex);
+        // }
     }
 
     private void SetValidated(TeamID teamID)
