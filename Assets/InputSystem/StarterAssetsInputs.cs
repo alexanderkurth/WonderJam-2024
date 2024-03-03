@@ -41,7 +41,7 @@ namespace StarterAssets
 
 		public void OnHorseRidingInteraction(InputValue value)
 		{
-			_humanController.OnHorseRidingInteraction();
+			_humanController.TriggerHorseRidingInteraction(value);
 		}
 #endif
 
