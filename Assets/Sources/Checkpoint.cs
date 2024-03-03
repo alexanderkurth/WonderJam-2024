@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using game;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -9,6 +10,10 @@ public class Checkpoint : MonoBehaviour
     private bool _IsValidatedByTeam2 = false;
 
     private int _CheckpointIndex = 0;
+
+    public List<MontureController> Montures;
+
+    public float SquareValidatonDistance = 5.0f;
 
     public bool IsValidatedByTeam(TeamID id)
     {
@@ -27,10 +32,27 @@ public class Checkpoint : MonoBehaviour
         return false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
     {
-        Debug.Log("OnTriggerEnter " + other.gameObject);
-        MontureController monture = other.gameObject.GetComponent<MontureController>();
+        foreach(MontureController controller in Montures)
+        {
+            if(IsValidatedByTeam(controller.TeamID))
+            {
+                continue;
+            }
+
+            Vector3 vector = controller.transform.position - transform.position;
+            if(vector.sqrMagnitude < SquareValidatonDistance)
+            {
+                Debug.Log("check " + controller);
+                CheckMonture(controller);
+            }
+        }
+
+    }
+
+    private void CheckMonture(MontureController monture)
+    {
         if(monture != null)
         {
             if(_CheckpointIndex == 0) //First checkpoint
@@ -48,26 +70,6 @@ public class Checkpoint : MonoBehaviour
 
             GameManager.Instance.NotifyNewCheckpointValidatedByTeam(monture.TeamID, _CheckpointIndex);
         }
-
-        //TestCode because we don't have the monture :'(
-        // HumanController controller = other.gameObject.GetComponentInParent<HumanController>();
-        // if(controller != null)
-        // {
-        //     if(_CheckpointIndex == 0) //First checkpoint
-        //     {
-        //         SetValidated(TeamID.Team1);
-        //     }
-        //     else if(GameManager.Instance.IsCheckpointValidated(_CheckpointIndex - 1, TeamID.Team1)) //replace by teamID
-        //     {
-        //         SetValidated(TeamID.Team1);
-        //     }
-        //     else
-        //     {
-        //         return;
-        //     }
-
-        //     GameManager.Instance.NotifyNewCheckpointValidatedByTeam(TeamID.Team1, _CheckpointIndex);
-        // }
     }
 
     private void SetValidated(TeamID teamID)
@@ -90,5 +92,12 @@ public class Checkpoint : MonoBehaviour
     public void SetIndex(int index)
     {
         _CheckpointIndex = index;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, Mathf.Sqrt(SquareValidatonDistance));
     }
 }
