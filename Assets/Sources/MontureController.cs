@@ -13,6 +13,7 @@ public class MontureController : MonoBehaviour
     [SerializeField] BodyPartSlot BackRightLegSlot;
     [SerializeField] FixedJoint2D m_Saddle;
     [SerializeField] GameObject _outline;
+    [SerializeField] SpriteRenderer _saddleSprite;
 
     // List to reference all slots
     private List<BodyPartSlot> slots = new List<BodyPartSlot>();
@@ -62,6 +63,11 @@ public class MontureController : MonoBehaviour
         slots.Add(FrontRightLegSlot);
         slots.Add(BackLeftLegSlot);
         slots.Add(BackRightLegSlot);
+
+        if(_saddleSprite != null)
+        {
+            _saddleSprite.color = GameManager.Instance.GetAnimalDatas().GetColorForTeam(TeamID);
+        }
     }
 
     void OrganiseSlots(BodyScript body)
