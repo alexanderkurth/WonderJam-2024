@@ -30,6 +30,7 @@ namespace StarterAssets
 
 		public void OnInteraction(InputValue value)
 		{
+            Debug.Log("\t\tpublic void OnInteraction(InputValue value)\r\n");
 			_humanController.OnInteraction();
 		}
 
