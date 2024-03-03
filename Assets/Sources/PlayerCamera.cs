@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using game;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class PlayerCamera : MonoBehaviour
         if (owner != null)
         {
             _simpleCameraFollow.m_Target = owner.transform;
-            _simpleCameraFollow.m_CameraParent = owner._cameraRoot;
+            owner.GetComponent<PlayerInput>().camera = _camera;
         }
         
         Target = owner;
@@ -34,7 +35,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void SetUIActive(bool isActive)
     {
-        _simpleCameraFollow.SetCameraActive(Target != null);
+        _simpleCameraFollow.SetCameraActive(!isActive);
     }
 
     public void HandleCameraChange(bool isEnabled, bool isInstant)

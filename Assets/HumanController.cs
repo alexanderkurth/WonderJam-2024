@@ -13,7 +13,6 @@ public class HumanController : MonoBehaviour
     [SerializeField] private float radius = 10.0f;
     [SerializeField] private float radiusSaddle = 10.0f;
     [SerializeField] private GameObject _anchor;
-    public GameObject _cameraRoot;
     [SerializeField] private InteractionComponent2 _interactionComponent;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private TextMeshProUGUI _text;
@@ -47,13 +46,6 @@ public class HumanController : MonoBehaviour
     private AK.Wwise.Event SlapSoundEvent = null;
     [SerializeField]
     private AK.Wwise.Event DashSoundEvent = null;
-
-    private void Start()
-    {
-        _cameraRoot.transform.SetParent(null);
-        _cameraRoot.name = "PlayerCamera";
-        _cameraRoot.SetActive(true);
-    }
 
 #if UNITY_EDITOR
     [ContextMenu("TestINIT")]
