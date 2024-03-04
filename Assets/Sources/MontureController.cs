@@ -15,6 +15,8 @@ public class MontureController : MonoBehaviour
     [SerializeField] GameObject _outline;
     [SerializeField] SpriteRenderer _saddleSprite;
 
+    [SerializeField] bool StartFilled = false;
+
     // List to reference all slots
     private List<BodyPartSlot> slots = new List<BodyPartSlot>();
 
@@ -23,7 +25,7 @@ public class MontureController : MonoBehaviour
     BodyScript m_BodyScript;
     private AnimalDatas m_AnimalDatas;
 
-    public TeamID TeamID;
+    public TeamID TeamID = TeamID.None;
     public AnimalType animalType;
 
     public void SetOutlineVisibility(bool b)
@@ -31,7 +33,7 @@ public class MontureController : MonoBehaviour
         _outline.SetActive(b);
     }
 
-#if UNITY_EDITOR
+
     [ContextMenu("TestBodyPart")]
     void TestAttachBodyPart()
     {
@@ -46,7 +48,6 @@ public class MontureController : MonoBehaviour
             AttachBodyPart(animalType);
         }
     }
-#endif
 
     public Vector3 GetSaddlePosition()
     {
@@ -78,6 +79,20 @@ public class MontureController : MonoBehaviour
         {
             _saddleSprite.color = GameManager.Instance.GetAnimalDatas().GetColorForTeam(TeamID);
         }
+
+        if (StartFilled)
+        {
+            FillAll();
+        }
+    }
+
+    public bool HasTeamID()
+    {
+        return TeamID != TeamID.None;
+    }
+    public void SetTeamID(TeamID id)
+    {
+        TeamID = id;
     }
 
     void OrganiseSlots(BodyScript body)
@@ -181,65 +196,47 @@ public class MontureController : MonoBehaviour
                 headSlot.transform.rotation = m_BodyScript.transform.rotation;
                 headSlot.AttachToBody(m_BodyScript);
             }
+            m_BodyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
     
-    public void TriggerLegMovement(bool isTeamFirstPlayer, bool isHold, bool is4PlayerBehavior)
-    { 
-        foreach (BodyPartSlot bodyPartSlot in slots)
-        {
-            switch (bodyPartSlot.BodyPartType)
-            {
-                case BodyPartType.FrontLeftLeg:
-                case BodyPartType.BackLeftLeg:
-                {
-                    if (isTeamFirstPlayer 
-                        && (!GameManager.Instance.IsTwoPlayerMod || is4PlayerBehavior))
-                    {
-                        continue;
-                    }
+    public void TriggerLegMovement(bool isTeamFirstPlayer, bool isHold, bool leftTrigger)
+    {
+        LegController TopleftLegController =      FrontLeftLegSlot.HasBodyPart()  ? FrontLeftLegSlot.GetBodyPart().GetComponent<LegController>() : null;
+        LegController ToprightLegController =     FrontRightLegSlot.HasBodyPart() ? FrontRightLegSlot.GetBodyPart().GetComponent<LegController>() : null;
+        LegController BottomleftLegController =   BackLeftLegSlot.HasBodyPart()  ? BackLeftLegSlot.GetBodyPart().GetComponent<LegController>() : null;
+        LegController BottomrightLegController =  BackRightLegSlot.HasBodyPart() ? BackRightLegSlot.GetBodyPart().GetComponent<LegController>() : null;
 
-                    if (isHold)
-                    {
-                        bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
-                    }
-                    else
-                    {
-                        bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: false);
-                    }
-                }
-                    break;
-                case BodyPartType.FrontRightLeg:
-                case BodyPartType.BackRightLeg:
-                {
-                    if (isTeamFirstPlayer && is4PlayerBehavior)
-                    {
-                        if (isHold)
-                        {
-                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: true);
-                        }
-                        else
-                        {
-                            bodyPartSlot.m_InstantiatedPart.GetComponent<LegController>().StartLegTravel(stepUp: false);
-                        }
-                    }
-                }
-                    break;
-            }
+        if (GameManager.Instance.IsTwoPlayerMod)
+        {
+            isTeamFirstPlayer = leftTrigger;
+        }
+
+        if (isTeamFirstPlayer) // Control Left
+        {
+            TopleftLegController?.UpdateHold(isHold);
+            BottomleftLegController?.UpdateHold(isHold);
+        }
+        else // Control Right legs
+        {
+            ToprightLegController?.UpdateHold(isHold);
+            BottomrightLegController?.UpdateHold(isHold);
         }
     }
 
     public bool IsReadyToMount()
     {
+        int nbParts = 0;
         foreach (BodyPartSlot bodyPartSlot in slots)
         {
-            if (!bodyPartSlot.HasBodyPart())
+            if (bodyPartSlot.HasBodyPart())
             {
-                return false;
+                nbParts++;
             }
         }
-
-        return true;
+        if (nbParts > 2)
+            return true;
+        return false;
     }
 
     public void OnDrawGizmos()

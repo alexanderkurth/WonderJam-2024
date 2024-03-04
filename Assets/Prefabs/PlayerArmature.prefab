@@ -195,7 +195,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   analogMovement: 0
-  cursorLocked: 1
+  cursorLocked: 0
   cursorInputForLook: 1
   _humanController: {fileID: 4726852103038870418}
 --- !u!114 &4416926081852918493
@@ -319,6 +319,7 @@ MonoBehaviour:
   RotationSpeed: 20
   inputs: {fileID: 135756642000475821}
   DashDistance: 3
+  _currentMount: {fileID: 0}
   _visualParent: {fileID: 2951477662079139475}
   EcuyerGameObject: {fileID: 25669700216672163}
   ChevalierGameObject: {fileID: 8591783170740967667}
@@ -332,8 +333,6 @@ MonoBehaviour:
   - {fileID: 646507257544298961}
   - {fileID: 3199617832782799306}
   - {fileID: 7537044406792555172}
-  Team1Color: {r: 1, g: 0, b: 0, a: 1}
-  Team2Color: {r: 0, g: 0, b: 1, a: 1}
   isDashing: 0
   isPushed: 0
   SlapSoundEvent:

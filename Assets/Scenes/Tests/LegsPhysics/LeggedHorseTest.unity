@@ -758,6 +758,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6540234466772242126, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
+      propertyPath: StartFilled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8282861259179360070, guid: 95820036f20d6514b8415c33f21650b6, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0
@@ -1146,6 +1150,14 @@ PrefabInstance:
       propertyPath: m_AnimalDatas
       value: 
       objectReference: {fileID: 11400000, guid: 5451a0966b0ba024794948117e7eb105, type: 2}
+    - target: {fileID: 5954275618125493862, guid: 83c5e0ab24608b54f8dacfaa2689f2fe, type: 3}
+      propertyPath: DoNotDestroyOnLoad
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954275618125493862, guid: 83c5e0ab24608b54f8dacfaa2689f2fe, type: 3}
+      propertyPath: duplicationHandling
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

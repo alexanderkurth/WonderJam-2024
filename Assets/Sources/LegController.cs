@@ -165,7 +165,7 @@ public class LegController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateHold(bool press)
     {
         if (IsInitialized == false)
         {
@@ -173,11 +173,11 @@ public class LegController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyUp(m_AnchorKey))
+        if (press)
         {
             StartLegTravel(stepUp: true);
         }
-        else if (Input.GetKeyDown(m_AnchorKey))
+        else
         {
             StartLegTravel(stepUp: false);
         }

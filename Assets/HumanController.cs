@@ -156,7 +156,7 @@ public class HumanController : MonoBehaviour
         MontureController mc = _interactionComponent.bestSaddle;
         float distanceSaddle = Vector3.Distance(mc.GetSaddlePosition(), transform.position);
 
-        if (distanceSaddle <= radiusSaddle)
+        if ((!mc.HasTeamID() || (mc.TeamID == _teamID)) && distanceSaddle <= radiusSaddle)
         {
             if (ia.IsGrab)
             {
@@ -164,6 +164,7 @@ public class HumanController : MonoBehaviour
                 InteractionManager2.Instance.m_Animals.Remove(ia);
                 ia.OnMerge(mc);
                 ia = null;
+                mc.TeamID = _teamID;
             }
             else if (mc.IsReadyToMount())
             {
@@ -242,12 +243,20 @@ public class HumanController : MonoBehaviour
         Dash(DashDistance);
     }
 
-    public void TriggerHorseRidingInteraction(InputValue value, bool is4PlayerBehavior = true)
+    public void TriggerHorseRidingLTInteraction(InputValue value)
     {
         if (_currentMount != null)
         {
             bool isFirstPlayer = _playerID == 1;
-            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed, is4PlayerBehavior);
+            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed, true);
+        }
+    }
+    public void TriggerHorseRidingRTInteraction(InputValue value)
+    {
+        if (_currentMount != null)
+        {
+            bool isFirstPlayer = _playerID == 1;
+            _currentMount.TriggerLegMovement(isFirstPlayer, value.isPressed, false);
         }
     }
 }

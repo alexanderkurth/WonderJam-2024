@@ -41,15 +41,15 @@ namespace StarterAssets
 			_humanController.OnAttack();
 		}
 
-		public void OnHorseRidingInteraction(InputValue value)
+		public void OnHorseRidingInteractionLT(InputValue value)
 		{
-			_humanController.TriggerHorseRidingInteraction(value);
+			_humanController.TriggerHorseRidingLTInteraction(value);
 		}
 
-		public void OnHorseRidingSingleDriver(InputValue value)
-		{
-			_humanController.TriggerHorseRidingInteraction(value, false);
-		}
+        public void OnHorseRidingInteractionRT(InputValue value)
+        {
+            _humanController.TriggerHorseRidingRTInteraction(value);
+        }
 		
 #endif
 

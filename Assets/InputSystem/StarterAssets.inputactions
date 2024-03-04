@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HorseRidingInteraction",
+                    "name": "HorseRidingInteractionRT",
                     "type": "PassThrough",
                     "id": "11efd40c-4cb4-49a8-b2ab-965bd84f8bf7",
                     "expectedControlType": "Button",
@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HorseRidingSingleDriver",
+                    "name": "HorseRidingInteractionLT",
                     "type": "Value",
                     "id": "efba7d83-5692-4111-bf14-33bfa40b148c",
                     "expectedControlType": "Button",
@@ -191,7 +191,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "HorseRidingInteraction",
+                    "action": "HorseRidingInteractionRT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -202,7 +202,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "HorseRidingInteraction",
+                    "action": "HorseRidingInteractionRT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -235,7 +235,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "HorseRidingSingleDriver",
+                    "action": "HorseRidingInteractionLT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -246,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "HorseRidingSingleDriver",
+                    "action": "HorseRidingInteractionLT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
